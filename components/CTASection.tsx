@@ -1,8 +1,9 @@
-// ease typed
 "use client";
 
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
+
+const EASE: [number, number, number, number] = [0.25, 0.1, 0.25, 1];
 
 export default function CTASection() {
   const ref = useRef(null);
@@ -14,7 +15,7 @@ export default function CTASection() {
         <motion.div
           initial={{ opacity: 0, y: 32 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 32 }}
-          transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] as const }}
+          transition={{ duration: 0.6, ease: EASE }}
           className="flex flex-col items-center gap-8"
         >
           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-white/35">
@@ -42,7 +43,7 @@ export default function CTASection() {
             href="#"
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
-            className="inline-flex items-center justify-center h-14 px-10 rounded-lg bg-white text-[#0a0a0a] text-base font-bold hover:bg-white/92 transition-colors duration-200"
+            className="inline-flex items-center justify-center h-14 px-10 bg-white text-[#0a0a0a] text-base font-bold hover:bg-white/90 transition-colors duration-200"
           >
             Book a Free Call
             <svg

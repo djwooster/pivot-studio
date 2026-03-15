@@ -13,18 +13,18 @@ function HamburgerIcon({ open }: { open: boolean }) {
   return (
     <div className="w-6 h-5 flex flex-col justify-between cursor-pointer" aria-hidden>
       <motion.span
-        className="block h-[2px] bg-white origin-center rounded-full"
-        animate={open ? { rotate: 45, y: 9 } : { rotate: 0, y: 0 }}
+        className="block h-[2px] bg-[#0a0a0a] origin-center"
+        animate={open ? { rotate: 45, y: 9, backgroundColor: "#ffffff" } : { rotate: 0, y: 0, backgroundColor: "#0a0a0a" }}
         transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] as [number, number, number, number] }}
       />
       <motion.span
-        className="block h-[2px] bg-white rounded-full"
-        animate={open ? { opacity: 0, scaleX: 0 } : { opacity: 1, scaleX: 1 }}
+        className="block h-[2px] bg-[#0a0a0a]"
+        animate={open ? { opacity: 0, scaleX: 0, backgroundColor: "#ffffff" } : { opacity: 1, scaleX: 1, backgroundColor: "#0a0a0a" }}
         transition={{ duration: 0.2, ease: [0.4, 0, 0.2, 1] as [number, number, number, number] }}
       />
       <motion.span
-        className="block h-[2px] bg-white origin-center rounded-full"
-        animate={open ? { rotate: -45, y: -9 } : { rotate: 0, y: 0 }}
+        className="block h-[2px] bg-[#0a0a0a] origin-center"
+        animate={open ? { rotate: -45, y: -9, backgroundColor: "#ffffff" } : { rotate: 0, y: 0, backgroundColor: "#0a0a0a" }}
         transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] as [number, number, number, number] }}
       />
     </div>
@@ -71,7 +71,6 @@ export default function Nav() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Lock body scroll when menu is open
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "";
     return () => { document.body.style.overflow = ""; };
@@ -82,15 +81,14 @@ export default function Nav() {
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           scrolled || menuOpen
-            ? "backdrop-blur-md bg-black/90 border-b border-white/5"
+            ? "backdrop-blur-md bg-white/95 border-b border-black/8"
             : "bg-transparent"
         }`}
       >
         <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-          {/* Wordmark */}
           <a
             href="#"
-            className="text-xl font-bold text-white tracking-tight hover:opacity-80 transition-opacity z-10"
+            className="text-xl font-bold text-[#0a0a0a] tracking-tight hover:opacity-70 transition-opacity z-10"
             onClick={() => setMenuOpen(false)}
           >
             Pivot Studio
@@ -102,14 +100,14 @@ export default function Nav() {
               <a
                 key={link.href}
                 href={link.href}
-                className="text-sm text-white/60 hover:text-white transition-colors duration-200 font-medium"
+                className="text-sm text-[#0a0a0a]/55 hover:text-[#0a0a0a] transition-colors duration-200 font-medium"
               >
                 {link.label}
               </a>
             ))}
             <a
               href="#contact"
-              className="inline-flex items-center justify-center h-9 px-5 rounded-lg bg-white text-[#0a0a0a] text-sm font-semibold hover:bg-white/90 transition-colors duration-200"
+              className="inline-flex items-center justify-center h-9 px-5 bg-[#0a0a0a] text-white text-sm font-semibold hover:bg-[#0a0a0a]/85 transition-colors duration-200"
             >
               Book a Call
             </a>
@@ -117,7 +115,7 @@ export default function Nav() {
 
           {/* Mobile hamburger */}
           <button
-            className="md:hidden text-white p-1 rounded z-10 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/40"
+            className="md:hidden p-1 z-10 focus:outline-none focus-visible:ring-2 focus-visible:ring-black/20"
             onClick={() => setMenuOpen((prev) => !prev)}
             aria-label={menuOpen ? "Close menu" : "Open menu"}
           >
@@ -157,8 +155,6 @@ export default function Nav() {
                     </span>
                     <motion.span
                       className="text-white/30 group-hover:text-white transition-colors duration-200"
-                      initial={{ x: -4, opacity: 0 }}
-                      whileHover={{ x: 0, opacity: 1 }}
                       animate={{ x: 0, opacity: 0.3 }}
                       transition={{ duration: 0.2 }}
                     >
@@ -169,12 +165,11 @@ export default function Nav() {
                   </motion.a>
                 ))}
 
-                {/* CTA */}
                 <motion.div variants={itemVariants} className="pt-8">
                   <a
                     href="#contact"
                     onClick={() => setMenuOpen(false)}
-                    className="inline-flex items-center justify-center w-full h-14 rounded-lg bg-white text-[#0a0a0a] text-base font-bold hover:bg-white/90 transition-colors"
+                    className="inline-flex items-center justify-center w-full h-14 bg-white text-[#0a0a0a] text-base font-bold hover:bg-white/90 transition-colors"
                   >
                     Book a Free Call
                   </a>
@@ -182,7 +177,6 @@ export default function Nav() {
               </motion.nav>
             </div>
 
-            {/* Footer wordmark inside overlay */}
             <div className="px-8 pb-10">
               <p className="text-white/20 text-sm font-medium">Pivot Studio</p>
             </div>

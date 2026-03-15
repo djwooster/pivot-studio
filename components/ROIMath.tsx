@@ -1,8 +1,9 @@
-// ease typed
 "use client";
 
 import { useRef } from "react";
 import { motion, useInView, type Variants } from "framer-motion";
+
+const EASE: [number, number, number, number] = [0.25, 0.1, 0.25, 1];
 
 const stats = [
   {
@@ -29,7 +30,7 @@ const staggerContainer: Variants = {
 
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 32 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.55, ease: [0.25, 0.1, 0.25, 1] as [number, number, number, number] } },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.55, ease: EASE } },
 };
 
 export default function ROIMath() {
@@ -37,7 +38,7 @@ export default function ROIMath() {
   const isInView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section className="bg-[#f5f5f5] text-[#0a0a0a] py-28 px-6">
+    <section className="bg-[#0a0a0a] noise py-28 px-6">
       <div className="max-w-6xl mx-auto" ref={ref}>
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -45,10 +46,10 @@ export default function ROIMath() {
           transition={{ duration: 0.5 }}
           className="mb-16"
         >
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-black/35 mb-4">
+          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-white/35 mb-4">
             The Numbers
           </p>
-          <h2 className="section-headline text-[#0a0a0a] max-w-xl">
+          <h2 className="section-headline text-white max-w-xl">
             The math works in your favor.
           </h2>
         </motion.div>
@@ -57,22 +58,22 @@ export default function ROIMath() {
           variants={staggerContainer}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
-          className="grid md:grid-cols-3 gap-px bg-black/10"
+          className="grid md:grid-cols-3 gap-px bg-white/10"
         >
           {stats.map((stat) => (
             <motion.div
               key={stat.value}
               variants={fadeUp}
-              className="bg-[#f5f5f5] px-10 py-12 flex flex-col gap-3"
+              className="bg-[#0a0a0a] px-10 py-12 flex flex-col gap-3"
             >
               <p
-                className="font-extrabold text-[#0a0a0a] leading-none"
+                className="font-extrabold text-white leading-none"
                 style={{ fontSize: "clamp(52px, 6vw, 80px)", letterSpacing: "-0.04em" }}
               >
                 {stat.value}
               </p>
-              <p className="text-lg font-semibold text-[#0a0a0a]">{stat.label}</p>
-              <p className="text-sm text-black/50 leading-relaxed">{stat.subtext}</p>
+              <p className="text-lg font-semibold text-white">{stat.label}</p>
+              <p className="text-sm text-white/50 leading-relaxed">{stat.subtext}</p>
             </motion.div>
           ))}
         </motion.div>

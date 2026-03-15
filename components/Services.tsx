@@ -1,16 +1,17 @@
-// ease typed
 "use client";
 
 import { useRef } from "react";
 import { motion, useInView, type Variants } from "framer-motion";
 
+const EASE: [number, number, number, number] = [0.25, 0.1, 0.25, 1];
+
 function SearchIcon() {
   return (
     <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
-      <circle cx="12" cy="12" r="8" stroke="white" strokeWidth="1.5" strokeOpacity={0.7} />
-      <line x1="18" y1="18" x2="25" y2="25" stroke="white" strokeWidth="1.5" strokeOpacity={0.7} strokeLinecap="round" />
-      <line x1="9" y1="12" x2="15" y2="12" stroke="white" strokeWidth="1.5" strokeOpacity={0.5} strokeLinecap="round" />
-      <line x1="12" y1="9" x2="12" y2="15" stroke="white" strokeWidth="1.5" strokeOpacity={0.5} strokeLinecap="round" />
+      <circle cx="12" cy="12" r="8" stroke="#0a0a0a" strokeWidth="1.5" strokeOpacity={0.7} />
+      <line x1="18" y1="18" x2="25" y2="25" stroke="#0a0a0a" strokeWidth="1.5" strokeOpacity={0.7} strokeLinecap="round" />
+      <line x1="9" y1="12" x2="15" y2="12" stroke="#0a0a0a" strokeWidth="1.5" strokeOpacity={0.5} strokeLinecap="round" />
+      <line x1="12" y1="9" x2="12" y2="15" stroke="#0a0a0a" strokeWidth="1.5" strokeOpacity={0.5} strokeLinecap="round" />
     </svg>
   );
 }
@@ -18,10 +19,10 @@ function SearchIcon() {
 function BuildIcon() {
   return (
     <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
-      <rect x="3" y="14" width="6" height="11" rx="1" stroke="white" strokeWidth="1.5" strokeOpacity={0.7} />
-      <rect x="11" y="9" width="6" height="16" rx="1" stroke="white" strokeWidth="1.5" strokeOpacity={0.7} />
-      <rect x="19" y="4" width="6" height="21" rx="1" stroke="white" strokeWidth="1.5" strokeOpacity={0.7} />
-      <line x1="3" y1="25" x2="25" y2="25" stroke="white" strokeWidth="1.5" strokeOpacity={0.3} strokeLinecap="round" />
+      <rect x="3" y="14" width="6" height="11" stroke="#0a0a0a" strokeWidth="1.5" strokeOpacity={0.7} />
+      <rect x="11" y="9" width="6" height="16" stroke="#0a0a0a" strokeWidth="1.5" strokeOpacity={0.7} />
+      <rect x="19" y="4" width="6" height="21" stroke="#0a0a0a" strokeWidth="1.5" strokeOpacity={0.7} />
+      <line x1="3" y1="25" x2="25" y2="25" stroke="#0a0a0a" strokeWidth="1.5" strokeOpacity={0.3} strokeLinecap="round" />
     </svg>
   );
 }
@@ -29,10 +30,10 @@ function BuildIcon() {
 function RetainerIcon() {
   return (
     <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
-      <circle cx="14" cy="14" r="10" stroke="white" strokeWidth="1.5" strokeOpacity={0.7} />
+      <circle cx="14" cy="14" r="10" stroke="#0a0a0a" strokeWidth="1.5" strokeOpacity={0.7} />
       <path
         d="M14 8 L14 14 L19 14"
-        stroke="white"
+        stroke="#0a0a0a"
         strokeWidth="1.5"
         strokeOpacity={0.7}
         strokeLinecap="round"
@@ -40,14 +41,14 @@ function RetainerIcon() {
       />
       <path
         d="M20 4 C23 6.5 25 10 25 14"
-        stroke="white"
+        stroke="#0a0a0a"
         strokeWidth="1.5"
         strokeOpacity={0.4}
         strokeLinecap="round"
       />
       <path
         d="M22 2 L20 5 L24 5 Z"
-        fill="white"
+        fill="#0a0a0a"
         fillOpacity={0.45}
       />
     </svg>
@@ -91,7 +92,7 @@ const staggerContainer: Variants = {
 
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 36 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.55, ease: [0.25, 0.1, 0.25, 1] as [number, number, number, number] } },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.55, ease: EASE } },
 };
 
 export default function Services() {
@@ -99,7 +100,7 @@ export default function Services() {
   const isInView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section className="bg-[#0a0a0a] noise py-28 px-6" id="services">
+    <section className="bg-white py-28 px-6" id="services">
       <div className="max-w-6xl mx-auto" ref={ref}>
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -107,10 +108,10 @@ export default function Services() {
           transition={{ duration: 0.5 }}
           className="mb-16"
         >
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-white/35 mb-4">
+          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#0a0a0a]/35 mb-4">
             What We Offer
           </p>
-          <h2 className="section-headline text-white max-w-xl">
+          <h2 className="section-headline text-[#0a0a0a] max-w-xl">
             Three ways to work with us.
           </h2>
         </motion.div>
@@ -125,43 +126,43 @@ export default function Services() {
             <motion.div
               key={svc.title}
               variants={fadeUp}
-              className="group flex flex-col gap-6 p-8 rounded-lg border transition-all duration-200 cursor-default"
+              className="group flex flex-col gap-6 p-8 border transition-all duration-200 cursor-default"
               style={{
-                backgroundColor: "#111111",
-                borderColor: "rgba(255,255,255,0.1)",
+                backgroundColor: "#fafafa",
+                borderColor: "rgba(0,0,0,0.1)",
               }}
               onMouseEnter={(e) => {
-                (e.currentTarget as HTMLDivElement).style.borderColor = "rgba(255,255,255,0.4)";
+                (e.currentTarget as HTMLDivElement).style.borderColor = "rgba(0,0,0,0.4)";
                 (e.currentTarget as HTMLDivElement).style.transform = "translateY(-4px)";
               }}
               onMouseLeave={(e) => {
-                (e.currentTarget as HTMLDivElement).style.borderColor = "rgba(255,255,255,0.1)";
+                (e.currentTarget as HTMLDivElement).style.borderColor = "rgba(0,0,0,0.1)";
                 (e.currentTarget as HTMLDivElement).style.transform = "translateY(0)";
               }}
             >
-              <div className="w-12 h-12 rounded-lg bg-white/5 flex items-center justify-center">
+              <div className="w-12 h-12 bg-black/5 flex items-center justify-center">
                 {svc.icon}
               </div>
 
               <div className="flex flex-col gap-2">
-                <h3 className="text-lg font-bold text-white">{svc.title}</h3>
-                <p className="text-sm text-white/50 leading-relaxed">{svc.description}</p>
+                <h3 className="text-lg font-bold text-[#0a0a0a]">{svc.title}</h3>
+                <p className="text-sm text-[#0a0a0a]/50 leading-relaxed">{svc.description}</p>
               </div>
 
               <ul className="flex flex-col gap-2 mt-auto">
                 {svc.features.map((f) => (
-                  <li key={f} className="flex items-center gap-2.5 text-sm text-white/55">
+                  <li key={f} className="flex items-center gap-2.5 text-sm text-[#0a0a0a]/55">
                     <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
-                      <path d="M2 6 L5 9 L10 3" stroke="white" strokeWidth="1.5" strokeOpacity={0.5} strokeLinecap="round" strokeLinejoin="round" />
+                      <path d="M2 6 L5 9 L10 3" stroke="#0a0a0a" strokeWidth="1.5" strokeOpacity={0.5} strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
                     {f}
                   </li>
                 ))}
               </ul>
 
-              <div className="pt-4 border-t border-white/8">
-                <p className="text-2xl font-bold text-white">{svc.price}</p>
-                <p className="text-xs text-white/35 mt-0.5">{svc.priceNote}</p>
+              <div className="pt-4 border-t border-black/8">
+                <p className="text-2xl font-bold text-[#0a0a0a]">{svc.price}</p>
+                <p className="text-xs text-[#0a0a0a]/35 mt-0.5">{svc.priceNote}</p>
               </div>
             </motion.div>
           ))}

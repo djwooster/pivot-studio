@@ -1,8 +1,9 @@
-// ease typed
 "use client";
 
 import { useRef } from "react";
 import { motion, useInView, type Variants } from "framer-motion";
+
+const EASE: [number, number, number, number] = [0.25, 0.1, 0.25, 1];
 
 const problems = [
   {
@@ -24,14 +25,12 @@ const problems = [
 
 const staggerContainer: Variants = {
   hidden: {},
-  visible: {
-    transition: { staggerChildren: 0.12 },
-  },
+  visible: { transition: { staggerChildren: 0.12 } },
 };
 
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 32 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.55, ease: [0.25, 0.1, 0.25, 1] as [number, number, number, number] } },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.55, ease: EASE } },
 };
 
 export default function TheProblem() {
@@ -39,18 +38,18 @@ export default function TheProblem() {
   const isInView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section className="bg-[#0a0a0a] noise py-28 px-6" id="problem">
+    <section className="bg-white py-28 px-6" id="problem">
       <div className="max-w-6xl mx-auto" ref={ref}>
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
-          transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] as const }}
+          transition={{ duration: 0.5, ease: EASE }}
           className="mb-16"
         >
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-white/35 mb-4">
+          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#0a0a0a]/35 mb-4">
             The Reality
           </p>
-          <h2 className="section-headline text-white max-w-xl">
+          <h2 className="section-headline text-[#0a0a0a] max-w-xl">
             Most businesses are stuck in the same trap.
           </h2>
         </motion.div>
@@ -59,17 +58,17 @@ export default function TheProblem() {
           variants={staggerContainer}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
-          className="grid md:grid-cols-3 gap-px bg-white/10"
+          className="grid md:grid-cols-3 gap-px bg-black/10"
         >
           {problems.map((p) => (
             <motion.div
               key={p.number}
               variants={fadeUp}
-              className="bg-[#0a0a0a] p-8 flex flex-col gap-4"
+              className="bg-white p-8 flex flex-col gap-4"
             >
-              <span className="text-xs font-mono text-white/25 tracking-widest">{p.number}</span>
-              <h3 className="text-xl font-bold text-white leading-snug">{p.title}</h3>
-              <p className="text-sm text-white/50 leading-relaxed">{p.body}</p>
+              <span className="text-xs font-mono text-[#0a0a0a]/25 tracking-widest">{p.number}</span>
+              <h3 className="text-xl font-bold text-[#0a0a0a] leading-snug">{p.title}</h3>
+              <p className="text-sm text-[#0a0a0a]/50 leading-relaxed">{p.body}</p>
             </motion.div>
           ))}
         </motion.div>
