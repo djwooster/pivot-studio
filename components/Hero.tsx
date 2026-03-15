@@ -2,6 +2,8 @@
 
 import { motion, type Variants } from "framer-motion";
 
+const EASE: [number, number, number, number] = [0.25, 0.1, 0.25, 1];
+
 const words = "We build AI that actually ships.".split(" ");
 
 const wordVariant: Variants = {
@@ -9,7 +11,7 @@ const wordVariant: Variants = {
   visible: (i: number) => ({
     opacity: 1,
     y: 0,
-    transition: { duration: 0.5, ease: [0.25, 0.1, 0.25, 1], delay: i * 0.09 },
+    transition: { duration: 0.5, ease: EASE, delay: i * 0.09 },
   }),
 };
 
@@ -18,7 +20,7 @@ const fadeUp: Variants = {
   visible: (i: number) => ({
     opacity: 1,
     y: 0,
-    transition: { duration: 0.5, ease: [0.25, 0.1, 0.25, 1], delay: 0.6 + i * 0.12 },
+    transition: { duration: 0.5, ease: EASE, delay: 0.6 + i * 0.12 },
   }),
 };
 
@@ -73,71 +75,34 @@ function HeroSVG() {
       ))}
 
       {/* Connection paths */}
-      <path
-        d="M 180 180 L 300 180 L 300 300 L 420 300"
-        stroke="white"
-        strokeOpacity={0.18}
-        strokeWidth="1.5"
-        strokeDasharray="6 4"
-      />
-      <path
-        d="M 180 300 L 240 300 L 240 420 L 360 420"
-        stroke="white"
-        strokeOpacity={0.14}
-        strokeWidth="1.5"
-        strokeDasharray="6 4"
-      />
-      <path
-        d="M 300 180 C 380 180 380 300 420 300"
-        stroke="white"
-        strokeOpacity={0.1}
-        strokeWidth="1"
-        strokeDasharray="4 6"
-      />
-      <path
-        d="M 120 240 L 180 240 L 180 360 L 300 360"
-        stroke="white"
-        strokeOpacity={0.12}
-        strokeWidth="1"
-        strokeDasharray="4 4"
-      />
-      <path
-        d="M 60 180 L 120 180 L 120 300 L 180 300"
-        stroke="white"
-        strokeOpacity={0.1}
-        strokeWidth="1"
-        strokeDasharray="4 4"
-      />
+      <path d="M 180 180 L 300 180 L 300 300 L 420 300" stroke="white" strokeOpacity={0.18} strokeWidth="1.5" strokeDasharray="6 4" />
+      <path d="M 180 300 L 240 300 L 240 420 L 360 420" stroke="white" strokeOpacity={0.14} strokeWidth="1.5" strokeDasharray="6 4" />
+      <path d="M 300 180 C 380 180 380 300 420 300" stroke="white" strokeOpacity={0.1} strokeWidth="1" strokeDasharray="4 6" />
+      <path d="M 120 240 L 180 240 L 180 360 L 300 360" stroke="white" strokeOpacity={0.12} strokeWidth="1" strokeDasharray="4 4" />
+      <path d="M 60 180 L 120 180 L 120 300 L 180 300" stroke="white" strokeOpacity={0.1} strokeWidth="1" strokeDasharray="4 4" />
 
       {/* Large primary nodes */}
       <circle cx="180" cy="180" r="18" stroke="white" strokeOpacity={0.35} strokeWidth="1.5" />
       <circle cx="180" cy="180" r="7" fill="white" fillOpacity={0.55} />
-
       <circle cx="300" cy="180" r="14" stroke="white" strokeOpacity={0.25} strokeWidth="1" />
       <circle cx="300" cy="180" r="5" fill="white" fillOpacity={0.4} />
-
       <circle cx="420" cy="300" r="22" stroke="white" strokeOpacity={0.4} strokeWidth="1.5" />
       <circle cx="420" cy="300" r="9" fill="white" fillOpacity={0.6} />
-
       <circle cx="180" cy="300" r="12" stroke="white" strokeOpacity={0.2} strokeWidth="1" />
       <circle cx="180" cy="300" r="4" fill="white" fillOpacity={0.35} />
-
       <circle cx="300" cy="360" r="16" stroke="white" strokeOpacity={0.28} strokeWidth="1.5" />
       <circle cx="300" cy="360" r="6" fill="white" fillOpacity={0.45} />
-
       <circle cx="120" cy="300" r="10" stroke="white" strokeOpacity={0.18} strokeWidth="1" />
       <circle cx="120" cy="300" r="4" fill="white" fillOpacity={0.3} />
-
       <circle cx="360" cy="420" r="12" stroke="white" strokeOpacity={0.22} strokeWidth="1" />
       <circle cx="360" cy="420" r="4.5" fill="white" fillOpacity={0.38} />
-
       <circle cx="240" cy="420" r="8" stroke="white" strokeOpacity={0.15} strokeWidth="1" />
       <circle cx="240" cy="420" r="3" fill="white" fillOpacity={0.25} />
 
-      {/* Outer ring accent on primary node */}
+      {/* Outer ring accent */}
       <circle cx="420" cy="300" r="36" stroke="white" strokeOpacity={0.08} strokeWidth="1" strokeDasharray="3 5" />
 
-      {/* Small accent dots scattered */}
+      {/* Accent dots */}
       <circle cx="460" cy="180" r="3" fill="white" fillOpacity={0.15} />
       <circle cx="480" cy="240" r="2" fill="white" fillOpacity={0.1} />
       <circle cx="60" cy="420" r="2.5" fill="white" fillOpacity={0.12} />
@@ -155,7 +120,7 @@ export default function Hero() {
           <motion.p
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] as const }}
+            transition={{ duration: 0.4, ease: EASE }}
             className="text-xs font-semibold uppercase tracking-[0.18em] text-white/40"
           >
             AI &amp; Automation Agency
@@ -213,7 +178,7 @@ export default function Hero() {
         <motion.div
           initial={{ opacity: 0, scale: 0.97 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] as const, delay: 0.3 }}
+          transition={{ duration: 0.8, ease: EASE, delay: 0.3 }}
           className="hidden md:flex items-center justify-center w-full"
         >
           <div className="w-full max-w-[480px] aspect-square">

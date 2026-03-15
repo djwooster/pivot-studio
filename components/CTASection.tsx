@@ -1,3 +1,4 @@
+// ease typed
 "use client";
 
 import { useRef } from "react";

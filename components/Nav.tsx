@@ -15,17 +15,17 @@ function HamburgerIcon({ open }: { open: boolean }) {
       <motion.span
         className="block h-[2px] bg-white origin-center rounded-full"
         animate={open ? { rotate: 45, y: 9 } : { rotate: 0, y: 0 }}
-        transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
+        transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] as [number, number, number, number] }}
       />
       <motion.span
         className="block h-[2px] bg-white rounded-full"
         animate={open ? { opacity: 0, scaleX: 0 } : { opacity: 1, scaleX: 1 }}
-        transition={{ duration: 0.2, ease: [0.4, 0, 0.2, 1] }}
+        transition={{ duration: 0.2, ease: [0.4, 0, 0.2, 1] as [number, number, number, number] }}
       />
       <motion.span
         className="block h-[2px] bg-white origin-center rounded-full"
         animate={open ? { rotate: -45, y: -9 } : { rotate: 0, y: 0 }}
-        transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
+        transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] as [number, number, number, number] }}
       />
     </div>
   );
@@ -36,12 +36,12 @@ const overlayVariants = {
   visible: {
     opacity: 1,
     clipPath: "inset(0 0 0% 0)",
-    transition: { duration: 0.45, ease: [0.4, 0, 0.2, 1] },
+    transition: { duration: 0.45, ease: [0.4, 0, 0.2, 1] as [number, number, number, number] },
   },
   exit: {
     opacity: 0,
     clipPath: "inset(0 0 100% 0)",
-    transition: { duration: 0.35, ease: [0.4, 0, 0.2, 1] },
+    transition: { duration: 0.35, ease: [0.4, 0, 0.2, 1] as [number, number, number, number] },
   },
 };
 
@@ -57,7 +57,7 @@ const itemVariants = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.4, ease: [0.4, 0, 0.2, 1] },
+    transition: { duration: 0.4, ease: [0.4, 0, 0.2, 1] as [number, number, number, number] },
   },
 };
 
