@@ -25,7 +25,7 @@ export default function CTASection() {
           <h2
             className="font-extrabold text-white text-center"
             style={{
-              fontSize: "clamp(36px, 5.5vw, 72px)",
+              fontSize: "clamp(28px, 3.2vw, 48px)",
               letterSpacing: "-0.03em",
               lineHeight: 1.08,
             }}
