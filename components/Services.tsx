@@ -58,6 +58,7 @@ function RetainerIcon() {
 const services = [
   {
     icon: <SearchIcon />,
+    popular: false,
     title: "Workflow Audit",
     description:
       "A deep-dive into your current operations. We document your processes, identify automation opportunities, and deliver a prioritized roadmap with projected ROI.",
@@ -67,15 +68,17 @@ const services = [
   },
   {
     icon: <BuildIcon />,
+    popular: true,
     title: "Automation & App Builds",
     description:
-      "We design and build your custom solution — from n8n/Make automations to full-stack AI-powered applications. End-to-end, production-ready.",
+      "Stop losing hours to work a system should handle. We build the tool, you get the time back — and a business that scales without adding headcount.",
     price: "$5k–$20k+",
     priceNote: "Per project",
-    features: ["Custom scoped quote", "Full-stack development", "AI/LLM integration", "Deployment + handoff"],
+    features: ["Hours recovered every week", "Faster client delivery", "Less reliance on manual effort", "Built once, runs forever"],
   },
   {
     icon: <RetainerIcon />,
+    popular: false,
     title: "Monthly Retainer",
     description:
       "Ongoing technical partnership. We become your embedded AI and automation team — shipping improvements, fixing issues, and building new systems as you grow.",
@@ -126,7 +129,7 @@ export default function Services() {
             <motion.div
               key={svc.title}
               variants={fadeUp}
-              className="group flex flex-col gap-6 p-8 border transition-all duration-200 cursor-default"
+              className="group relative flex flex-col gap-6 p-8 border transition-all duration-200 cursor-default"
               style={{
                 backgroundColor: "#fafafa",
                 borderColor: "rgba(0,0,0,0.1)",
@@ -140,6 +143,11 @@ export default function Services() {
                 (e.currentTarget as HTMLDivElement).style.transform = "translateY(0)";
               }}
             >
+              {svc.popular && (
+                <span className="absolute -top-3 right-6 bg-[#0a0a0a] text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1">
+                  Most Popular
+                </span>
+              )}
               <div className="w-12 h-12 bg-black/5 flex items-center justify-center">
                 {svc.icon}
               </div>

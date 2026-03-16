@@ -113,8 +113,8 @@ function HeroSVG() {
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center bg-white pt-16 overflow-hidden">
-      <div className="max-w-6xl mx-auto px-6 w-full py-24 grid md:grid-cols-2 gap-12 items-center">
+    <section className="relative min-h-[50vh] md:min-h-[85vh] flex items-start md:items-center bg-white pt-16 overflow-hidden">
+      <div className="max-w-6xl mx-auto px-6 w-full pt-16 pb-16 md:py-24 grid md:grid-cols-2 gap-12 items-center">
         {/* Left: copy */}
         <div className="flex flex-col gap-6">
           <motion.p
@@ -157,17 +157,19 @@ export default function Hero() {
             variants={fadeUp}
             initial="hidden"
             animate="visible"
-            className="flex flex-wrap gap-3 pt-2"
+            className="flex flex-col sm:flex-row gap-3 pt-2"
           >
             <a
-              href="#contact"
-              className="inline-flex items-center justify-center h-12 px-7 bg-[#0a0a0a] text-white text-sm font-bold hover:bg-[#0a0a0a]/85 transition-colors duration-200"
+              href="https://cal.com/djwooster/intro-call"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center h-12 px-7 w-full sm:w-auto bg-[#0a0a0a] text-white text-sm font-bold hover:bg-[#0a0a0a]/85 transition-colors duration-200"
             >
-              Book a Free Call
+              See if we&apos;re a fit
             </a>
             <a
               href="#services"
-              className="inline-flex items-center justify-center h-12 px-7 border border-black/20 text-[#0a0a0a] text-sm font-semibold hover:bg-black/5 transition-colors duration-200"
+              className="inline-flex items-center justify-center h-12 px-7 w-full sm:w-auto border border-black/20 text-[#0a0a0a] text-sm font-semibold hover:bg-black/5 transition-colors duration-200"
             >
               See Our Services
             </a>
@@ -187,8 +189,6 @@ export default function Hero() {
         </motion.div>
       </div>
 
-      {/* Bottom fade */}
-      <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-white to-transparent pointer-events-none" />
     </section>
   );
 }

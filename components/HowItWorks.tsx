@@ -5,21 +5,57 @@ import { motion, useInView, type Variants } from "framer-motion";
 
 const EASE: [number, number, number, number] = [0.25, 0.1, 0.25, 1];
 
+function AuditIcon() {
+  return (
+    <svg width="48" height="48" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+      <rect x="5" y="4" width="16" height="20" rx="0" stroke="white" strokeWidth="1.5" strokeOpacity={0.7} />
+      <line x1="9" y1="10" x2="17" y2="10" stroke="white" strokeWidth="1.5" strokeOpacity={0.5} strokeLinecap="round" />
+      <line x1="9" y1="14" x2="17" y2="14" stroke="white" strokeWidth="1.5" strokeOpacity={0.5} strokeLinecap="round" />
+      <line x1="9" y1="18" x2="14" y2="18" stroke="white" strokeWidth="1.5" strokeOpacity={0.5} strokeLinecap="round" />
+      <circle cx="22" cy="22" r="5" stroke="white" strokeWidth="1.5" strokeOpacity={0.7} />
+      <line x1="26" y1="26" x2="29" y2="29" stroke="white" strokeWidth="1.5" strokeOpacity={0.7} strokeLinecap="round" />
+    </svg>
+  );
+}
+
+function BuildIcon() {
+  return (
+    <svg width="48" height="48" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+      <polyline points="6,20 12,14 17,19 26,10" stroke="white" strokeWidth="1.5" strokeOpacity={0.7} strokeLinecap="round" strokeLinejoin="round" />
+      <line x1="4" y1="26" x2="28" y2="26" stroke="white" strokeWidth="1.5" strokeOpacity={0.3} strokeLinecap="round" />
+      <circle cx="26" cy="10" r="2.5" fill="white" fillOpacity={0.7} />
+    </svg>
+  );
+}
+
+function RetainIcon() {
+  return (
+    <svg width="48" height="48" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+      <path d="M16 6 C10 6 6 10 6 16 C6 22 10 26 16 26 C22 26 26 22 26 16" stroke="white" strokeWidth="1.5" strokeOpacity={0.7} strokeLinecap="round" />
+      <polyline points="22,6 26,10 22,14" stroke="white" strokeWidth="1.5" strokeOpacity={0.7} strokeLinecap="round" strokeLinejoin="round" />
+      <circle cx="16" cy="16" r="3" fill="white" fillOpacity={0.5} />
+    </svg>
+  );
+}
+
 const steps = [
   {
     number: "1",
     title: "Workflow Audit",
     body: "We map your current operations, identify bottlenecks, and pinpoint exactly where automation and AI can save time and money. You get a clear action plan.",
+    icon: <AuditIcon />,
   },
   {
     number: "2",
     title: "Build & Deploy",
     body: "We design and ship the solution — whether that's a custom app, an AI pipeline, or an integrated automation system. Real code. Real infrastructure. Production-ready.",
+    icon: <BuildIcon />,
   },
   {
     number: "3",
     title: "Iterate & Retain",
     body: "After launch, we stay in your corner. Monthly retainer clients get ongoing improvements, support, and new builds as your business scales and needs evolve.",
+    icon: <RetainIcon />,
   },
 ];
 
@@ -63,13 +99,15 @@ export default function HowItWorks() {
         >
           {steps.map((step) => (
             <motion.div key={step.number} variants={slideUp} className="flex flex-col gap-5">
-              <div className="flex items-center gap-4">
-                <span className="w-10 h-10 bg-white text-[#0a0a0a] flex items-center justify-center text-sm font-bold flex-shrink-0">
-                  {step.number}
-                </span>
-                <div className="h-px flex-1 bg-white/15" />
+              {/* Icon */}
+              <div className="w-12 h-12">{step.icon}</div>
+
+              {/* Number + Title */}
+              <div className="flex items-center gap-3">
+                <span className="text-2xl font-bold font-mono text-white/30 flex-shrink-0">{step.number}</span>
+                <h3 className="text-xl font-bold text-white leading-snug">{step.title}</h3>
               </div>
-              <h3 className="text-xl font-bold text-white leading-snug">{step.title}</h3>
+
               <p className="text-sm text-white/55 leading-relaxed">{step.body}</p>
             </motion.div>
           ))}

@@ -10,7 +10,7 @@ import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
-    <main className="bg-[#0a0a0a] text-white overflow-x-hidden">
+    <main className="bg-white text-[#0a0a0a]" style={{ overflowX: "clip" }}>
       <Nav />
       <Hero />
       <TheProblem />

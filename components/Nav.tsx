@@ -14,17 +14,17 @@ function HamburgerIcon({ open }: { open: boolean }) {
     <div className="w-6 h-5 flex flex-col justify-between cursor-pointer" aria-hidden>
       <motion.span
         className="block h-[2px] bg-[#0a0a0a] origin-center"
-        animate={open ? { rotate: 45, y: 9, backgroundColor: "#ffffff" } : { rotate: 0, y: 0, backgroundColor: "#0a0a0a" }}
+        animate={open ? { rotate: 45, y: 9, backgroundColor: "#0a0a0a" } : { rotate: 0, y: 0, backgroundColor: "#0a0a0a" }}
         transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] as [number, number, number, number] }}
       />
       <motion.span
         className="block h-[2px] bg-[#0a0a0a]"
-        animate={open ? { opacity: 0, scaleX: 0, backgroundColor: "#ffffff" } : { opacity: 1, scaleX: 1, backgroundColor: "#0a0a0a" }}
+        animate={open ? { opacity: 0, scaleX: 0, backgroundColor: "#0a0a0a" } : { opacity: 1, scaleX: 1, backgroundColor: "#0a0a0a" }}
         transition={{ duration: 0.2, ease: [0.4, 0, 0.2, 1] as [number, number, number, number] }}
       />
       <motion.span
         className="block h-[2px] bg-[#0a0a0a] origin-center"
-        animate={open ? { rotate: -45, y: -9, backgroundColor: "#ffffff" } : { rotate: 0, y: 0, backgroundColor: "#0a0a0a" }}
+        animate={open ? { rotate: -45, y: -9, backgroundColor: "#0a0a0a" } : { rotate: 0, y: 0, backgroundColor: "#0a0a0a" }}
         transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] as [number, number, number, number] }}
       />
     </div>
@@ -88,10 +88,15 @@ export default function Nav() {
         <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
           <a
             href="#"
-            className="text-xl font-bold text-[#0a0a0a] tracking-tight hover:opacity-70 transition-opacity z-10"
+            className="flex items-center gap-2.5 hover:opacity-70 transition-opacity z-10"
             onClick={() => setMenuOpen(false)}
           >
-            Pivot Studio
+            {/* Mark: filled square with bold chevron */}
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+              <rect width="28" height="28" fill="#0a0a0a" />
+              <polyline points="9,7 19,14 9,21" stroke="white" strokeWidth="3.5" strokeLinecap="square" strokeLinejoin="miter" />
+            </svg>
+            <span className="text-xl font-bold text-[#0a0a0a] tracking-tight">Pivot Studio</span>
           </a>
 
           {/* Desktop nav */}
@@ -106,10 +111,10 @@ export default function Nav() {
               </a>
             ))}
             <a
-              href="#contact"
+              href="https://cal.com/djwooster/intro-call" target="_blank" rel="noopener noreferrer"
               className="inline-flex items-center justify-center h-9 px-5 bg-[#0a0a0a] text-white text-sm font-semibold hover:bg-[#0a0a0a]/85 transition-colors duration-200"
             >
-              Book a Call
+              See if we&apos;re a fit
             </a>
           </nav>
 
@@ -167,11 +172,11 @@ export default function Nav() {
 
                 <motion.div variants={itemVariants} className="pt-8">
                   <a
-                    href="#contact"
+                    href="https://cal.com/djwooster/intro-call" target="_blank" rel="noopener noreferrer"
                     onClick={() => setMenuOpen(false)}
                     className="inline-flex items-center justify-center w-full h-14 bg-white text-[#0a0a0a] text-base font-bold hover:bg-white/90 transition-colors"
                   >
-                    Book a Free Call
+                    See if we&apos;re a fit
                   </a>
                 </motion.div>
               </motion.nav>

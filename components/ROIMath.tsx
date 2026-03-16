@@ -44,7 +44,7 @@ export default function ROIMath() {
           initial={{ opacity: 0, y: 24 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
           transition={{ duration: 0.5 }}
-          className="mb-16"
+          className="mb-16 text-left"
         >
           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-white/35 mb-4">
             The Numbers
