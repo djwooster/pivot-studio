@@ -42,19 +42,19 @@ const steps = [
   {
     number: "1",
     title: "Workflow Audit",
-    body: "We map your current operations, identify bottlenecks, and pinpoint exactly where automation and AI can save time and money. You get a clear action plan.",
+    body: "You'll know exactly where you're losing time and money — and what to do about it. We surface the highest-ROI opportunities in your operations and hand you a clear, prioritized action plan.",
     icon: <AuditIcon />,
   },
   {
     number: "2",
     title: "Build & Deploy",
-    body: "We design and ship the solution — whether that's a custom app, an AI pipeline, or an integrated automation system. Real code. Real infrastructure. Production-ready.",
+    body: "Your new system is live and working in under 30 days. Hours clawed back, bottlenecks cleared, and your team free to focus on the work that actually grows the business.",
     icon: <BuildIcon />,
   },
   {
     number: "3",
     title: "Iterate & Retain",
-    body: "After launch, we stay in your corner. Monthly retainer clients get ongoing improvements, support, and new builds as your business scales and needs evolve.",
+    body: "Your stack keeps getting sharper without you having to think about it. We stay in your corner — shipping improvements and building new systems as you scale.",
     icon: <RetainIcon />,
   },
 ];
@@ -75,7 +75,7 @@ export default function HowItWorks() {
 
   return (
     <section className="bg-[#0a0a0a] noise py-28 px-6" id="how-it-works">
-      <div className="max-w-6xl mx-auto" ref={ref}>
+      <div className="max-w-7xl mx-auto" ref={ref}>
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
@@ -108,7 +108,7 @@ export default function HowItWorks() {
                 <h3 className="text-xl font-bold text-white leading-snug">{step.title}</h3>
               </div>
 
-              <p className="text-sm text-white/55 leading-relaxed">{step.body}</p>
+              <p className="text-base text-white/55 leading-relaxed">{step.body}</p>
             </motion.div>
           ))}
         </motion.div>

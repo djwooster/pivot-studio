@@ -3,7 +3,7 @@ export default function Footer() {
 
   return (
     <footer className="bg-white border-t border-black/8 py-8 px-6">
-      <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
         <span className="text-sm font-bold text-[#0a0a0a]/70 tracking-tight">Pivot Studio</span>
         <p className="text-xs text-[#0a0a0a]/30 text-center">
           &copy; {year} Pivot Studio. All rights reserved.

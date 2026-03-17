@@ -36,7 +36,7 @@ export default function WhoWeWorkWith() {
 
   return (
     <section className="bg-[#f5f5f5] py-28 px-6" id="who-we-work-with">
-      <div className="max-w-6xl mx-auto" ref={ref}>
+      <div className="max-w-7xl mx-auto" ref={ref}>
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}

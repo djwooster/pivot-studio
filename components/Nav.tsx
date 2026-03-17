@@ -85,7 +85,7 @@ export default function Nav() {
             : "bg-transparent"
         }`}
       >
-        <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
           <a
             href="#"
             className="flex items-center gap-2.5 hover:opacity-70 transition-opacity z-10"

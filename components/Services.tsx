@@ -61,7 +61,7 @@ const services = [
     popular: false,
     title: "Workflow Audit",
     description:
-      "A deep-dive into your current operations. We document your processes, identify automation opportunities, and deliver a prioritized roadmap with projected ROI.",
+      "Know exactly where you're leaving money on the table. You'll walk away with a prioritized plan showing your highest-ROI changes — and the numbers to back it up.",
     price: "$2,500",
     priceNote: "One-time",
     features: ["2-week engagement", "Process map + report", "Prioritized action plan", "30-min debrief call"],
@@ -81,7 +81,7 @@ const services = [
     popular: false,
     title: "Monthly Retainer",
     description:
-      "Ongoing technical partnership. We become your embedded AI and automation team — shipping improvements, fixing issues, and building new systems as you grow.",
+      "Your stack keeps getting sharper without you having to think about it. We ship improvements and build new systems month over month — so you scale without the overhead of hiring.",
     price: "$750–$2,500",
     priceNote: "Per month",
     features: ["Weekly check-ins", "Unlimited support requests", "New feature builds", "Priority response"],
@@ -104,7 +104,7 @@ export default function Services() {
 
   return (
     <section className="bg-white py-28 px-6" id="services">
-      <div className="max-w-6xl mx-auto" ref={ref}>
+      <div className="max-w-7xl mx-auto" ref={ref}>
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
@@ -154,7 +154,7 @@ export default function Services() {
 
               <div className="flex flex-col gap-2">
                 <h3 className="text-lg font-bold text-[#0a0a0a]">{svc.title}</h3>
-                <p className="text-sm text-[#0a0a0a]/50 leading-relaxed">{svc.description}</p>
+                <p className="text-base text-[#0a0a0a]/50 leading-relaxed">{svc.description}</p>
               </div>
 
               <ul className="flex flex-col gap-2 mt-auto">
