@@ -4,9 +4,10 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const navLinks = [
-  { label: "Services", href: "#services" },
-  { label: "How It Works", href: "#how-it-works" },
-  { label: "Work With Us", href: "#who-we-work-with" },
+  { label: "Services", href: "/#services" },
+  { label: "How It Works", href: "/#how-it-works" },
+  { label: "Web Design", href: "/web-design" },
+  { label: "Work With Us", href: "/#who-we-work-with" },
 ];
 
 function HamburgerIcon({ open }: { open: boolean }) {
