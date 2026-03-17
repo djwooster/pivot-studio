@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Link from "next/link";
 import ArrowButton from "@/components/ArrowButton";
 
 const navLinks = [
@@ -86,7 +87,7 @@ export default function Nav() {
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-          <a
+          <Link
             href="/"
             className="flex items-center gap-2.5 hover:opacity-70 transition-opacity z-10"
             onClick={() => setMenuOpen(false)}
@@ -97,18 +98,18 @@ export default function Nav() {
               <polyline points="9,7 19,14 9,21" stroke="white" strokeWidth="3.5" strokeLinecap="square" strokeLinejoin="miter" />
             </svg>
             <span className="text-xl font-bold text-[#0a0a0a] tracking-tight">Pivot Studio</span>
-          </a>
+          </Link>
 
           {/* Desktop nav */}
           <nav className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.href}
                 href={link.href}
                 className="text-sm text-[#0a0a0a]/55 hover:text-[#0a0a0a] transition-colors duration-200 font-medium"
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
             <ArrowButton href="https://cal.com/djwooster/intro-call" external className="h-9 px-5 text-sm" arrowLeft="20px">
               See if we&apos;re a fit
@@ -145,12 +146,14 @@ export default function Nav() {
                 animate="visible"
               >
                 {navLinks.map((link) => (
-                  <motion.a
+                  <motion.div
                     key={link.href}
+                    variants={itemVariants}
+                  >
+                  <Link
                     href={link.href}
                     onClick={() => setMenuOpen(false)}
                     className="group flex items-center justify-between py-5 border-b border-white/10 text-white"
-                    variants={itemVariants}
                   >
                     <span className="text-4xl font-bold tracking-tight leading-none">
                       {link.label}
@@ -164,7 +167,8 @@ export default function Nav() {
                         <path d="M5 12h14M12 5l7 7-7 7" />
                       </svg>
                     </motion.span>
-                  </motion.a>
+                  </Link>
+                  </motion.div>
                 ))}
 
                 <motion.div variants={itemVariants} className="pt-8">
