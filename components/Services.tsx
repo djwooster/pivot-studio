@@ -111,7 +111,7 @@ export default function Services() {
           transition={{ duration: 0.5 }}
           className="mb-16"
         >
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#0a0a0a]/35 mb-4">
+          <p className="text-sm font-semibold uppercase tracking-[0.15em] text-[#0a0a0a]/35 mb-4">
             What We Offer
           </p>
           <h2 className="section-headline text-[#0a0a0a] max-w-xl">
@@ -129,19 +129,7 @@ export default function Services() {
             <motion.div
               key={svc.title}
               variants={fadeUp}
-              className="group relative flex flex-col gap-6 p-8 border transition-all duration-200 cursor-default"
-              style={{
-                backgroundColor: "#fafafa",
-                borderColor: "rgba(0,0,0,0.1)",
-              }}
-              onMouseEnter={(e) => {
-                (e.currentTarget as HTMLDivElement).style.borderColor = "rgba(0,0,0,0.4)";
-                (e.currentTarget as HTMLDivElement).style.transform = "translateY(-4px)";
-              }}
-              onMouseLeave={(e) => {
-                (e.currentTarget as HTMLDivElement).style.borderColor = "rgba(0,0,0,0.1)";
-                (e.currentTarget as HTMLDivElement).style.transform = "translateY(0)";
-              }}
+              className="group relative flex flex-col gap-6 p-8 border border-black/10 bg-[#fafafa] hover:border-black/40 hover:-translate-y-1 transition-all duration-200 cursor-default"
             >
               {svc.popular && (
                 <span className="absolute -top-3 right-6 bg-[#0a0a0a] text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1">

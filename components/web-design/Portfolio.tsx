@@ -108,7 +108,7 @@ export default function Portfolio() {
           transition={{ duration: 0.5, ease: EASE }}
           className="mb-16"
         >
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#0a0a0a]/35 mb-4">
+          <p className="text-sm font-semibold uppercase tracking-[0.15em] text-[#0a0a0a]/35 mb-4">
             Our Work
           </p>
           <h2 className="section-headline text-[#0a0a0a] max-w-xl">

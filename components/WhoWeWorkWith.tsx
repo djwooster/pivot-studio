@@ -44,7 +44,7 @@ export default function WhoWeWorkWith() {
           className="grid md:grid-cols-2 gap-12 items-start"
         >
           <div className="flex flex-col gap-6">
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#0a0a0a]/35">
+            <p className="text-sm font-semibold uppercase tracking-[0.15em] text-[#0a0a0a]/35">
               Who We Work With
             </p>
             <h2 className="section-headline text-[#0a0a0a]">

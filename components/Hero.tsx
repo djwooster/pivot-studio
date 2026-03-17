@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import ArrowButton from "@/components/ArrowButton";
 
 const EASE: [number, number, number, number] = [0.25, 0.1, 0.25, 1];
 
@@ -36,9 +37,9 @@ export default function Hero() {
         {/* Label */}
         <motion.p
           {...fadeUp(0)}
-          className="text-xs font-semibold uppercase tracking-[0.18em] text-[#0a0a0a]/40 mb-6"
+          className="text-sm font-semibold uppercase tracking-[0.15em] text-[#0a0a0a]/40 mb-6"
         >
-          AI &amp; Automation Agency
+          AI + Automation + Custom Apps
         </motion.p>
 
         {/* Full-width headline */}
@@ -69,22 +70,20 @@ export default function Hero() {
             className="text-[#0a0a0a]/50 leading-relaxed max-w-3xl"
             style={{ fontSize: "clamp(18px, 1.8vw, 24px)" }}
           >
-            12+ hours reclaimed per week. ROI in under 60 days and delivered in
-            under 30 — without adding headcount.
+            Stop spending time on things AI can do. Take your hours back.
           </motion.p>
 
           <motion.div
             {...fadeUp(0.68)}
             className="flex flex-col gap-3 w-full sm:w-64"
           >
-            <a
+            <ArrowButton
               href="https://cal.com/djwooster/intro-call"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center h-12 px-7 bg-[#0a0a0a] text-white text-sm font-bold hover:bg-[#0a0a0a]/85 transition-colors duration-200"
+              external
+              className="h-12 px-7 text-sm"
             >
               See if we&apos;re a fit
-            </a>
+            </ArrowButton>
           </motion.div>
         </div>
       </div>

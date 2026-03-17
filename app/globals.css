@@ -123,4 +123,40 @@
     line-height: 1.1;
     font-weight: 700;
   }
+
+  /* CTA arrow: right arrow exits, left arrow enters */
+
+  /* Arrow that exits to the right */
+  .cta-arrow-out {
+    transition: transform 0.2s cubic-bezier(0.25, 0.1, 0.25, 1),
+                opacity 0.15s ease;
+  }
+  .group:hover .cta-arrow-out {
+    transform: translateX(28px);
+    opacity: 0;
+  }
+
+  /* Arrow that enters from the left */
+  .cta-arrow-in {
+    position: absolute;
+    left: var(--cta-arrow-left, 28px); /* set per-button via CSS variable */
+    top: 50%;
+    transform: translateY(-50%) translateX(-16px);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 0.32s cubic-bezier(0.25, 0.1, 0.25, 1) 0.15s,
+                opacity 0.22s ease 0.15s;
+  }
+  .group:hover .cta-arrow-in {
+    transform: translateY(-50%) translateX(0);
+    opacity: 1;
+  }
+
+  /* Text shifts right — translateX avoids flex re-centering that padding-left causes */
+  .cta-text {
+    transition: transform 0.32s cubic-bezier(0.25, 0.1, 0.25, 1) 0.15s;
+  }
+  .group:hover .cta-text {
+    transform: translateX(22px); /* 14px arrow + 8px gap */
+  }
 }

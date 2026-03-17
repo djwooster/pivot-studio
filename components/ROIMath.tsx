@@ -106,7 +106,7 @@ export default function ROIMath() {
           transition={{ duration: 0.5, ease: EASE }}
           className="flex flex-col gap-6 md:sticky md:top-16 md:self-start"
         >
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-white/35">
+          <p className="text-sm font-semibold uppercase tracking-[0.15em] text-white/35">
             The Numbers
           </p>
           <h2 className="section-headline text-white">

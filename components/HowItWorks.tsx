@@ -82,7 +82,7 @@ export default function HowItWorks() {
           transition={{ duration: 0.5, ease: EASE }}
           className="mb-16"
         >
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-white/35 mb-4">
+          <p className="text-sm font-semibold uppercase tracking-[0.15em] text-white/35 mb-4">
             Our Process
           </p>
           <h2 className="section-headline text-white max-w-xl">

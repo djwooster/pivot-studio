@@ -81,7 +81,7 @@ export default function TheProblem() {
             transition={{ duration: 0.5, ease: EASE }}
             className="mb-14"
           >
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#0a0a0a]/35 mb-4">
+            <p className="text-sm font-semibold uppercase tracking-[0.15em] text-[#0a0a0a]/35 mb-4">
               The Reality
             </p>
             <h2 className="section-headline text-[#0a0a0a]">
@@ -94,9 +94,9 @@ export default function TheProblem() {
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
           >
-            {problems.map((p, i) => (
+            {problems.map((p) => (
               <motion.div
-                key={i}
+                key={p.title}
                 variants={fadeUp}
                 className="flex gap-5 py-8 border-t border-black/10 first:border-t-0"
               >
@@ -127,6 +127,7 @@ export default function TheProblem() {
             <img
               src={IMAGE_URL}
               alt="Person overwhelmed at their desk"
+              loading="lazy"
               className="w-full h-auto object-cover"
               style={{ aspectRatio: "4/5" }}
             />

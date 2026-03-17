@@ -2,17 +2,16 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import ArrowButton from "@/components/ArrowButton";
 
 const navLinks = [
-  { label: "Services", href: "/#services" },
-  { label: "How It Works", href: "/#how-it-works" },
+  { label: "AI + Automation", href: "/" },
   { label: "Web Design", href: "/web-design" },
-  { label: "Work With Us", href: "/#who-we-work-with" },
 ];
 
 function HamburgerIcon({ open }: { open: boolean }) {
   return (
-    <div className="w-6 h-5 flex flex-col justify-between cursor-pointer" aria-hidden>
+    <div className="w-6 h-5 flex flex-col justify-between cursor-pointer" aria-hidden={true}>
       <motion.span
         className="block h-[2px] bg-[#0a0a0a] origin-center"
         animate={open ? { rotate: 45, y: 9, backgroundColor: "#0a0a0a" } : { rotate: 0, y: 0, backgroundColor: "#0a0a0a" }}
@@ -88,7 +87,7 @@ export default function Nav() {
       >
         <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
           <a
-            href="#"
+            href="/"
             className="flex items-center gap-2.5 hover:opacity-70 transition-opacity z-10"
             onClick={() => setMenuOpen(false)}
           >
@@ -111,12 +110,9 @@ export default function Nav() {
                 {link.label}
               </a>
             ))}
-            <a
-              href="https://cal.com/djwooster/intro-call" target="_blank" rel="noopener noreferrer"
-              className="inline-flex items-center justify-center h-9 px-5 bg-[#0a0a0a] text-white text-sm font-semibold hover:bg-[#0a0a0a]/85 transition-colors duration-200"
-            >
+            <ArrowButton href="https://cal.com/djwooster/intro-call" external className="h-9 px-5 text-sm" arrowLeft="20px">
               See if we&apos;re a fit
-            </a>
+            </ArrowButton>
           </nav>
 
           {/* Mobile hamburger */}
@@ -172,13 +168,9 @@ export default function Nav() {
                 ))}
 
                 <motion.div variants={itemVariants} className="pt-8">
-                  <a
-                    href="https://cal.com/djwooster/intro-call" target="_blank" rel="noopener noreferrer"
-                    onClick={() => setMenuOpen(false)}
-                    className="inline-flex items-center justify-center w-full h-14 bg-white text-[#0a0a0a] text-base font-bold hover:bg-white/90 transition-colors"
-                  >
+                  <ArrowButton href="https://cal.com/djwooster/intro-call" external variant="light" className="w-full h-14 text-base" arrowLeft="20px">
                     See if we&apos;re a fit
-                  </a>
+                  </ArrowButton>
                 </motion.div>
               </motion.nav>
             </div>
