@@ -7,82 +7,44 @@ const EASE: [number, number, number, number] = [0.25, 0.1, 0.25, 1];
 
 const projects = [
   {
-    name: "Meridian Law Group",
-    description: "Brand refresh & conversion-focused site for a boutique litigation firm.",
+    name: "Empressions Studio",
+    description: "Atmospheric brand site for a boutique tattoo studio in Tennessee — built to showcase artistry and drive bookings.",
     tags: ["Professional Services", "Lead Capture"],
     href: "#",
-    placeholderBg: "#1a1a1a",
-    accentOpacity: 0.06,
+    image: "/empressions-thumb.png",
+    objectPosition: "top left",
   },
   {
-    name: "Loft & Co.",
-    description: "Property listings, agent profiles, and inquiry flow for a boutique real estate agency.",
+    name: "Kaimea Estates",
+    description: "Lush, editorial site for a wedding venue on Oahu — designed to evoke the feeling of the day before the couple even inquires.",
     tags: ["Real Estate", "Listings"],
     href: "#",
-    placeholderBg: "#2a2a2a",
-    accentOpacity: 0.08,
+    image: "/kaimea-thumb.png",
   },
   {
-    name: "Clearpath Financial",
-    description: "Trust-building site for an independent financial advisory practice.",
+    name: "WeLoveLaguna",
+    description: "Content-rich blog and lifestyle platform for a Laguna Beach realtor — turning local expertise into a steady stream of leads.",
     tags: ["Finance", "Services"],
     href: "#",
-    placeholderBg: "#111111",
-    accentOpacity: 0.07,
+    image: "/laguna.thumb.png",
   },
   {
-    name: "Nomad Supply Co.",
-    description: "E-commerce storefront with editorial-style product pages and fast checkout.",
+    name: "Resolve",
+    description: "CRM-integrated web app that surfaces live pipeline data in a clean, custom dashboard — built for teams who need real-time visibility.",
     tags: ["E-commerce", "Shopify"],
     href: "#",
-    placeholderBg: "#222222",
-    accentOpacity: 0.09,
+    image: "/resolve.thumb.png",
   },
   {
-    name: "Apex Health",
-    description: "Modern practice site for a multi-location healthcare group with online booking.",
+    name: "Summit BnB",
+    description: "Conversion-focused site for a short-term rental management company — built to attract property owners and fill the pipeline.",
     tags: ["Healthcare", "Booking"],
     href: "#",
-    placeholderBg: "#181818",
-    accentOpacity: 0.07,
-  },
-  {
-    name: "Dune Creative",
-    description: "Portfolio and case study site for a brand strategy and design agency.",
-    tags: ["Agency", "Portfolio"],
-    href: "#",
-    placeholderBg: "#252525",
-    accentOpacity: 0.08,
+    image: "/summit-bnb-thumb.png",
+    fullWidth: true,
   },
 ];
 
-// Minimal wireframe SVG to suggest a web page layout
-function WireframeSVG() {
-  return (
-    <svg viewBox="0 0 480 320" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full" aria-hidden="true">
-      {/* Nav bar */}
-      <rect x="32" y="28" width="60" height="10" rx="0" fill="white" fillOpacity={0.12} />
-      <rect x="340" y="28" width="40" height="10" rx="0" fill="white" fillOpacity={0.07} />
-      <rect x="390" y="28" width="30" height="10" rx="0" fill="white" fillOpacity={0.07} />
-      <rect x="430" y="24" width="18" height="18" rx="0" fill="white" fillOpacity={0.15} />
-      <line x1="32" y1="50" x2="448" y2="50" stroke="white" strokeOpacity={0.06} strokeWidth="1" />
-      {/* Hero headline lines */}
-      <rect x="32" y="76" width="260" height="18" rx="0" fill="white" fillOpacity={0.18} />
-      <rect x="32" y="102" width="200" height="18" rx="0" fill="white" fillOpacity={0.18} />
-      <rect x="32" y="128" width="140" height="10" rx="0" fill="white" fillOpacity={0.07} />
-      <rect x="32" y="144" width="160" height="10" rx="0" fill="white" fillOpacity={0.07} />
-      {/* CTA button */}
-      <rect x="32" y="166" width="90" height="28" rx="0" fill="white" fillOpacity={0.2} />
-      {/* Right image block */}
-      <rect x="280" y="68" width="168" height="160" rx="0" fill="white" fillOpacity={0.06} />
-      {/* Section below */}
-      <line x1="32" y1="248" x2="448" y2="248" stroke="white" strokeOpacity={0.05} strokeWidth="1" />
-      <rect x="32" y="264" width="80" height="8" rx="0" fill="white" fillOpacity={0.06} />
-      <rect x="160" y="264" width="80" height="8" rx="0" fill="white" fillOpacity={0.06} />
-      <rect x="288" y="264" width="80" height="8" rx="0" fill="white" fillOpacity={0.06} />
-    </svg>
-  );
-}
 
 const stagger: Variants = {
   hidden: {},
@@ -129,12 +91,17 @@ export default function Portfolio() {
               href={project.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="group relative flex flex-col overflow-hidden"
-              style={{ backgroundColor: project.placeholderBg }}
+              className={`group relative flex flex-col overflow-hidden bg-[#1a1a1a]${project.fullWidth ? " md:col-span-2" : ""}`}
             >
-              {/* Placeholder image area */}
+              {/* Thumbnail */}
               <div className="relative w-full aspect-[16/10] overflow-hidden">
-                <WireframeSVG />
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={project.image}
+                  alt={project.name}
+                  className="w-full h-full object-cover"
+                  style={{ objectPosition: project.objectPosition ?? "center" }}
+                />
                 {/* Hover overlay */}
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-300 flex items-center justify-center">
                   <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center gap-2 text-white text-sm font-bold border border-white/40 px-5 py-2.5">
