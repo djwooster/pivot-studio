@@ -11,36 +11,36 @@ const projects = [
     description: "Atmospheric brand site for a boutique tattoo studio in Tennessee — built to showcase artistry and drive bookings.",
     tags: ["Professional Services", "Lead Capture"],
     href: "https://empressions.vercel.app/",
-    image: "/empressions-thumb.png",
+    image: "/empressions-thumb-min.jpg",
     objectPosition: "top left",
   },
   {
     name: "Kaimea Estates",
     description: "Lush, editorial site for a wedding venue on Oahu — designed to evoke the feeling of the day before the couple even inquires.",
     tags: ["Real Estate", "Listings"],
-    href: "https://kainoa-iota.vercel.app/",
-    image: "/kaimea-thumb.png",
+    href: "https://kaimea-estates.vercel.app/",
+    image: "/kaimea-thumb-min.jpg",
   },
   {
     name: "WeLoveLaguna",
     description: "Content-rich blog and lifestyle platform for a Laguna Beach realtor — turning local expertise into a steady stream of leads.",
     tags: ["Finance", "Services"],
     href: "https://we-love-laguna-ozjk.vercel.app/",
-    image: "/laguna.thumb.png",
+    image: "/laguna-thumb-min.jpg",
   },
   {
     name: "Resolve",
     description: "CRM-integrated web app that surfaces live pipeline data in a clean, custom dashboard — built for teams who need real-time visibility.",
     tags: ["E-commerce", "Shopify"],
     href: "https://pivot-studio-6iy9.vercel.app/",
-    image: "/resolve.thumb.png",
+    image: "/resolve-thumb-min.jpg",
   },
   {
     name: "Summit BnB",
     description: "Conversion-focused site for a short-term rental management company — built to attract property owners and fill the pipeline.",
     tags: ["Healthcare", "Booking"],
     href: "https://summitbnb.co/",
-    image: "/summit-bnb-thumb.png",
+    image: "/summit-bnb-thumb-min.jpg",
     fullWidth: true,
   },
 ];
@@ -48,12 +48,12 @@ const projects = [
 
 const stagger: Variants = {
   hidden: {},
-  visible: { transition: { staggerChildren: 0.1 } },
+  visible: { transition: { staggerChildren: 0.15, delayChildren: 0.1 } },
 };
 
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 32 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.55, ease: EASE } },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: EASE } },
 };
 
 export default function Portfolio() {
@@ -99,6 +99,8 @@ export default function Portfolio() {
                 <img
                   src={project.image}
                   alt={project.name}
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-full object-cover"
                   style={{ objectPosition: project.objectPosition ?? "center" }}
                 />

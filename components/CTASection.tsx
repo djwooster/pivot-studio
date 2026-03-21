@@ -31,7 +31,7 @@ export default function CTASection() {
               lineHeight: 1.08,
             }}
           >
-            Stop duct-taping your stack.<br className="hidden sm:block" /> Let&apos;s build something real.
+            Stop duct-taping your workflow.<br className="hidden sm:block" /> Let&apos;s build something real.
           </h2>
 
           <p className="text-base text-white/50 max-w-md leading-relaxed md:text-center">
