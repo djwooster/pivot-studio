@@ -8,6 +8,7 @@ import ArrowButton from "@/components/ArrowButton";
 const navLinks = [
   { label: "AI + Automation", href: "/" },
   { label: "Web Design", href: "/web-design" },
+  { label: "Custom Web Apps", href: "/web-apps" },
 ];
 
 function HamburgerIcon({ open }: { open: boolean }) {
