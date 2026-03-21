@@ -10,7 +10,7 @@ const useCases = [
     name: "CRM Dashboards",
     description: "Surface live pipeline data, deal stages, and rep performance in a clean custom interface — no more digging through your CRM to find what matters.",
     icon: (
-      <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4" aria-hidden="true">
+      <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-8 h-8" aria-hidden="true">
         <rect x="2" y="4" width="16" height="12" />
         <line x1="2" y1="8" x2="18" y2="8" />
         <rect x="4" y="11" width="3" height="3" />
@@ -23,7 +23,7 @@ const useCases = [
     name: "Client Portals",
     description: "Give clients a branded, password-protected space to view project status, approve deliverables, access invoices, and communicate — all in one place.",
     icon: (
-      <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4" aria-hidden="true">
+      <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-8 h-8" aria-hidden="true">
         <rect x="2" y="2" width="16" height="16" />
         <circle cx="10" cy="8" r="3" />
         <path d="M4 18c0-3.314 2.686-6 6-6s6 2.686 6 6" />
@@ -34,7 +34,7 @@ const useCases = [
     name: "Internal Tools",
     description: "Replace the spreadsheets and manual processes your team works around every day. Custom ops tools built to match your workflow, not force you into someone else's.",
     icon: (
-      <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4" aria-hidden="true">
+      <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-8 h-8" aria-hidden="true">
         <rect x="2" y="2" width="7" height="7" />
         <rect x="11" y="2" width="7" height="7" />
         <rect x="2" y="11" width="7" height="7" />
@@ -46,7 +46,7 @@ const useCases = [
     name: "Booking & Scheduling",
     description: "Custom booking flows that go beyond what Calendly can do — multi-step intake, conditional logic, service selection, and payments wired into your backend.",
     icon: (
-      <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4" aria-hidden="true">
+      <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-8 h-8" aria-hidden="true">
         <rect x="2" y="4" width="16" height="14" />
         <line x1="2" y1="9" x2="18" y2="9" />
         <line x1="6" y1="2" x2="6" y2="6" />
@@ -57,10 +57,23 @@ const useCases = [
     ),
   },
   {
+    name: "Proposal & Quoting",
+    description: "Custom proposal builders that pull from your CRM, apply pricing logic, and let clients sign and pay — all without copying data between tools.",
+    icon: (
+      <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-8 h-8" aria-hidden="true">
+        <rect x="3" y="2" width="14" height="16" />
+        <line x1="6" y1="6" x2="14" y2="6" />
+        <line x1="6" y1="9" x2="14" y2="9" />
+        <line x1="6" y1="12" x2="10" y2="12" />
+        <path d="M12 14l2 2 3-3" />
+      </svg>
+    ),
+  },
+  {
     name: "Reporting & Analytics",
     description: "Custom dashboards that surface the metrics that actually matter to your business — pulling from multiple data sources into a single, clear view.",
     icon: (
-      <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4" aria-hidden="true">
+      <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-8 h-8" aria-hidden="true">
         <polyline points="2,15 7,9 11,12 15,5 18,8" />
         <line x1="2" y1="18" x2="18" y2="18" />
         <line x1="2" y1="2" x2="2" y2="18" />
@@ -118,8 +131,8 @@ export default function UseCases() {
               variants={fadeUp}
               className="bg-white pt-10 pb-12 px-8 flex flex-col gap-5"
             >
-              {/* Icon circle */}
-              <div className="w-9 h-9 rounded-full border border-black/15 flex items-center justify-center text-[#0a0a0a]/60 shrink-0">
+              {/* Icon */}
+              <div className="text-[#0a0a0a]/60 shrink-0">
                 {item.icon}
               </div>
 
@@ -128,12 +141,6 @@ export default function UseCases() {
                 <p className="text-base text-[#0a0a0a]/50 leading-relaxed">{item.description}</p>
               </div>
 
-              <div className="mt-auto pt-2 flex items-center gap-2 text-sm font-semibold text-[#0a0a0a]/40 group-hover:text-[#0a0a0a] transition-colors">
-                Learn more
-                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-                  <path d="M2 12 L12 2 M5 2 H12 V9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-              </div>
             </motion.div>
           ))}
         </motion.div>

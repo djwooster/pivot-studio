@@ -34,11 +34,11 @@ const includes = [
 
 const stagger: Variants = {
   hidden: {},
-  visible: { transition: { staggerChildren: 0.1 } },
+  visible: { transition: { staggerChildren: 0.08 } },
 };
 
 const fadeUp: Variants = {
-  hidden: { opacity: 0, y: 24 },
+  hidden: { opacity: 0, y: 20 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: EASE } },
 };
 
@@ -50,34 +50,39 @@ export default function WebAppsIncludes() {
     <section className="bg-white py-28 px-6" ref={ref}>
       <div className="max-w-7xl mx-auto">
 
+        {/* Headline */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
           transition={{ duration: 0.5, ease: EASE }}
-          className="mb-16"
+          className="max-w-2xl mb-16"
         >
-          <p className="text-sm font-semibold uppercase tracking-[0.15em] text-[#0a0a0a]/35 mb-4">
-            What&apos;s Included
-          </p>
-          <h2 className="section-headline text-[#0a0a0a] max-w-xl">
+          <h2
+            className="font-extrabold text-[#0a0a0a] leading-[1.1] tracking-[-0.02em]"
+            style={{ fontSize: "clamp(28px, 3.5vw, 52px)" }}
+          >
             Everything your app needs to ship and stick.
           </h2>
         </motion.div>
 
+        {/* Numbered grid */}
         <motion.div
           variants={stagger}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
-          className="grid md:grid-cols-3 gap-px bg-black/8"
+          className="grid md:grid-cols-3 gap-x-10 gap-y-12"
         >
-          {includes.map((item) => (
-            <motion.div
-              key={item.title}
-              variants={fadeUp}
-              className="bg-white px-8 py-10 flex flex-col gap-3"
-            >
-              <h3 className="text-lg font-bold text-[#0a0a0a] leading-snug">{item.title}</h3>
-              <p className="text-base text-[#0a0a0a]/50 leading-relaxed">{item.body}</p>
+          {includes.map((item, i) => (
+            <motion.div key={item.title} variants={fadeUp} className="flex flex-col gap-4">
+              <div className="border-t border-black/10 pt-4">
+                <span className="text-sm text-[#0a0a0a]/30 font-medium tabular-nums">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+              </div>
+              <div className="flex flex-col gap-2">
+                <h3 className="text-lg font-bold text-[#0a0a0a] leading-snug">{item.title}</h3>
+                <p className="text-base text-[#0a0a0a]/50 leading-relaxed">{item.body}</p>
+              </div>
             </motion.div>
           ))}
         </motion.div>
