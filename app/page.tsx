@@ -2,6 +2,7 @@ import Nav from "@/components/Nav";
 import Hero from "@/components/Hero";
 import TheProblem from "@/components/TheProblem";
 import HowItWorks from "@/components/HowItWorks";
+import WhatWeSpecializeIn from "@/components/WhatWeSpecializeIn";
 import Services from "@/components/Services";
 import WhoWeWorkWith from "@/components/WhoWeWorkWith";
 import ROIMath from "@/components/ROIMath";
@@ -15,6 +16,7 @@ export default function Home() {
       <Hero />
       <TheProblem />
       <HowItWorks />
+      <WhatWeSpecializeIn />
       <Services />
       <WhoWeWorkWith />
       <ROIMath />

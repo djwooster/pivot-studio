@@ -89,6 +89,11 @@
   }
 }
 
+/* Hero dashboard preview: fix sidebar height */
+.hero-dashboard [data-slot="sidebar-container"] {
+  height: 100%;
+}
+
 @layer utilities {
   .noise {
     position: relative;

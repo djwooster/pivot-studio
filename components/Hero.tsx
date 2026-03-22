@@ -1,7 +1,17 @@
 "use client";
 
 import { motion } from "framer-motion";
-import ArrowButton from "@/components/ArrowButton";
+import dynamic from "next/dynamic";
+
+const HeroDashboardPreview = dynamic(
+  () => import("@/components/HeroDashboardPreview"),
+  {
+    ssr: false,
+    loading: () => (
+      <div className="w-full h-full bg-neutral-50 animate-pulse rounded-lg" />
+    ),
+  }
+);
 
 const EASE: [number, number, number, number] = [0.25, 0.1, 0.25, 1];
 
@@ -33,33 +43,18 @@ function Highlight({ children }: { children: React.ReactNode }) {
 export default function Hero() {
   return (
     <section className="relative bg-white pt-6 overflow-hidden" id="home">
-      <div className="max-w-7xl mx-auto px-6 pt-24 pb-28 md:pt-32 md:pb-36">
-        {/* Label */}
-        <motion.p
-          {...fadeUp(0)}
-          className="text-sm font-semibold uppercase tracking-[0.15em] text-[#0a0a0a]/40 mb-6"
-        >
-          AI + Automation + Custom Apps
-        </motion.p>
-
+      <div className="max-w-[90rem] mx-auto px-6 pt-[136px] pb-24 md:pt-[220px] md:pb-12">
         {/* Full-width headline */}
         <h1
-          className="font-extrabold text-[#0a0a0a] leading-[1.35] tracking-[-0.02em] mb-6"
-          style={{ fontSize: "clamp(24px, 4vw, 80px)" }}
+          className="font-bold text-[#0a0a0a] leading-[1.15] tracking-[-0.02em] mb-6"
+          style={{ fontSize: "clamp(24px, 3.5vw, 80px)" }}
           aria-label="Most businesses run on manual work that technology solved years ago. We build AI + automation that finally fixes it — for good."
         >
-          <motion.span {...fadeUp(0.1)} className="block">
-            Most businesses run on manual work
-          </motion.span>
-          <motion.span {...fadeUp(0.22)} className="block">
-            that technology solved years ago.
-          </motion.span>
           <motion.span {...fadeUp(0.34)} className="block">
-            We build <Highlight>AI</Highlight> +{" "}
-            <Highlight>automation</Highlight>
+            The <Highlight>AI & Automation</Highlight> Agency
           </motion.span>
           <motion.span {...fadeUp(0.46)} className="block">
-            that finally fixes it — for good.
+            that saves you time.
           </motion.span>
         </h1>
 
@@ -68,7 +63,7 @@ export default function Hero() {
           <motion.p
             {...fadeUp(0.6)}
             className="text-[#0a0a0a]/50 leading-relaxed max-w-3xl"
-            style={{ fontSize: "clamp(18px, 1.8vw, 24px)" }}
+            style={{ fontSize: "clamp(18px, 1.2vw, 24px)" }}
           >
             Stop spending time on things AI can do. Take your hours back.
           </motion.p>
@@ -77,16 +72,32 @@ export default function Hero() {
             {...fadeUp(0.68)}
             className="flex flex-col gap-3 w-full sm:w-64"
           >
-            <ArrowButton
+            {/* <ArrowButton
               href="https://cal.com/djwooster/intro-call"
               external
               className="h-12 px-7 text-sm"
             >
               See if we&apos;re a fit
-            </ArrowButton>
+            </ArrowButton> */}
           </motion.div>
         </div>
       </div>
+
+      {/* Hero dashboard preview */}
+      <motion.div
+        {...fadeUp(0.8)}
+        className="w-full max-w-[90rem] mx-auto px-6 pb-16"
+      >
+        {/* Eyebrow */}
+        <p className="text-xs font-medium text-[#0a0a0a]/40 mb-3 tracking-wide">
+          ✦ This is interactive — click around and picture it as your own dashboard
+        </p>
+
+        {/* Clip to preview height */}
+        <div className="w-full overflow-hidden bg-white border border-neutral-200 rounded-lg" style={{ height: "90vh" }}>
+          <HeroDashboardPreview />
+        </div>
+      </motion.div>
     </section>
   );
 }

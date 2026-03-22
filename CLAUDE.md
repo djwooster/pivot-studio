@@ -15,6 +15,16 @@
 - Sticky requires all ancestors to have `overflow: visible` (the default)
 - Always add `self-start` (or `align-self: start`) to a sticky element inside a grid
 
+### CSS (continued)
+- `transform: scale()` creates a new containing block — `position: fixed` children are trapped inside and won't escape to the viewport
+- `position: fixed` with both `inset-y-0` and an explicit `height` (e.g. `h-svh`): top + height win, bottom is ignored. If the height is shorter than the container, a gap appears at the bottom. Fix with `height: 100%` scoped via a CSS override.
+- `min-height` is not a definite height — flex children using `h-full` inside a `min-h-svh` parent will collapse. Use an explicit `height: 100%` on the chain.
+
+### shadcn / Base UI Portals
+- All portal-based components (Sheet, Drawer, DropdownMenu, Select) default to portaling into `document.body` — they will escape any scaled/clipped container
+- Pattern to scope portals: create a React Context that holds the container `Element | null`, provide it at the wrapper div using a callback ref (`useState`, not `useRef` — so the ref is available on first render), then consume it in each `*Content` component and pass as `container` prop to the `Portal`
+- Callback ref: use `const [el, setEl] = useState<HTMLDivElement | null>(null)` + `ref={setEl}` so the element is available synchronously after mount (unlike `useRef` which stays `null` during the first render pass)
+
 ### Framer Motion
 - Elements with active `transform` (x, y, scale, etc.) break `position: sticky` — keep sticky on a plain wrapper div with no motion props
 - Ease cubic bezier arrays must be typed as `[number, number, number, number]` — `number[]` causes a TS error

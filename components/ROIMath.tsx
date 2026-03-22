@@ -97,7 +97,7 @@ export default function ROIMath() {
 
   return (
     <section className="bg-[#0a0a0a] noise py-28 px-6">
-      <div className="max-w-7xl mx-auto grid md:grid-cols-[2fr_3fr] gap-16 items-start" ref={ref}>
+      <div className="max-w-[90rem] mx-auto grid md:grid-cols-[2fr_3fr] gap-16 items-start" ref={ref}>
 
         {/* Left: headline + description */}
         <motion.div

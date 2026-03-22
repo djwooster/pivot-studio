@@ -68,7 +68,7 @@ export default function TheProblem() {
 
   return (
     <section className="bg-white py-24 px-6" id="problem" ref={ref}>
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-7xl mx-auto">
         {/* Headline */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}

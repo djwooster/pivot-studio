@@ -2,6 +2,7 @@
 
 import { useRef } from "react";
 import { motion, useInView, type Variants } from "framer-motion";
+import Image from "next/image";
 
 const EASE: [number, number, number, number] = [0.25, 0.1, 0.25, 1];
 
@@ -69,7 +70,7 @@ export default function Portfolio() {
 
   return (
     <section className="bg-[#f5f5f5] py-28 px-6" id="work" ref={ref}>
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-[90rem] mx-auto">
 
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -102,14 +103,13 @@ export default function Portfolio() {
             >
               {/* Thumbnail */}
               <div className="relative w-full aspect-[16/10] overflow-hidden">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
+                <Image
                   src={project.image}
                   alt={project.name}
-                  loading="lazy"
-                  decoding="async"
-                  className="w-full h-full object-cover"
+                  fill
+                  className="object-cover"
                   style={{ objectPosition: project.objectPosition ?? "center" }}
+                  sizes="(max-width: 768px) 100vw, 50vw"
                 />
                 {/* Hover overlay */}
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-300 flex items-center justify-center">

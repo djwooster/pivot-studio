@@ -75,7 +75,7 @@ export default function HowItWorks() {
 
   return (
     <section className="bg-[#0a0a0a] noise py-28 px-6" id="how-it-works">
-      <div className="max-w-7xl mx-auto" ref={ref}>
+      <div className="max-w-[90rem] mx-auto" ref={ref}>
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}

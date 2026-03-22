@@ -48,7 +48,7 @@ export default function WebDesignIncludes() {
 
   return (
     <section className="bg-white py-28 px-6" ref={ref}>
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-[90rem] mx-auto">
 
         <motion.div
           initial={{ opacity: 0, y: 24 }}

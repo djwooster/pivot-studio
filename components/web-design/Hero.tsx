@@ -20,7 +20,7 @@ function Accent({ children }: { children: React.ReactNode }) {
 export default function WebDesignHero() {
   return (
     <section className="relative bg-white pt-6 overflow-hidden" id="home">
-      <div className="max-w-7xl mx-auto px-6 pt-24 pb-28 md:pt-32 md:pb-36">
+      <div className="max-w-[90rem] mx-auto px-6 pt-24 pb-28 md:pt-32 md:pb-36">
 
         <motion.p
           {...fadeUp(0)}
