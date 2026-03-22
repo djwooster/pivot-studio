@@ -7,6 +7,14 @@ const EASE: [number, number, number, number] = [0.25, 0.1, 0.25, 1];
 
 const projects = [
   {
+    name: "Blueprint Lidar",
+    description: "Striking site for a pre-drywall scanning service — designed to build trust and drive bookings before the walls close.",
+    tags: ["Professional Services", "Lead Capture"],
+    href: "https://lidar-topaz.vercel.app/",
+    image: "/lidar.jpeg",
+    objectPosition: "top",
+  },
+  {
     name: "Empressions Studio",
     description: "Atmospheric brand site for a boutique tattoo studio in Tennessee — built to showcase artistry and drive bookings.",
     tags: ["Professional Services", "Lead Capture"],
@@ -41,7 +49,6 @@ const projects = [
     tags: ["Healthcare", "Booking"],
     href: "https://summitbnb.co/",
     image: "/summit-bnb-thumb-min.jpg",
-    fullWidth: true,
   },
 ];
 
@@ -91,7 +98,7 @@ export default function Portfolio() {
               href={project.href}
               target="_blank"
               rel="noopener noreferrer"
-              className={`group relative flex flex-col overflow-hidden bg-[#1a1a1a]${project.fullWidth ? " md:col-span-2" : ""}`}
+              className="group relative flex flex-col overflow-hidden bg-[#1a1a1a]"
             >
               {/* Thumbnail */}
               <div className="relative w-full aspect-[16/10] overflow-hidden">
