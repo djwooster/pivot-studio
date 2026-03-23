@@ -63,12 +63,12 @@ export default function WhatWeSpecializeIn() {
           transition={{ duration: 0.5, ease: EASE }}
           className="mb-16"
         >
-          <p className="text-sm font-semibold uppercase tracking-[0.15em] text-[#0a0a0a]/35 mb-4">
-            What We Specialize In
-          </p>
-          <h2 className="section-headline text-[#0a0a0a] max-w-2xl">
-            Six areas. One focused team.
+          <h2 className="section-headline text-[#0a0a0a] max-w-2xl mb-6">
+            What we specialize in.
           </h2>
+          <p className="text-lg text-[#0a0a0a]/50 leading-relaxed max-w-2xl">
+            From the first touchpoint to the backend that powers it — we build the systems that turn your operations into a competitive advantage.
+          </p>
         </motion.div>
 
         <motion.div

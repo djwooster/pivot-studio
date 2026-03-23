@@ -15,12 +15,12 @@ export default function Home() {
     <main className="bg-white text-[#0a0a0a]" style={{ overflowX: "clip" }}>
       <Nav />
       <Hero />
-      <TheProblem />
-      <HowItWorks />
       <WhatWeSpecializeIn />
+      {/* <TheProblem /> */}
+      <HowItWorks />
       <UseCases />
-      <Services />
-      <WhoWeWorkWith />
+      {/* <Services /> */}
+      {/* <WhoWeWorkWith /> */}
       <ROIMath />
       <CTASection />
       <Footer />
