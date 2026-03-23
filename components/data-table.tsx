@@ -385,7 +385,7 @@ function DraggableRow({ row, container, isMobile }: { row: Row<z.infer<typeof sc
         </div>
         <DrawerFooter>
           <Button>Submit</Button>
-          <DrawerClose render={<Button variant="outline" />} />
+          <DrawerClose asChild><Button variant="outline">Cancel</Button></DrawerClose>
         </DrawerFooter>
       </DrawerContent>
     </Drawer>
