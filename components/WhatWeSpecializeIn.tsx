@@ -5,179 +5,350 @@ import { motion, useInView, type Variants } from "framer-motion";
 
 const EASE: [number, number, number, number] = [0.25, 0.1, 0.25, 1];
 
-/* ── SVG card illustrations ───────────────────────────────────────────── */
+/* ─────────────────────────────────────────────────────────────────────────
+   SVG UI Mockups — each simulates the actual deliverable output
+───────────────────────────────────────────────────────────────────────── */
 
+/** Lead Generation — Cold email campaign dashboard */
 function LeadViz() {
+  const bars = [68, 45, 32, 18];
+  const labels = ["Intro sequence", "Follow-up #1", "Follow-up #2", "Breakup email"];
   return (
     <svg viewBox="0 0 280 160" fill="none" className="w-full h-full" aria-hidden="true">
-      {/* Funnel outline */}
-      <path d="M40 30 L240 30 L180 90 L180 140 L100 140 L100 90 Z" stroke="#0a0a0a" strokeWidth="1.2" strokeOpacity={0.12} />
-      {/* Dots flowing in */}
-      {[60, 100, 140, 180, 220].map((x, i) => (
-        <circle key={x} cx={x} cy={22} r="3.5" fill="#0a0a0a" fillOpacity={0.12 + i * 0.03} />
+      {/* Card bg */}
+      <rect x="8" y="6" width="264" height="148" fill="white" stroke="#e5e7eb" strokeWidth="1" />
+      {/* Header bar */}
+      <rect x="8" y="6" width="264" height="26" fill="#f9fafb" />
+      <line x1="8" y1="32" x2="272" y2="32" stroke="#e5e7eb" strokeWidth="1" />
+      <circle cx="22" cy="19" r="4" fill="#22c55e" fillOpacity={0.85} />
+      <text x="32" y="23" fontSize="8" fill="#111827" fontWeight="600" fontFamily="system-ui">Campaign Dashboard</text>
+      <rect x="224" y="13" width="40" height="12" rx="2" fill="#dcfce7" />
+      <text x="244" y="22" fontSize="7" fill="#16a34a" fontWeight="600" textAnchor="middle" fontFamily="system-ui">Live</text>
+
+      {/* Stats row */}
+      {[
+        { val: "2,847", label: "Sent", x: 36 },
+        { val: "34%", label: "Opens", x: 100 },
+        { val: "127", label: "Replies", x: 164 },
+        { val: "23", label: "Meetings", x: 228 },
+      ].map(({ val, label, x }) => (
+        <g key={label}>
+          <text x={x} y="49" fontSize="11" fill="#111827" fontWeight="700" textAnchor="middle" fontFamily="system-ui">{val}</text>
+          <text x={x} y="59" fontSize="7" fill="#9ca3af" textAnchor="middle" fontFamily="system-ui">{label}</text>
+        </g>
       ))}
-      {/* Mid stage dots */}
-      {[120, 140, 160].map((x, i) => (
-        <circle key={x} cx={x} cy={70} r="4" fill="#0a0a0a" fillOpacity={0.18 + i * 0.04} />
-      ))}
-      {/* Qualified lead dot at bottom */}
-      <circle cx="140" cy="125" r="7" fill="#0a0a0a" fillOpacity={0.3} />
-      <circle cx="140" cy="125" r="12" stroke="#0a0a0a" strokeWidth="1" strokeOpacity={0.12} />
-      {/* Check mark */}
-      <path d="M135 125l3 3 7-7" stroke="#0a0a0a" strokeWidth="1.5" strokeOpacity={0.5} strokeLinecap="round" strokeLinejoin="round" />
-      {/* Stage labels */}
-      <rect x="50" y="45" width="50" height="14" rx="0" fill="#0a0a0a" fillOpacity={0.05} />
-      <rect x="115" y="45" width="50" height="14" rx="0" fill="#0a0a0a" fillOpacity={0.05} />
-      <rect x="180" y="45" width="50" height="14" rx="0" fill="#0a0a0a" fillOpacity={0.05} />
+      <line x1="8" y1="66" x2="272" y2="66" stroke="#f3f4f6" strokeWidth="1" />
+
+      {/* Sequence rows */}
+      {labels.map((lbl, i) => {
+        const y = 76 + i * 20;
+        const pct = bars[i];
+        return (
+          <g key={lbl}>
+            <text x="16" y={y + 8} fontSize="7.5" fill="#374151" fontFamily="system-ui">{lbl}</text>
+            {/* Bar bg */}
+            <rect x="134" y={y + 1} width="100" height="8" rx="1" fill="#f3f4f6" />
+            {/* Bar fill */}
+            <rect x="134" y={y + 1} width={pct} height="8" rx="1" fill="#111827" fillOpacity={0.15 + (pct / 68) * 0.2} />
+            <text x="240" y={y + 8} fontSize="7" fill="#6b7280" fontFamily="system-ui">{pct}%</text>
+          </g>
+        );
+      })}
     </svg>
   );
 }
 
+/** Revenue Operations — CRM kanban pipeline */
 function RevenueViz() {
+  const cols = [
+    { label: "Prospect", count: 12, color: "#f3f4f6", deals: [{ name: "Acme Corp", val: "$24k" }, { name: "Bravo Inc", val: "$18k" }] },
+    { label: "Qualified", count: 8, color: "#eff6ff", deals: [{ name: "Beta LLC", val: "$45k" }, { name: "Gamma Co", val: "$28k" }] },
+    { label: "Proposal", count: 5, color: "#fefce8", deals: [{ name: "Delta Ltd", val: "$32k" }] },
+    { label: "Won", count: 3, color: "#f0fdf4", deals: [{ name: "Alpha SA", val: "$89k" }] },
+  ];
+  const colW = 62, gap = 4, startX = 10;
   return (
     <svg viewBox="0 0 280 160" fill="none" className="w-full h-full" aria-hidden="true">
-      {/* Chart bars */}
-      <rect x="30" y="100" width="28" height="40" fill="#0a0a0a" fillOpacity={0.07} stroke="#0a0a0a" strokeWidth="1" strokeOpacity={0.15} />
-      <rect x="72" y="78" width="28" height="62" fill="#0a0a0a" fillOpacity={0.09} stroke="#0a0a0a" strokeWidth="1" strokeOpacity={0.15} />
-      <rect x="114" y="58" width="28" height="82" fill="#0a0a0a" fillOpacity={0.11} stroke="#0a0a0a" strokeWidth="1" strokeOpacity={0.15} />
-      <rect x="156" y="38" width="28" height="102" fill="#0a0a0a" fillOpacity={0.14} stroke="#0a0a0a" strokeWidth="1" strokeOpacity={0.2} />
-      <rect x="198" y="20" width="28" height="120" fill="#0a0a0a" fillOpacity={0.18} stroke="#0a0a0a" strokeWidth="1" strokeOpacity={0.25} />
-      {/* Trend line */}
-      <polyline points="44,95 86,73 128,53 170,33 212,15" stroke="#0a0a0a" strokeWidth="1.5" strokeOpacity={0.3} strokeLinecap="round" strokeLinejoin="round" />
-      <circle cx="212" cy="15" r="4" fill="#0a0a0a" fillOpacity={0.4} />
-      {/* Baseline */}
-      <line x1="20" y1="140" x2="250" y2="140" stroke="#0a0a0a" strokeWidth="1" strokeOpacity={0.1} />
-      {/* Y axis ticks */}
-      {[140, 110, 80, 50, 20].map((y) => (
-        <line key={y} x1="18" y1={y} x2="24" y2={y} stroke="#0a0a0a" strokeWidth="1" strokeOpacity={0.1} />
-      ))}
+      {/* Header */}
+      <rect x="8" y="6" width="264" height="148" fill="white" stroke="#e5e7eb" strokeWidth="1" />
+      <rect x="8" y="6" width="264" height="22" fill="#f9fafb" />
+      <line x1="8" y1="28" x2="272" y2="28" stroke="#e5e7eb" strokeWidth="1" />
+      <text x="18" y="20" fontSize="8" fill="#111827" fontWeight="600" fontFamily="system-ui">Pipeline</text>
+      <text x="140" y="20" fontSize="7.5" fill="#9ca3af" textAnchor="middle" fontFamily="system-ui">Q1 2024</text>
+      <text x="262" y="20" fontSize="8" fill="#16a34a" fontWeight="700" textAnchor="end" fontFamily="system-ui">$284k</text>
+
+      {/* Columns */}
+      {cols.map((col, ci) => {
+        const x = startX + ci * (colW + gap);
+        return (
+          <g key={col.label}>
+            {/* Column bg */}
+            <rect x={x} y="32" width={colW} height="118" fill={col.color} rx="1" />
+            {/* Col header */}
+            <text x={x + colW / 2} y="43" fontSize="7" fill="#374151" fontWeight="600" textAnchor="middle" fontFamily="system-ui">{col.label}</text>
+            <text x={x + colW / 2} y="52" fontSize="6.5" fill="#9ca3af" textAnchor="middle" fontFamily="system-ui">({col.count})</text>
+            {/* Deal cards */}
+            {col.deals.map((deal, di) => {
+              const cy = 58 + di * 32;
+              return (
+                <g key={deal.name}>
+                  <rect x={x + 4} y={cy} width={colW - 8} height="26" fill="white" stroke="#e5e7eb" strokeWidth="0.8" rx="1" />
+                  <text x={x + 8} y={cy + 10} fontSize="6.5" fill="#111827" fontWeight="600" fontFamily="system-ui">{deal.name}</text>
+                  <text x={x + 8} y={cy + 20} fontSize="7" fill="#6b7280" fontWeight="700" fontFamily="system-ui">{deal.val}</text>
+                  {ci === 3 && <circle cx={x + colW - 11} cy={cy + 13} r="4" fill="#22c55e" fillOpacity={0.8} />}
+                </g>
+              );
+            })}
+          </g>
+        );
+      })}
     </svg>
   );
 }
 
+/** Frontend Experiences — Web app dashboard */
 function FrontendViz() {
   return (
     <svg viewBox="0 0 280 160" fill="none" className="w-full h-full" aria-hidden="true">
-      {/* Browser chrome */}
-      <rect x="20" y="18" width="240" height="130" stroke="#0a0a0a" strokeWidth="1.2" strokeOpacity={0.15} />
-      <rect x="20" y="18" width="240" height="26" fill="#0a0a0a" fillOpacity={0.04} />
-      <line x1="20" y1="44" x2="260" y2="44" stroke="#0a0a0a" strokeWidth="1" strokeOpacity={0.1} />
-      {/* Browser dots */}
-      <circle cx="35" cy="31" r="3" fill="#0a0a0a" fillOpacity={0.15} />
-      <circle cx="48" cy="31" r="3" fill="#0a0a0a" fillOpacity={0.15} />
-      <circle cx="61" cy="31" r="3" fill="#0a0a0a" fillOpacity={0.15} />
-      {/* URL bar */}
-      <rect x="80" y="24" width="120" height="14" rx="0" fill="#0a0a0a" fillOpacity={0.05} stroke="#0a0a0a" strokeWidth="0.8" strokeOpacity={0.1} />
+      {/* Outer card */}
+      <rect x="8" y="6" width="264" height="148" fill="white" stroke="#e5e7eb" strokeWidth="1" />
+      {/* Top nav */}
+      <rect x="8" y="6" width="264" height="22" fill="#111827" />
+      <text x="18" y="20" fontSize="8" fill="white" fontWeight="700" fontFamily="system-ui">MyApp</text>
+      <text x="80" y="20" fontSize="7.5" fill="white" fillOpacity={0.5} fontFamily="system-ui">Dashboard</text>
+      <text x="120" y="20" fontSize="7.5" fill="white" fillOpacity={0.5} fontFamily="system-ui">Reports</text>
+      <text x="160" y="20" fontSize="7.5" fill="white" fillOpacity={0.5} fontFamily="system-ui">Settings</text>
+      <circle cx="260" cy="17" r="6" fill="#374151" />
+      <text x="260" y="20" fontSize="6" fill="white" textAnchor="middle" fontFamily="system-ui">A</text>
+
       {/* Sidebar */}
-      <rect x="20" y="44" width="54" height="104" fill="#0a0a0a" fillOpacity={0.03} />
-      <line x1="74" y1="44" x2="74" y2="148" stroke="#0a0a0a" strokeWidth="1" strokeOpacity={0.08} />
-      {/* Nav items */}
-      {[58, 74, 90, 106].map((y) => (
-        <rect key={y} x="28" y={y} width="38" height="8" rx="0" fill="#0a0a0a" fillOpacity={0.08} />
+      <rect x="8" y="28" width="40" height="126" fill="#f9fafb" />
+      <line x1="48" y1="28" x2="48" y2="154" stroke="#e5e7eb" strokeWidth="1" />
+      {["Home", "Users", "Data", "Logs", "Help"].map((item, i) => (
+        <g key={item}>
+          <rect x="12" y={36 + i * 18} width="28" height="12" rx="1" fill={i === 0 ? "#111827" : "transparent"} />
+          <text x="26" y={45 + i * 18} fontSize="6.5" fill={i === 0 ? "white" : "#9ca3af"} textAnchor="middle" fontFamily="system-ui">{item}</text>
+        </g>
       ))}
-      {/* Content area */}
-      <rect x="84" y="54" width="160" height="12" rx="0" fill="#0a0a0a" fillOpacity={0.1} />
-      <rect x="84" y="72" width="100" height="8" rx="0" fill="#0a0a0a" fillOpacity={0.06} />
-      {/* Card grid */}
-      <rect x="84" y="90" width="72" height="48" rx="0" fill="#0a0a0a" fillOpacity={0.04} stroke="#0a0a0a" strokeWidth="0.8" strokeOpacity={0.1} />
-      <rect x="166" y="90" width="72" height="48" rx="0" fill="#0a0a0a" fillOpacity={0.04} stroke="#0a0a0a" strokeWidth="0.8" strokeOpacity={0.1} />
-    </svg>
-  );
-}
 
-function HiringViz() {
-  return (
-    <svg viewBox="0 0 280 160" fill="none" className="w-full h-full" aria-hidden="true">
-      {/* Stage boxes */}
+      {/* Stat cards */}
       {[
-        { x: 18, label: "Apply" },
-        { x: 80, label: "Screen" },
-        { x: 142, label: "Interview" },
-        { x: 204, label: "Hire" },
-      ].map(({ x }, i) => (
-        <g key={x}>
-          <rect x={x} y="60" width="54" height="36" stroke="#0a0a0a" strokeWidth="1.2" strokeOpacity={0.15 + i * 0.06} fill="#0a0a0a" fillOpacity={0.03 + i * 0.02} />
-          {i < 3 && (
-            <path d={`M${x + 54} 78 L${x + 66} 78`} stroke="#0a0a0a" strokeWidth="1.2" strokeOpacity={0.2} strokeLinecap="round" />
-          )}
-          {i < 3 && (
-            <path d={`M${x + 63} 74 L${x + 68} 78 L${x + 63} 82`} stroke="#0a0a0a" strokeWidth="1.2" strokeOpacity={0.2} strokeLinecap="round" strokeLinejoin="round" />
-          )}
-        </g>
-      ))}
-      {/* Candidate dots above each stage */}
-      {[45, 107, 169].map((cx, i) => (
-        <g key={cx}>
-          {Array.from({ length: 3 - i }).map((_, j) => (
-            <circle key={j} cx={cx - 6 + j * 6} cy="40" r="5" fill="#0a0a0a" fillOpacity={0.1 + j * 0.05} />
-          ))}
-        </g>
-      ))}
-      {/* Hired person */}
-      <circle cx="231" cy="35" r="7" fill="#0a0a0a" fillOpacity={0.25} />
-      <path d="M226 47 c0-3 2.5-5 5-5s5 2 5 5" stroke="#0a0a0a" strokeWidth="1.2" strokeOpacity={0.3} strokeLinecap="round" />
-      {/* Checkmark on hire box */}
-      <path d="M218 78l4 4 10-10" stroke="#0a0a0a" strokeWidth="1.5" strokeOpacity={0.4} strokeLinecap="round" strokeLinejoin="round" />
-      {/* Scoring bars */}
-      {[110, 122, 134].map((y, i) => (
-        <rect key={y} x="84" y={y} width={30 + i * 18} height="7" rx="0" fill="#0a0a0a" fillOpacity={0.08 + i * 0.03} />
+        { label: "Revenue", val: "$124k", color: "#f0fdf4", tx: "#16a34a" },
+        { label: "Uptime", val: "99.9%", color: "#eff6ff", tx: "#2563eb" },
+        { label: "Users", val: "1,284", color: "#fdf4ff", tx: "#9333ea" },
+      ].map(({ label, val, color, tx }, i) => {
+        const x = 54 + i * 74;
+        return (
+          <g key={label}>
+            <rect x={x} y="32" width="68" height="30" fill={color} stroke="#e5e7eb" strokeWidth="0.8" />
+            <text x={x + 34} y="46" fontSize="10" fill={tx} fontWeight="700" textAnchor="middle" fontFamily="system-ui">{val}</text>
+            <text x={x + 34} y="56" fontSize="6.5" fill="#6b7280" textAnchor="middle" fontFamily="system-ui">{label}</text>
+          </g>
+        );
+      })}
+
+      {/* Chart area */}
+      <rect x="54" y="68" width="210" height="80" fill="#f9fafb" stroke="#e5e7eb" strokeWidth="0.8" />
+      <text x="64" y="80" fontSize="7" fill="#374151" fontWeight="600" fontFamily="system-ui">Revenue trend</text>
+      {/* Chart line */}
+      <polyline
+        points="64,138 94,128 124,132 154,114 184,108 214,96 244,88"
+        stroke="#111827"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        opacity={0.6}
+      />
+      {/* Area fill */}
+      <polygon
+        points="64,138 94,128 124,132 154,114 184,108 214,96 244,88 244,144 64,144"
+        fill="#111827"
+        fillOpacity={0.04}
+      />
+      {/* Grid lines */}
+      {[90, 110, 130].map(y => (
+        <line key={y} x1="64" y1={y} x2="248" y2={y} stroke="#e5e7eb" strokeWidth="0.6" strokeDasharray="3 3" />
       ))}
     </svg>
   );
 }
 
+/** Hiring Systems — ATS pipeline board */
+function HiringViz() {
+  const stages = [
+    { label: "Applied", count: 24, candidates: ["Sarah K.", "James L."], score: [82, 76] },
+    { label: "Screened", count: 11, candidates: ["Priya M.", "Tom R."], score: [91, 85] },
+    { label: "Interview", count: 5, candidates: ["Alex W."], score: [94] },
+    { label: "Offer", count: 2, candidates: ["Priya M."], score: [91] },
+  ];
+  const colW = 61, gap = 4, sx = 10;
+  return (
+    <svg viewBox="0 0 280 160" fill="none" className="w-full h-full" aria-hidden="true">
+      <rect x="8" y="6" width="264" height="148" fill="white" stroke="#e5e7eb" strokeWidth="1" />
+      {/* Header */}
+      <rect x="8" y="6" width="264" height="22" fill="#f9fafb" />
+      <line x1="8" y1="28" x2="272" y2="28" stroke="#e5e7eb" strokeWidth="1" />
+      <text x="18" y="20" fontSize="8" fill="#111827" fontWeight="600" fontFamily="system-ui">Senior Engineer — Hiring Pipeline</text>
+      <rect x="230" y="12" width="34" height="11" rx="1" fill="#eff6ff" />
+      <text x="247" y="20" fontSize="6.5" fill="#2563eb" fontWeight="600" textAnchor="middle" fontFamily="system-ui">AI Scoring</text>
+
+      {stages.map((stage, ci) => {
+        const x = sx + ci * (colW + gap);
+        return (
+          <g key={stage.label}>
+            <rect x={x} y="32" width={colW} height="120" rx="1" fill="#f9fafb" />
+            <text x={x + colW / 2} y="43" fontSize="7" fill="#374151" fontWeight="600" textAnchor="middle" fontFamily="system-ui">{stage.label}</text>
+            <text x={x + colW / 2} y="52" fontSize="6.5" fill="#9ca3af" textAnchor="middle" fontFamily="system-ui">{stage.count} candidates</text>
+
+            {stage.candidates.map((name, di) => {
+              const cy = 57 + di * 34;
+              const score = stage.score[di];
+              const scoreColor = score >= 90 ? "#16a34a" : score >= 80 ? "#ca8a04" : "#6b7280";
+              return (
+                <g key={name}>
+                  <rect x={x + 4} y={cy} width={colW - 8} height="28" fill="white" stroke="#e5e7eb" strokeWidth="0.8" rx="1" />
+                  {/* Avatar circle */}
+                  <circle cx={x + 12} cy={cy + 10} r="5" fill="#e5e7eb" />
+                  <text x={x + 12} y={cy + 13} fontSize="5" fill="#6b7280" textAnchor="middle" fontFamily="system-ui">{name[0]}</text>
+                  <text x={x + 19} y={cy + 10} fontSize="6" fill="#111827" fontWeight="600" fontFamily="system-ui">{name}</text>
+                  {/* AI score */}
+                  <rect x={x + 19} y={cy + 14} width="22" height="9" rx="1" fill={scoreColor} fillOpacity={0.12} />
+                  <text x={x + 30} y={cy + 21} fontSize="5.5" fill={scoreColor} fontWeight="700" textAnchor="middle" fontFamily="system-ui">AI {score}</text>
+                </g>
+              );
+            })}
+          </g>
+        );
+      })}
+    </svg>
+  );
+}
+
+/** Backend Infrastructure — Integration & data flow hub */
 function BackendViz() {
+  const sources = [
+    { name: "Salesforce", y: 28 },
+    { name: "Shopify", y: 60 },
+    { name: "HubSpot", y: 92 },
+    { name: "Stripe", y: 124 },
+  ];
+  const destinations = [
+    { name: "Warehouse", y: 36 },
+    { name: "Analytics", y: 68 },
+    { name: "Webhooks", y: 100 },
+    { name: "Alerts", y: 132 },
+  ];
   return (
     <svg viewBox="0 0 280 160" fill="none" className="w-full h-full" aria-hidden="true">
-      {/* Central node */}
-      <rect x="110" y="60" width="60" height="36" stroke="#0a0a0a" strokeWidth="1.4" strokeOpacity={0.25} fill="#0a0a0a" fillOpacity={0.05} />
-      {/* API node */}
-      <rect x="20" y="22" width="52" height="28" stroke="#0a0a0a" strokeWidth="1.2" strokeOpacity={0.15} fill="#0a0a0a" fillOpacity={0.03} />
-      {/* DB node */}
-      <ellipse cx="220" cy="36" rx="28" ry="12" stroke="#0a0a0a" strokeWidth="1.2" strokeOpacity={0.15} />
-      <path d="M192 36v14c0 6.627 12.536 12 28 12s28-5.373 28-12V36" stroke="#0a0a0a" strokeWidth="1.2" strokeOpacity={0.12} />
-      {/* Queue node */}
-      <rect x="20" y="110" width="52" height="28" stroke="#0a0a0a" strokeWidth="1.2" strokeOpacity={0.15} fill="#0a0a0a" fillOpacity={0.03} />
-      {/* Service node */}
-      <rect x="208" y="110" width="52" height="28" stroke="#0a0a0a" strokeWidth="1.2" strokeOpacity={0.15} fill="#0a0a0a" fillOpacity={0.03} />
-      {/* Connecting lines */}
-      <line x1="72" y1="36" x2="110" y2="72" stroke="#0a0a0a" strokeWidth="1" strokeOpacity={0.15} strokeDasharray="4 3" />
-      <line x1="192" y1="48" x2="170" y2="65" stroke="#0a0a0a" strokeWidth="1" strokeOpacity={0.15} strokeDasharray="4 3" />
-      <line x1="72" y1="124" x2="110" y2="84" stroke="#0a0a0a" strokeWidth="1" strokeOpacity={0.15} strokeDasharray="4 3" />
-      <line x1="208" y1="120" x2="170" y2="90" stroke="#0a0a0a" strokeWidth="1" strokeOpacity={0.15} strokeDasharray="4 3" />
-      {/* Center label lines */}
-      <line x1="122" y1="72" x2="158" y2="72" stroke="#0a0a0a" strokeWidth="1" strokeOpacity={0.2} />
-      <line x1="122" y1="82" x2="148" y2="82" stroke="#0a0a0a" strokeWidth="1" strokeOpacity={0.12} />
-      {/* Pulse circle on center */}
-      <circle cx="140" cy="78" r="20" stroke="#0a0a0a" strokeWidth="0.8" strokeOpacity={0.07} />
-      <circle cx="140" cy="78" r="32" stroke="#0a0a0a" strokeWidth="0.6" strokeOpacity={0.04} />
+      <rect x="8" y="6" width="264" height="148" fill="white" stroke="#e5e7eb" strokeWidth="1" />
+      {/* Header */}
+      <rect x="8" y="6" width="264" height="22" fill="#f9fafb" />
+      <line x1="8" y1="28" x2="272" y2="28" stroke="#e5e7eb" strokeWidth="1" />
+      <text x="18" y="20" fontSize="8" fill="#111827" fontWeight="600" fontFamily="system-ui">Integration Hub</text>
+      <circle cx="240" cy="17" r="4" fill="#22c55e" fillOpacity={0.8} />
+      <text x="250" y="21" fontSize="7" fill="#16a34a" fontFamily="system-ui">Live</text>
+
+      {/* Source nodes */}
+      {sources.map(({ name, y }) => (
+        <g key={name}>
+          <rect x="14" y={y} width="52" height="18" rx="2" fill="#f9fafb" stroke="#d1d5db" strokeWidth="0.8" />
+          <text x="40" y={y + 12} fontSize="6.5" fill="#374151" textAnchor="middle" fontFamily="system-ui">{name}</text>
+          {/* Status dot */}
+          <circle cx="57" cy={y + 9} r="3" fill="#22c55e" fillOpacity={0.8} />
+        </g>
+      ))}
+
+      {/* Central hub */}
+      <rect x="96" y="50" width="88" height="60" rx="2" fill="#111827" fillOpacity={0.04} stroke="#111827" strokeWidth="1" strokeOpacity={0.15} />
+      <text x="140" y="72" fontSize="7.5" fill="#111827" fontWeight="700" textAnchor="middle" fontFamily="system-ui">Data Pipeline</text>
+      <text x="140" y="84" fontSize="6.5" fill="#6b7280" textAnchor="middle" fontFamily="system-ui">Transform & Route</text>
+      {/* Pulse rings */}
+      <circle cx="140" cy="95" r="5" fill="#111827" fillOpacity={0.15} />
+      <circle cx="140" cy="95" r="8" stroke="#111827" strokeWidth="0.6" strokeOpacity={0.1} />
+
+      {/* Destination nodes */}
+      {destinations.map(({ name, y }) => (
+        <g key={name}>
+          <rect x="214" y={y} width="54" height="18" rx="2" fill="#eff6ff" stroke="#bfdbfe" strokeWidth="0.8" />
+          <text x="241" y={y + 12} fontSize="6.5" fill="#1d4ed8" textAnchor="middle" fontFamily="system-ui">{name}</text>
+        </g>
+      ))}
+
+      {/* Connecting lines — sources to hub */}
+      {sources.map(({ y }) => (
+        <line key={y} x1="66" y1={y + 9} x2="96" y2="80" stroke="#111827" strokeWidth="0.8" strokeOpacity={0.12} strokeDasharray="3 2" />
+      ))}
+      {/* Connecting lines — hub to destinations */}
+      {destinations.map(({ y }) => (
+        <line key={y} x1="184" y1="80" x2="214" y2={y + 9} stroke="#2563eb" strokeWidth="0.8" strokeOpacity={0.15} strokeDasharray="3 2" />
+      ))}
     </svg>
   );
 }
 
+/** AI Strategy & Training — Workshop roadmap */
 function StrategyViz() {
+  const phases = [
+    {
+      label: "Phase 1 — Assess",
+      weeks: "Wk 1–2",
+      color: "#f9fafb",
+      items: ["AI Readiness Audit", "Stack Inventory", "Quick Win Mapping"],
+    },
+    {
+      label: "Phase 2 — Build",
+      weeks: "Wk 3–6",
+      color: "#eff6ff",
+      items: ["Pilot Automation", "Team Workshops", "Tool Selection"],
+    },
+    {
+      label: "Phase 3 — Scale",
+      weeks: "Wk 7+",
+      color: "#f0fdf4",
+      items: ["Org-wide Rollout", "Ongoing Training", "ROI Tracking"],
+    },
+  ];
   return (
     <svg viewBox="0 0 280 160" fill="none" className="w-full h-full" aria-hidden="true">
-      {/* Roadmap horizontal track */}
-      <line x1="30" y1="80" x2="250" y2="80" stroke="#0a0a0a" strokeWidth="1.5" strokeOpacity={0.1} />
-      {/* Milestone nodes */}
-      {[30, 90, 150, 210, 250].map((cx, i) => (
-        <g key={cx}>
-          <circle cx={cx} cy="80" r={i === 4 ? 9 : 6} fill="#0a0a0a" fillOpacity={0.06 + i * 0.05} stroke="#0a0a0a" strokeWidth="1.2" strokeOpacity={0.15 + i * 0.04} />
-          {i === 4 && <circle cx={cx} cy="80" r="4" fill="#0a0a0a" fillOpacity={0.3} />}
+      <rect x="8" y="6" width="264" height="148" fill="white" stroke="#e5e7eb" strokeWidth="1" />
+      {/* Header */}
+      <rect x="8" y="6" width="264" height="22" fill="#f9fafb" />
+      <line x1="8" y1="28" x2="272" y2="28" stroke="#e5e7eb" strokeWidth="1" />
+      <text x="18" y="20" fontSize="8" fill="#111827" fontWeight="600" fontFamily="system-ui">AI Strategy Roadmap</text>
+      <rect x="218" y="12" width="46" height="11" rx="1" fill="#fef9c3" />
+      <text x="241" y="20" fontSize="6.5" fill="#854d0e" fontWeight="600" textAnchor="middle" fontFamily="system-ui">In Progress</text>
+
+      {/* Timeline track */}
+      <line x1="20" y1="42" x2="264" y2="42" stroke="#e5e7eb" strokeWidth="1.5" />
+      {[20, 101, 182, 264].map((x, i) => (
+        <g key={x}>
+          <circle cx={x} cy="42" r={i === 0 ? 5 : 4} fill={i < 2 ? "#111827" : "#e5e7eb"} />
+          {i < 3 && <text x={x + (i === 0 ? 0 : 0)} y="37" fontSize="6" fill="#9ca3af" textAnchor="middle" fontFamily="system-ui">{phases[i]?.weeks}</text>}
         </g>
       ))}
-      {/* Labels above milestones */}
-      {[30, 90, 150, 210].map((cx) => (
-        <rect key={cx} x={cx - 22} y="52" width="44" height="18" fill="#0a0a0a" fillOpacity={0.04} stroke="#0a0a0a" strokeWidth="0.8" strokeOpacity={0.08} />
-      ))}
-      {/* Branch lines going down from 2nd and 3rd milestone */}
-      <line x1="90" y1="86" x2="90" y2="115" stroke="#0a0a0a" strokeWidth="1" strokeOpacity={0.1} strokeDasharray="3 3" />
-      <rect x="60" y="115" width="60" height="22" fill="#0a0a0a" fillOpacity={0.04} stroke="#0a0a0a" strokeWidth="0.8" strokeOpacity={0.1} />
-      <line x1="150" y1="86" x2="150" y2="115" stroke="#0a0a0a" strokeWidth="1" strokeOpacity={0.1} strokeDasharray="3 3" />
-      <rect x="120" y="115" width="60" height="22" fill="#0a0a0a" fillOpacity={0.04} stroke="#0a0a0a" strokeWidth="0.8" strokeOpacity={0.1} />
-      {/* Arrow at end */}
-      <path d="M246 74 L256 80 L246 86" stroke="#0a0a0a" strokeWidth="1.2" strokeOpacity={0.2} strokeLinecap="round" strokeLinejoin="round" />
+
+      {/* Phase columns */}
+      {phases.map(({ label, color, items }, ci) => {
+        const x = 14 + ci * 86;
+        return (
+          <g key={label}>
+            <rect x={x} y="50" width="80" height="100" rx="1" fill={color} stroke="#e5e7eb" strokeWidth="0.8" />
+            <text x={x + 40} y="62" fontSize="6.5" fill="#374151" fontWeight="700" textAnchor="middle" fontFamily="system-ui">{label.split("—")[0].trim()}</text>
+            <text x={x + 40} y="71" fontSize="6" fill="#9ca3af" textAnchor="middle" fontFamily="system-ui">—{label.split("—")[1]}</text>
+            {items.map((item, ii) => (
+              <g key={item}>
+                <circle cx={x + 12} cy={82 + ii * 20} r="2.5" fill={ci === 2 ? "#22c55e" : ci === 1 ? "#2563eb" : "#9ca3af"} fillOpacity={0.7} />
+                <text x={x + 18} y={85 + ii * 20} fontSize="6.5" fill="#374151" fontFamily="system-ui">{item}</text>
+              </g>
+            ))}
+            {ci < 2 && (
+              <rect x={x + 10} y="128" width="60" height="14" rx="1" fill={ci === 0 ? "#111827" : "#dbeafe"} />
+            )}
+            {ci === 0 && <text x={x + 40} y="138" fontSize="6.5" fill="white" fontWeight="600" textAnchor="middle" fontFamily="system-ui">✓ Complete</text>}
+            {ci === 1 && <text x={x + 40} y="138" fontSize="6.5" fill="#2563eb" fontWeight="600" textAnchor="middle" fontFamily="system-ui">In progress</text>}
+          </g>
+        );
+      })}
     </svg>
   );
 }
@@ -217,7 +388,7 @@ const specializations = [
   },
 ];
 
-/* ── Animation ────────────────────────────────────────────────────────── */
+/* ── Animations ───────────────────────────────────────────────────────── */
 
 const stagger: Variants = {
   hidden: {},
@@ -265,10 +436,10 @@ export default function WhatWeSpecializeIn() {
             <motion.div
               key={spec.title}
               variants={fadeUp}
-              className="flex flex-col border border-black/10 bg-[#fafafa] hover:border-black/25 transition-colors duration-200"
+              className="flex flex-col border border-black/10 bg-white hover:border-black/25 transition-colors duration-200"
             >
               {/* Illustration area */}
-              <div className="w-full h-44 bg-white border-b border-black/8 flex items-center justify-center p-4">
+              <div className="w-full bg-[#f9fafb] border-b border-black/8 overflow-hidden" style={{ height: "176px" }}>
                 {spec.viz}
               </div>
 
