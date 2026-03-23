@@ -43,18 +43,18 @@ function Highlight({ children }: { children: React.ReactNode }) {
 export default function Hero() {
   return (
     <section className="relative bg-white pt-6 overflow-hidden" id="home">
-      <div className="max-w-[90rem] mx-auto px-6 pt-[136px] pb-24 md:pt-[220px] md:pb-12">
+      <div className="max-w-[90rem] mx-auto px-6 pt-[136px] pb-12 md:pt-[220px] md:pb-12">
         {/* Full-width headline */}
         <h1
           className="font-bold text-[#0a0a0a] leading-[1.15] tracking-[-0.02em] mb-6"
           style={{ fontSize: "clamp(24px, 3.5vw, 80px)" }}
-          aria-label="Most businesses run on manual work that technology solved years ago. We build AI + automation that finally fixes it — for good."
+          aria-label="The AI & Automation Agency that saves you time, recaptures revenue, and removes headaches."
         >
           <motion.span {...fadeUp(0.34)} className="block">
-            The <Highlight>AI & Automation</Highlight> Agency
+            The <Highlight>AI & Automation</Highlight> Agency that saves you time,
           </motion.span>
           <motion.span {...fadeUp(0.46)} className="block">
-            that saves you time.
+            recaptures revenue, and removes headaches.
           </motion.span>
         </h1>
 

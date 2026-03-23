@@ -54,7 +54,7 @@ export default function WhatWeSpecializeIn() {
   const isInView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section className="bg-white pt-0 pb-28 md:py-28 px-6" id="specializations" ref={ref}>
+    <section className="bg-white py-28 px-6" id="specializations" ref={ref}>
       <div className="max-w-[90rem] mx-auto">
 
         <motion.div
@@ -66,7 +66,7 @@ export default function WhatWeSpecializeIn() {
           <h2 className="section-headline text-[#0a0a0a] max-w-2xl mb-6">
             What we specialize in.
           </h2>
-          <p className="text-lg text-[#0a0a0a]/50 leading-relaxed max-w-2xl">
+          <p className="text-xl text-[#0a0a0a]/50 leading-relaxed max-w-2xl">
             From the first touchpoint to the backend that powers it — we build the systems that turn your operations into a competitive advantage.
           </p>
         </motion.div>
