@@ -9,22 +9,22 @@ const steps = [
   {
     number: "1",
     title: "Funnel Map Audit",
-    body: "A free 30-minute session where we audit your funnel, identify bottlenecks, and map out exactly where AI can move the needle.",
+    body: "One call, no prep needed. We dig into how your business actually runs — where time is leaking, what's breaking, and what's holding you back. You leave knowing exactly what to build first.",
   },
   {
     number: "2",
     title: "Proposal",
-    body: "We deliver a clear scope, timeline, and fixed price. No surprises, no hourly billing. You know exactly what you're getting.",
+    body: "You get a fixed price, a real timeline, and a scope you can hold us to. No hourly billing, no scope creep, no surprises. If we say four weeks, we mean four weeks.",
   },
   {
     number: "3",
     title: "Project",
-    body: "Our team builds, tests, and deploys your systems. You get weekly updates and a working product — not a deck full of promises.",
+    body: "We build it, test it, and ship it. Weekly updates keep you in the loop — and at the end, you have a working system, not a slideshow. Most projects go live in under 30 days.",
   },
   {
     number: "4",
     title: "Ongoing Management",
-    body: "Optional retainer for monitoring, optimization, and iteration. Most clients see compounding returns over time.",
+    body: "Going live is the beginning, not the end. Stay on retainer and we keep your stack sharp — squashing edge cases, shipping improvements, and building what comes next as your business grows.",
   },
 ];
 
