@@ -5,67 +5,36 @@ import { motion, useInView, type Variants } from "framer-motion";
 
 const EASE: [number, number, number, number] = [0.25, 0.1, 0.25, 1];
 
-function AuditIcon() {
-  return (
-    <svg width="48" height="48" viewBox="0 0 32 32" fill="none" aria-hidden="true">
-      <rect x="5" y="4" width="16" height="20" rx="0" stroke="white" strokeWidth="1.5" strokeOpacity={0.7} />
-      <line x1="9" y1="10" x2="17" y2="10" stroke="white" strokeWidth="1.5" strokeOpacity={0.5} strokeLinecap="round" />
-      <line x1="9" y1="14" x2="17" y2="14" stroke="white" strokeWidth="1.5" strokeOpacity={0.5} strokeLinecap="round" />
-      <line x1="9" y1="18" x2="14" y2="18" stroke="white" strokeWidth="1.5" strokeOpacity={0.5} strokeLinecap="round" />
-      <circle cx="22" cy="22" r="5" stroke="white" strokeWidth="1.5" strokeOpacity={0.7} />
-      <line x1="26" y1="26" x2="29" y2="29" stroke="white" strokeWidth="1.5" strokeOpacity={0.7} strokeLinecap="round" />
-    </svg>
-  );
-}
-
-function BuildIcon() {
-  return (
-    <svg width="48" height="48" viewBox="0 0 32 32" fill="none" aria-hidden="true">
-      <polyline points="6,20 12,14 17,19 26,10" stroke="white" strokeWidth="1.5" strokeOpacity={0.7} strokeLinecap="round" strokeLinejoin="round" />
-      <line x1="4" y1="26" x2="28" y2="26" stroke="white" strokeWidth="1.5" strokeOpacity={0.3} strokeLinecap="round" />
-      <circle cx="26" cy="10" r="2.5" fill="white" fillOpacity={0.7} />
-    </svg>
-  );
-}
-
-function RetainIcon() {
-  return (
-    <svg width="48" height="48" viewBox="0 0 32 32" fill="none" aria-hidden="true">
-      <path d="M16 6 C10 6 6 10 6 16 C6 22 10 26 16 26 C22 26 26 22 26 16" stroke="white" strokeWidth="1.5" strokeOpacity={0.7} strokeLinecap="round" />
-      <polyline points="22,6 26,10 22,14" stroke="white" strokeWidth="1.5" strokeOpacity={0.7} strokeLinecap="round" strokeLinejoin="round" />
-      <circle cx="16" cy="16" r="3" fill="white" fillOpacity={0.5} />
-    </svg>
-  );
-}
-
 const steps = [
   {
     number: "1",
-    title: "Workflow Audit",
-    body: "You'll know exactly where you're losing time and money — and what to do about it. We surface the highest-ROI opportunities in your operations and hand you a clear, prioritized action plan.",
-    icon: <AuditIcon />,
+    title: "Funnel Map Audit",
+    body: "A free 30-minute session where we audit your funnel, identify bottlenecks, and map out exactly where AI can move the needle.",
   },
   {
     number: "2",
-    title: "Build & Deploy",
-    body: "Your new system is live and working in under 30 days. Hours clawed back, bottlenecks cleared, and your team free to focus on the work that actually grows the business.",
-    icon: <BuildIcon />,
+    title: "Proposal",
+    body: "We deliver a clear scope, timeline, and fixed price. No surprises, no hourly billing. You know exactly what you're getting.",
   },
   {
     number: "3",
-    title: "Iterate & Retain",
-    body: "Your stack keeps getting sharper without you having to think about it. We stay in your corner — shipping improvements and building new systems as you scale.",
-    icon: <RetainIcon />,
+    title: "Project",
+    body: "Our team builds, tests, and deploys your systems. You get weekly updates and a working product — not a deck full of promises.",
+  },
+  {
+    number: "4",
+    title: "Ongoing Management",
+    body: "Optional retainer for monitoring, optimization, and iteration. Most clients see compounding returns over time.",
   },
 ];
 
 const staggerContainer: Variants = {
   hidden: {},
-  visible: { transition: { staggerChildren: 0.15 } },
+  visible: { transition: { staggerChildren: 0.12 } },
 };
 
 const slideUp: Variants = {
-  hidden: { opacity: 0, y: 40 },
+  hidden: { opacity: 0, y: 32 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.55, ease: EASE } },
 };
 
@@ -83,32 +52,34 @@ export default function HowItWorks() {
           className="mb-16"
         >
           <p className="text-sm font-semibold uppercase tracking-[0.15em] text-white/35 mb-4">
-            Our Process
+            How We Work
           </p>
-          <h2 className="section-headline text-white max-w-xl">
-            Simple steps. Serious results.
+          <h2 className="section-headline text-white max-w-2xl">
+            From first call to launch.
           </h2>
         </motion.div>
 
         <motion.div
-          ref={ref}
           variants={staggerContainer}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
-          className="grid md:grid-cols-3 gap-8"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4"
         >
           {steps.map((step) => (
-            <motion.div key={step.number} variants={slideUp} className="flex flex-col gap-5">
-              {/* Icon */}
-              <div className="w-12 h-12">{step.icon}</div>
+            <motion.div
+              key={step.number}
+              variants={slideUp}
+              className="bg-white/[0.04] border border-white/[0.07] p-8 flex flex-col gap-6"
+            >
+              {/* Number badge */}
+              <span className="w-7 h-7 flex items-center justify-center bg-white/10 text-white text-sm font-bold flex-shrink-0">
+                {step.number}
+              </span>
 
-              {/* Number + Title */}
-              <div className="flex items-center gap-3">
-                <span className="text-2xl font-bold font-mono text-white/30 flex-shrink-0">{step.number}</span>
-                <h3 className="text-xl font-bold text-white leading-snug">{step.title}</h3>
+              <div className="flex flex-col gap-3">
+                <h3 className="text-lg font-bold text-white leading-snug">{step.title}</h3>
+                <p className="text-sm text-white/50 leading-relaxed">{step.body}</p>
               </div>
-
-              <p className="text-base text-white/55 leading-relaxed">{step.body}</p>
             </motion.div>
           ))}
         </motion.div>
