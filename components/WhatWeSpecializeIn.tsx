@@ -9,7 +9,7 @@ const EASE: [number, number, number, number] = [0.25, 0.1, 0.25, 1];
 const specializations = [
   {
     title: "Lead Generation",
-    tags: ["AI Cold Email", "Outbound Automation", "Content Systems"],
+    tags: ["AI Cold Email", "Outbound Automation", "Content Pipelines"],
     image: "/leadImage-1.png",
   },
   {
