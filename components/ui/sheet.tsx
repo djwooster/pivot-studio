@@ -49,7 +49,7 @@ function SheetContent({
 }) {
   const dashboardContainer = useDashboardContainer();
   return (
-    <SheetPortal container={dashboardContainer ?? undefined}>
+    <SheetPortal container={(dashboardContainer as HTMLElement) ?? undefined}>
       <SheetOverlay />
       <SheetPrimitive.Popup
         data-slot="sheet-content"

@@ -73,7 +73,7 @@ function SelectContent({
   >) {
   const dashboardContainer = useDashboardContainer()
   return (
-    <SelectPrimitive.Portal container={dashboardContainer ?? undefined}>
+    <SelectPrimitive.Portal container={(dashboardContainer as HTMLElement) ?? undefined}>
       <SelectPrimitive.Positioner
         side={side}
         sideOffset={sideOffset}

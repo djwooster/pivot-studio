@@ -33,7 +33,7 @@ function DropdownMenuContent({
   >) {
   const dashboardContainer = useDashboardContainer()
   return (
-    <MenuPrimitive.Portal container={dashboardContainer ?? undefined}>
+    <MenuPrimitive.Portal container={(dashboardContainer as HTMLElement) ?? undefined}>
       <MenuPrimitive.Positioner
         className="isolate z-50 outline-none"
         align={align}
