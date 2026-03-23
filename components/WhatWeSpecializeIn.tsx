@@ -54,7 +54,7 @@ export default function WhatWeSpecializeIn() {
   const isInView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section className="bg-white py-28 px-6" id="specializations" ref={ref}>
+    <section className="bg-white pt-0 pb-28 md:py-28 px-6" id="specializations" ref={ref}>
       <div className="max-w-[90rem] mx-auto">
 
         <motion.div
