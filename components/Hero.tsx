@@ -83,10 +83,10 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Hero dashboard preview */}
+      {/* Hero dashboard preview — hidden on mobile */}
       <motion.div
         {...fadeUp(0.8)}
-        className="w-full max-w-[90rem] mx-auto px-6 pb-16"
+        className="hidden md:block w-full max-w-[90rem] mx-auto px-6 pb-16"
       >
         {/* Eyebrow */}
         <p className="text-xs font-medium text-[#0a0a0a]/40 mb-3 tracking-wide">

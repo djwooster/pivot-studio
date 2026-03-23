@@ -122,7 +122,7 @@ export default function ROIMath() {
           variants={staggerContainer}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
-          className="grid grid-cols-2 gap-4"
+          className="grid grid-cols-1 sm:grid-cols-2 gap-4"
         >
           {stats.map((stat) => {
             const isHighlighted = stat.highlighted;
