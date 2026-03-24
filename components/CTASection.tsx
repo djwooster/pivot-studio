@@ -34,19 +34,17 @@ export default function CTASection() {
             Stop duct-taping your workflow.<br className="hidden sm:block" /> Let&apos;s build something real.
           </h2>
 
-          <p className="text-base text-white/50 max-w-md leading-relaxed md:text-center">
+          <p className="text-lg text-white/50 max-w-lg leading-relaxed md:text-center">
             Book a free 30-minute call. We&apos;ll learn about your business, identify
             the highest-leverage opportunities, and tell you exactly how we&apos;d approach it.
-            No pitch. No pressure.
+
           </p>
 
           <ArrowButton href="https://cal.com/djwooster/intro-call" external variant="light" className="w-full md:w-auto h-14 px-10 text-base">
             See if we&apos;re a fit
           </ArrowButton>
 
-          <p className="text-xs text-white/25">
-            Typical response within 24 hours. No spam, ever.
-          </p>
+          
         </motion.div>
       </div>
     </section>

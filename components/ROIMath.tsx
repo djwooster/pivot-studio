@@ -112,7 +112,7 @@ export default function ROIMath() {
           <h2 className="section-headline text-white">
             The math works in your favor.
           </h2>
-          <p className="text-base text-white/50 leading-relaxed max-w-sm">
+          <p className="text-xl text-white/50 leading-relaxed max-w-sm">
             Every engagement is designed to pay for itself — usually within the first quarter. Here&apos;s what clients actually see.
           </p>
         </motion.div>

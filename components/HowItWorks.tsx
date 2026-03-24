@@ -78,7 +78,7 @@ export default function HowItWorks() {
 
               <div className="flex flex-col gap-3">
                 <h3 className="text-lg font-bold text-white leading-snug">{step.title}</h3>
-                <p className="text-sm text-white/50 leading-relaxed">{step.body}</p>
+                <p className="text-base text-white/50 leading-relaxed">{step.body}</p>
               </div>
             </motion.div>
           ))}

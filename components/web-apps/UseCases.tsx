@@ -112,7 +112,7 @@ export default function UseCases() {
           <h2 className="section-headline text-[#0a0a0a] max-w-2xl mb-6">
             Built for the way your business actually works.
           </h2>
-          <p className="text-base text-[#0a0a0a]/50 leading-relaxed max-w-2xl">
+          <p className="text-xl text-[#0a0a0a]/50 leading-relaxed max-w-2xl">
             Every business has processes that off-the-shelf tools can&apos;t quite handle. We build the custom software that fills those gaps — purpose-built, integrated, and designed to be used every day.
           </p>
         </motion.div>

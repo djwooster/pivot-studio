@@ -9,8 +9,8 @@ export default function Footer() {
           &copy; {year} Pivot Studio. All rights reserved.
         </p>
         <div className="flex items-center gap-5">
-          <a href="mailto:hello@pivotstudio.io" className="text-xs text-[#0a0a0a]/30 hover:text-[#0a0a0a]/60 transition-colors duration-200">
-            hello@pivotstudio.io
+          <a href="mailto:contact@pivotstudio.app" className="text-xs text-[#0a0a0a]/30 hover:text-[#0a0a0a]/60 transition-colors duration-200">
+            contact@pivotstudio.app
           </a>
         </div>
       </div>
