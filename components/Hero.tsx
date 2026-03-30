@@ -2,16 +2,6 @@
 
 import { motion } from "framer-motion";
 
-// const HeroDashboardPreview = dynamic(
-//   () => import("@/components/HeroDashboardPreview"),
-//   {
-//     ssr: false,
-//     loading: () => (
-//       <div className="w-full h-full bg-neutral-50 animate-pulse rounded-lg" />
-//     ),
-//   }
-// );
-
 const EASE: [number, number, number, number] = [0.25, 0.1, 0.25, 1];
 
 function fadeUp(delay: number) {
@@ -57,17 +47,13 @@ export default function Hero() {
           </motion.span>
         </h1>
 
-        {/* Supporting copy + CTAs */}
-        <div className="flex flex-col gap-10">
-          <motion.p
-            {...fadeUp(0.6)}
-            className="text-[#0a0a0a]/50 leading-relaxed max-w-3xl"
-            style={{ fontSize: "clamp(18px, 1.2vw, 24px)" }}
-          >
-            Stop spending time on things AI can do. Take your hours back.
-          </motion.p>
-
-        </div>
+        <motion.p
+          {...fadeUp(0.6)}
+          className="text-[#0a0a0a]/50 leading-relaxed max-w-3xl"
+          style={{ fontSize: "clamp(18px, 1.2vw, 24px)" }}
+        >
+          Stop spending time on things AI can do. Take your hours back.
+        </motion.p>
       </div>
 
       {/* ROI dashboard image */}

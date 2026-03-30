@@ -7,11 +7,6 @@ import Image from "next/image";
 const EASE: [number, number, number, number] = [0.25, 0.1, 0.25, 1];
 
 const specializations = [
-  // {
-  //   title: "Lead Generation",
-  //   tags: ["AI Cold Email", "Outbound Automation", "Content Pipelines"],
-  //   image: "/leadImage-1.png",
-  // },
   {
     title: "Revenue Operations",
     tags: ["CRM Automation", "Pipeline Optimization", "AI Nurture Sequences"],
@@ -22,11 +17,6 @@ const specializations = [
     tags: ["Custom Web Apps", "Landing Pages", "Interactive Demos"],
     image: "/front-end.png",
   },
-  // {
-  //   title: "Hiring Systems",
-  //   tags: ["Intake Funnels", "AI Scoring", "Trial Automation"],
-  //   image: "/hiring.png",
-  // },
   {
     title: "Backend Infrastructure",
     tags: ["API Integrations", "Data Pipelines", "AI Agent Systems"],
