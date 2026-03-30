@@ -42,18 +42,18 @@ function Highlight({ children }: { children: React.ReactNode }) {
 export default function Hero() {
   return (
     <section className="relative bg-white pt-6" style={{ overflowX: "clip" }} id="home">
-      <div className="max-w-[90rem] mx-auto px-6 pt-[136px] pb-12 md:pt-[220px] md:pb-12">
+      <div className="relative z-10 max-w-[90rem] mx-auto px-6 pt-[136px] pb-0 md:pt-[220px] md:pb-0">
         {/* Full-width headline */}
         <h1
-          className="font-bold text-[#0a0a0a] leading-[1.15] tracking-[-0.02em] mb-6"
-          style={{ fontSize: "clamp(24px, 3.5vw, 80px)" }}
+          className="font-semibold text-[#0a0a0a] leading-[1.15] tracking-[-0.02em] mb-4"
+          style={{ fontSize: "clamp(24px, 3vw, 80px)" }}
           aria-label="The AI & Automation Agency that saves you time, recaptures revenue, and removes headaches."
         >
           <motion.span {...fadeUp(0.34)} className="block">
-            The <Highlight>AI & Automation</Highlight> Agency that saves you time,
+            We build dashboards and automations
           </motion.span>
           <motion.span {...fadeUp(0.46)} className="block">
-            recaptures revenue, and removes headaches.
+            that drive your growth.
           </motion.span>
         </h1>
 
@@ -67,37 +67,20 @@ export default function Hero() {
             Stop spending time on things AI can do. Take your hours back.
           </motion.p>
 
-          <motion.div
-            {...fadeUp(0.68)}
-            className="flex flex-col gap-3 w-full sm:w-64"
-          >
-            {/* <ArrowButton
-              href="https://cal.com/djwooster/intro-call"
-              external
-              className="h-12 px-7 text-sm"
-            >
-              See if we&apos;re a fit
-            </ArrowButton> */}
-          </motion.div>
         </div>
       </div>
 
-      {/* ROI Dashboard image */}
-      <motion.div
-        {...fadeUp(0.8)}
-        className="w-full flex justify-center pb-16 px-6"
-      >
-        <div className="relative w-full sm:w-[85vw] md:w-[75vw]">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="/roi-dashboard.png"
-            alt="ROI Dashboard"
-            className="w-full h-auto"
-          />
-          <div
-            className="absolute inset-x-0 bottom-0"
-            style={{ height: "35%", background: "linear-gradient(to bottom, transparent, white)" }}
-          />
+      {/* ROI dashboard image */}
+      <motion.div {...fadeUp(0.8)} className="w-full pt-20 pb-16">
+        <div className="max-w-[90rem] mx-auto px-6">
+          <div className="relative w-[90vw] border-t border-l border-r border-black/15 overflow-hidden max-h-[220px] sm:max-h-none">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/roi-dashboard.png" alt="ROI Dashboard" className="block h-auto max-w-none w-[220%] sm:w-full" />
+            <div
+              className="absolute inset-x-0 bottom-0 pointer-events-none"
+              style={{ height: "40%", background: "linear-gradient(to bottom, transparent, white)" }}
+            />
+          </div>
         </div>
       </motion.div>
     </section>
