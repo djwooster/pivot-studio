@@ -42,7 +42,7 @@ function Highlight({ children }: { children: React.ReactNode }) {
 
 export default function Hero() {
   return (
-    <section className="relative bg-white pt-6 overflow-hidden" id="home">
+    <section className="relative bg-white pt-6" style={{ overflowX: "clip" }} id="home">
       <div className="max-w-[90rem] mx-auto px-6 pt-[136px] pb-12 md:pt-[220px] md:pb-12">
         {/* Full-width headline */}
         <h1
