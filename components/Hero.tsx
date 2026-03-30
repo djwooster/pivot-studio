@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Image from "next/image";
 
 // const HeroDashboardPreview = dynamic(
 //   () => import("@/components/HeroDashboardPreview"),
@@ -89,13 +88,11 @@ export default function Hero() {
         className="w-full flex justify-center pb-16 px-6"
       >
         <div className="relative w-full sm:w-[85vw] md:w-[75vw]">
-          <Image
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
             src="/roi-dashboard.png"
             alt="ROI Dashboard"
-            width={1600}
-            height={900}
             className="w-full h-auto"
-            priority
           />
           <div
             className="absolute inset-x-0 bottom-0"
