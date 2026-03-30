@@ -1,17 +1,17 @@
 "use client";
 
 import { motion } from "framer-motion";
-import dynamic from "next/dynamic";
+import Image from "next/image";
 
-const HeroDashboardPreview = dynamic(
-  () => import("@/components/HeroDashboardPreview"),
-  {
-    ssr: false,
-    loading: () => (
-      <div className="w-full h-full bg-neutral-50 animate-pulse rounded-lg" />
-    ),
-  }
-);
+// const HeroDashboardPreview = dynamic(
+//   () => import("@/components/HeroDashboardPreview"),
+//   {
+//     ssr: false,
+//     loading: () => (
+//       <div className="w-full h-full bg-neutral-50 animate-pulse rounded-lg" />
+//     ),
+//   }
+// );
 
 const EASE: [number, number, number, number] = [0.25, 0.1, 0.25, 1];
 
@@ -83,19 +83,24 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Hero dashboard preview — hidden on mobile */}
+      {/* ROI Dashboard image */}
       <motion.div
         {...fadeUp(0.8)}
-        className="hidden md:block w-full max-w-[90rem] mx-auto px-6 pb-16"
+        className="w-full flex justify-center pb-16 px-6"
       >
-        {/* Eyebrow */}
-        <p className="text-xs font-medium text-[#0a0a0a]/40 mb-3 tracking-wide">
-          ✦ This is interactive — click around and picture it as your own dashboard
-        </p>
-
-        {/* Clip to preview height */}
-        <div className="w-full overflow-hidden bg-white border border-neutral-200 rounded-lg" style={{ height: "90vh" }}>
-          <HeroDashboardPreview />
+        <div className="relative w-full sm:w-[85vw] md:w-[75vw]">
+          <Image
+            src="/roi-dashboard.png"
+            alt="ROI Dashboard"
+            width={1600}
+            height={900}
+            className="w-full h-auto"
+            priority
+          />
+          <div
+            className="absolute inset-x-0 bottom-0"
+            style={{ height: "35%", background: "linear-gradient(to bottom, transparent, white)" }}
+          />
         </div>
       </motion.div>
     </section>
