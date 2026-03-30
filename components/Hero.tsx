@@ -12,22 +12,6 @@ function fadeUp(delay: number) {
   };
 }
 
-// Marker highlight — absolutely positioned swatch behind the text
-function Highlight({ children }: { children: React.ReactNode }) {
-  return (
-    <span className="relative inline whitespace-nowrap">
-      <span
-        aria-hidden="true"
-        className="absolute pointer-events-none"
-        style={{
-          inset: "0.05em -0.12em",
-          backgroundColor: "rgba(100, 190, 255, 0.28)",
-        }}
-      />
-      <span className="relative">{children}</span>
-    </span>
-  );
-}
 
 export default function Hero() {
   return (
