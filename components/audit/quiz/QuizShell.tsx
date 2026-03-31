@@ -34,13 +34,10 @@ function Landing({ onStart }: { onStart: () => void }) {
         >
           Begin the audit <span style={{ fontSize: '18px' }}>→</span>
         </button>
-        <p style={{ fontSize: '12px', color: '#AEAAA4', marginTop: '14px', fontFamily: sans }}>
-          No credit card &nbsp;·&nbsp; Instant results &nbsp;·&nbsp; Takes 4 minutes
-        </p>
       </div>
 
       <div>
-        <p style={{ fontSize: '11px', fontWeight: 500, letterSpacing: '0.08em', textTransform: 'uppercase', color: '#AEAAA4', marginBottom: '20px', fontFamily: sans }}>
+        <p style={{ fontSize: '16px', fontWeight: 600, color: '#1A1A1A', marginBottom: '20px', fontFamily: sans }}>
           {"What's included in your report"}
         </p>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '10px', marginBottom: '36px' }}>
