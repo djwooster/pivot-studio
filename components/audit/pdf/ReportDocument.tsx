@@ -4,9 +4,7 @@ import {
 } from '@react-pdf/renderer'
 import type { AuditSubmission } from '@/types/audit'
 import { TRACK_LABELS, DIMENSION_LABELS } from '@/lib/audit/questions'
-
-const fmtDollar = (n: number) =>
-  '$' + (n >= 1_000_000 ? (n/1_000_000).toFixed(1) + 'M' : n >= 1_000 ? Math.round(n/1_000) + 'K' : n.toLocaleString())
+import { fmtDollar } from '@/lib/audit/tokens'
 
 const styles = StyleSheet.create({
   page:        { padding: 48, fontFamily: 'Helvetica', backgroundColor: '#FFFFFF', color: '#1A1A1A' },

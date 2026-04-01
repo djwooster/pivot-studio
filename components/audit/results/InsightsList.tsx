@@ -70,15 +70,17 @@ export function InsightsList({ cats }: InsightsListProps) {
         {insights.map(({ cat, score, text, dim, status }, i) => {
           const cfg = STATUS_CONFIG[status]
           return (
-            <div key={cat} style={{ padding: '16px 18px', background: '#FFFFFF', borderBottom: i < insights.length - 1 ? '1px solid #E8E5E0' : 'none' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '8px' }}>
-                <span style={{ fontSize: '15px', fontWeight: 600, color: '#1A1A1A', fontFamily: sans }}>{dim}</span>
-                <span style={{ fontSize: '10px', fontWeight: 500, color: cfg.color, background: cfg.bg, padding: '2px 8px', borderRadius: '3px', letterSpacing: '0.06em', textTransform: 'uppercase', fontFamily: sans }}>
-                  {cfg.label}
-                </span>
-                <span style={{ marginLeft: 'auto', fontSize: '13px', fontWeight: 500, color: '#1A1A1A', fontFamily: sans }}>{score}%</span>
+            <div key={cat} style={{ padding: '16px 18px', background: '#FFFFFF', borderBottom: i < insights.length - 1 ? '1px solid #E8E5E0' : 'none', display: 'flex', alignItems: 'center', gap: '16px' }}>
+              <div style={{ flex: 1 }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '8px' }}>
+                  <span style={{ fontSize: '15px', fontWeight: 600, color: '#1A1A1A', fontFamily: sans }}>{dim}</span>
+                  <span style={{ fontSize: '10px', fontWeight: 500, color: cfg.color, background: cfg.bg, padding: '2px 8px', borderRadius: '3px', letterSpacing: '0.06em', textTransform: 'uppercase', fontFamily: sans }}>
+                    {cfg.label}
+                  </span>
+                </div>
+                <p style={{ fontSize: '14px', color: '#6B6860', lineHeight: 1.65, fontFamily: sans, fontWeight: 400, margin: 0, maxWidth: '85%' }}>{text}</p>
               </div>
-              <p style={{ fontSize: '14px', color: '#6B6860', lineHeight: 1.65, fontFamily: sans, fontWeight: 400, margin: 0 }}>{text}</p>
+              <span style={{ fontSize: '24px', fontWeight: 500, color: '#1A1A1A', fontFamily: sans, minWidth: '52px', textAlign: 'center', flexShrink: 0 }}>{score}%</span>
             </div>
           )
         })}

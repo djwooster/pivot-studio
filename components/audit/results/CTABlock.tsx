@@ -6,27 +6,19 @@ import type { Track } from '@/types/audit'
 import { TRACK_BOOKING_LABELS } from '@/lib/audit/questions'
 import { sans, serif, getBookingUrl } from '@/lib/audit/tokens'
 
-interface CTABlockProps {
+interface CTAProps {
   track:        Track
   submissionId: string
   company:      string
 }
 
-export function CTABlock({ track, submissionId, company }: CTABlockProps) {
-  const [visible, setVisible]     = useState(false)
-  const [loading, setLoading]     = useState(false)
+export function NextStepCTA({ track, submissionId, company }: CTAProps) {
+  const [visible, setVisible] = useState(false)
+  const [loading, setLoading] = useState(false)
   const bookingLabel = TRACK_BOOKING_LABELS[track]
   const bookingUrl   = getBookingUrl(track)
 
-  useEffect(() => {
-    const t = setTimeout(() => setVisible(true), 1000)
-    return () => clearTimeout(t)
-  }, [])
-
-  const handleShare = () => {
-    navigator.clipboard.writeText(window.location.href)
-    toast.success('Link copied to clipboard')
-  }
+  useEffect(() => { setVisible(true) }, [])
 
   const handleDownload = async () => {
     const toastId = toast.loading('Generating your report…')
@@ -52,50 +44,56 @@ export function CTABlock({ track, submissionId, company }: CTABlockProps) {
   }
 
   return (
-    <>
-      {/* Dark CTA block */}
-      <div style={{
-        background:  '#1A1A1A',
-        borderRadius:'12px',
-        padding:     '32px 28px',
-        marginBottom:'24px',
-        opacity:     visible ? 1 : 0,
-        transform:   visible ? 'translateY(0)' : 'translateY(16px)',
-        transition:  'all 0.6s cubic-bezier(0.22,1,0.36,1)',
-      }}>
-        <div style={{ fontSize: '11px', fontWeight: 500, color: 'rgba(255,255,255,0.4)', letterSpacing: '0.1em', textTransform: 'uppercase', fontFamily: sans, marginBottom: '14px' }}>
-          Recommended next step
-        </div>
-        <h3 style={{ fontFamily: serif, fontSize: 'clamp(1.4rem, 3vw, 1.9rem)', fontWeight: 400, color: '#fff', lineHeight: 1.25, marginBottom: '14px' }}>
-          Turn your score into a <em>concrete</em> 90-day roadmap
-        </h3>
-        <p style={{ fontSize: '13px', color: 'rgba(255,255,255,0.6)', lineHeight: 1.7, fontFamily: sans, fontWeight: 300, marginBottom: '24px', maxWidth: '480px' }}>
-          In a focused 30-minute call, we walk through your exact gaps, identify your two or three highest-ROI opportunities, and give you a prioritized action plan — specific to your business, your stack, and your team.
-        </p>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-          <a
-            href={bookingUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="audit-cta-btn"
-            style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', background: '#fff', color: '#1A1A1A', textDecoration: 'none', padding: '14px 24px', borderRadius: '8px', fontSize: '15px', fontWeight: 500, fontFamily: sans }}
-          >
-            {bookingLabel} →
-          </a>
-          <button
-            onClick={handleDownload}
-            disabled={loading}
-            className="audit-cta-btn"
-            style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', background: 'transparent', color: 'rgba(255,255,255,0.6)', border: '1px solid rgba(255,255,255,0.15)', padding: '13px 24px', borderRadius: '8px', fontSize: '14px', fontWeight: 400, cursor: 'pointer', fontFamily: sans }}
-          >
-            {loading ? 'Generating…' : 'Download PDF report'}
-          </button>
-        </div>
-        <p style={{ fontSize: '11px', color: 'rgba(255,255,255,0.25)', marginTop: '16px', fontFamily: sans }}>
-          3 audit spots remaining this week
-        </p>
+    <div style={{
+      background:   '#1A1A1A',
+      borderRadius: '12px',
+      padding:      '32px 28px',
+      marginBottom: '32px',
+      opacity:      visible ? 1 : 0,
+      transform:    visible ? 'translateY(0)' : 'translateY(16px)',
+      transition:   'all 0.6s cubic-bezier(0.22,1,0.36,1)',
+    }}>
+      <div style={{ fontSize: '11px', fontWeight: 500, color: 'rgba(255,255,255,0.4)', letterSpacing: '0.1em', textTransform: 'uppercase', fontFamily: sans, marginBottom: '14px' }}>
+        Recommended next step
       </div>
+      <h3 style={{ fontFamily: serif, fontSize: 'clamp(1.4rem, 3vw, 1.9rem)', fontWeight: 400, color: '#fff', lineHeight: 1.25, marginBottom: '14px' }}>
+        Turn your score into a <em>concrete</em> 90-day roadmap
+      </h3>
+      <p style={{ fontSize: '13px', color: 'rgba(255,255,255,0.6)', lineHeight: 1.7, fontFamily: sans, fontWeight: 300, marginBottom: '24px', maxWidth: '480px' }}>
+        In a focused 30-minute call, we walk through your exact gaps, identify your two or three highest-ROI opportunities, and give you a prioritized action plan — specific to your business, your stack, and your team.
+      </p>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+        <a
+          href={bookingUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="audit-cta-btn"
+          style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', background: '#fff', color: '#1A1A1A', textDecoration: 'none', padding: '14px 24px', borderRadius: '8px', fontSize: '15px', fontWeight: 500, fontFamily: sans }}
+        >
+          {bookingLabel} →
+        </a>
+        <button
+          onClick={handleDownload}
+          disabled={loading}
+          className="audit-cta-btn"
+          style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', background: 'transparent', color: 'rgba(255,255,255,0.6)', border: '1px solid rgba(255,255,255,0.15)', padding: '13px 24px', borderRadius: '8px', fontSize: '14px', fontWeight: 400, cursor: 'pointer', fontFamily: sans }}
+        >
+          {loading ? 'Generating…' : 'Download PDF report'}
+        </button>
+      </div>
+      
+    </div>
+  )
+}
 
+export function CTABlock({ track, submissionId, company }: CTAProps) {
+  const handleShare = () => {
+    navigator.clipboard.writeText(window.location.href)
+    toast.success('Link copied to clipboard')
+  }
+
+  return (
+    <>
       {/* Share button */}
       <div style={{ textAlign: 'center', marginBottom: '24px' }}>
         <button

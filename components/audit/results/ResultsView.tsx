@@ -3,14 +3,13 @@ import { FinancialImpact } from './FinancialImpact'
 import { CapabilityRadar } from './CapabilityRadar'
 import { BenchmarkChart }  from './BenchmarkChart'
 import { InsightsList }    from './InsightsList'
-import { CTABlock }        from './CTABlock'
-import { AuditCard }       from '@/components/audit/ui/AuditCard'
-import { PropertyRow }     from '@/components/audit/ui/PropertyRow'
-import { TRACK_LABELS }    from '@/lib/audit/questions'
-import type { AuditSubmission } from '@/types/audit'
-import { sans, serif }         from '@/lib/audit/tokens'
+import { CTABlock }               from './CTABlock'
+import type { NarrativeSection }  from '@/lib/audit/narrative'
+import { TRACK_LABELS }           from '@/lib/audit/questions'
+import type { AuditSubmission }   from '@/types/audit'
+import { sans, serif }            from '@/lib/audit/tokens'
 
-interface ResultsViewProps { submission: AuditSubmission }
+interface ResultsViewProps { submission: AuditSubmission; financialNarrative?: NarrativeSection[] }
 
 const TIER_BLURBS: Record<string, string> = {
   'High-Performance Operator': 'You\'re operating at a level most businesses won\'t reach for years. Your report highlights where to push further.',
@@ -19,7 +18,7 @@ const TIER_BLURBS: Record<string, string> = {
   'Operational Novice':        'Every high-performing business starts here. Your report maps the clearest path to your first automation wins.',
 }
 
-export function ResultsView({ submission }: ResultsViewProps) {
+export function ResultsView({ submission, financialNarrative }: ResultsViewProps) {
   const { score, tier: tierName, cats, financial_impact: fin, track, name, company, role, top_gap, id } = submission
   const firstName = name.split(' ')[0]
 
@@ -42,26 +41,40 @@ export function ResultsView({ submission }: ResultsViewProps) {
     <div className="audit-fade-in">
       {/* Score Header */}
       <div style={{ paddingBottom: '32px', borderBottom: '1px solid #E8E5E0', marginBottom: '32px' }}>
-        <div style={{ fontSize: '14px', color: '#AEAAA4', fontFamily: sans, marginBottom: '16px' }}>
-          AI Readiness Report &nbsp;·&nbsp; {company} &nbsp;·&nbsp; {new Date(submission.created_at).toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}
+        <div style={{ fontSize: '13px', color: '#AEAAA4', fontFamily: sans, marginBottom: '20px' }}>
+          AI Readiness Report &nbsp;·&nbsp; {new Date(submission.created_at).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
         </div>
-        <div style={{ display: 'flex', gap: '24px', alignItems: 'center', flexWrap: 'wrap' }}>
-          <ScoreRing score={score} tier={tier} size={110} />
+        <div style={{ display: 'flex', gap: '28px', alignItems: 'flex-start', flexWrap: 'wrap' }}>
+          <ScoreRing score={score} tier={tier} size={120} />
           <div style={{ flex: 1, minWidth: '200px' }}>
-            <div style={{ display: 'inline-block', fontSize: '12px', fontWeight: 500, color: tier.color, background: tier.soft, padding: '3px 10px', borderRadius: '4px', marginBottom: '10px', letterSpacing: '0.04em', fontFamily: sans }}>
+            <div style={{ display: 'inline-block', fontSize: '12px', fontWeight: 500, color: tier.color, background: tier.soft, padding: '3px 10px', borderRadius: '4px', marginBottom: '12px', letterSpacing: '0.04em', fontFamily: sans }}>
               {tier.name} &nbsp;·&nbsp; {tier.percentile}
             </div>
-            <h2 style={{ fontFamily: serif, fontSize: 'clamp(1.5rem, 3.5vw, 2.1rem)', fontWeight: 400, color: '#1A1A1A', lineHeight: 1.2, marginBottom: '10px', letterSpacing: '-0.015em' }}>
+            <h2 style={{ fontFamily: serif, fontSize: 'clamp(1.6rem, 3.5vw, 2.2rem)', fontWeight: 400, color: '#1A1A1A', lineHeight: 1.2, marginBottom: '8px', letterSpacing: '-0.015em' }}>
               {"Hi "}{firstName}{", here's your full picture."}
             </h2>
-            <p style={{ fontSize: '15px', color: '#6B6860', lineHeight: 1.6, fontFamily: sans, fontWeight: 300, margin: 0 }}>
+            <p style={{ fontSize: '14px', color: '#6B6860', lineHeight: 1.6, fontFamily: sans, fontWeight: 300, marginBottom: '20px' }}>
               {TIER_BLURBS[tierName]}
             </p>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px 24px' }}>
+              {[
+                [name,                    role],
+                [company,                 TRACK_LABELS[track]],
+                ['Top gap',               top_gap ?? 'Review full report'],
+                ['Investment range',      budgetLabel],
+              ].map(([label, value]) => (
+                <div key={label} style={{ display: 'flex', flexDirection: 'column', gap: '2px' }}>
+                  <span style={{ fontSize: '11px', color: '#AEAAA4', fontFamily: sans, textTransform: 'uppercase', letterSpacing: '0.06em' }}>{label}</span>
+                  <span style={{ fontSize: '13px', color: '#1A1A1A', fontFamily: sans, fontWeight: 500 }}>{value}</span>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
 
-      {/* Report Summary */}
+      {/* Report Summary — commented out, info surfaced in header above */}
+      {/*
       <AuditCard style={{ marginBottom: '32px' }}>
         <div style={{ padding: '12px 16px', borderBottom: '1px solid #E8E5E0', fontSize: '12px', fontWeight: 500, color: '#AEAAA4', letterSpacing: '0.06em', textTransform: 'uppercase', fontFamily: sans }}>
           Report summary
@@ -75,9 +88,13 @@ export function ResultsView({ submission }: ResultsViewProps) {
         <PropertyRow label="Investment range"   value={budgetLabel} />
         <PropertyRow label="Top priority gap"   value={top_gap ?? 'Review full report'} last />
       </AuditCard>
+      */}
+
+      {/* Key Insights */}
+      <InsightsList cats={cats} />
 
       {/* Financial Impact */}
-      {fin && <FinancialImpact data={fin} />}
+      {fin && <FinancialImpact data={fin} narrative={financialNarrative} />}
 
       {/* Capability Radar */}
       <CapabilityRadar cats={cats} />
@@ -85,10 +102,7 @@ export function ResultsView({ submission }: ResultsViewProps) {
       {/* Industry Benchmark */}
       <BenchmarkChart cats={cats} />
 
-      {/* Key Insights */}
-      <InsightsList cats={cats} />
-
-      {/* CTA */}
+      {/* Share + Social proof */}
       <CTABlock track={track} submissionId={id} company={company} />
     </div>
   )

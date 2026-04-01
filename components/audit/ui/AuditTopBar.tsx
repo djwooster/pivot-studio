@@ -9,7 +9,7 @@ export function AuditTopBar({ right }: AuditTopBarProps) {
     <div style={{
       background:     '#FFFFFF',
       borderBottom:   '1px solid #E8E5E0',
-      padding:        '0 24px',
+      padding:        '0 clamp(24px, 4vw, 48px)',
       height:         '52px',
       display:        'flex',
       alignItems:     'center',

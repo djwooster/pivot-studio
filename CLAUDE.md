@@ -34,6 +34,9 @@
 - Unused `const` vars (e.g. `serif`, unused imports) are ESLint errors in the Next.js build and will break Vercel deployments — clean them up before pushing
 - `whiteSpace: 'nowrap'` on an inline `<span>` forces the text onto one line and breaks paragraph flow — use CSS `text-decoration` with `textDecorationStyle` for underlines that need to span line breaks
 - Duplicate property keys in inline style objects (e.g. two `height` entries) cause a TypeScript error — use a single property or `borderTop` trick for dashed line visuals
+- Shared design tokens (font vars, formatters, env-based URLs) live in `lib/audit/tokens.ts` — import from there, never redeclare locally
+- `'use client'` on a component that has no hooks or event handlers forces its entire subtree onto the client bundle unnecessarily — only mark components client if they actually use browser APIs, hooks, or event handlers
+- `INSIGHT_COPY`, `INDUSTRY_AVG`, and `QUESTION_MAP` must all use the same category key set — when questions change, all three need updating or ghost keys will silently produce wrong/default values
 
 ## Design Tokens
 - Primary bg: `#ffffff`, text: `#0a0a0a`

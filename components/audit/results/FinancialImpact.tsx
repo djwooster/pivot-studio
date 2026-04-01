@@ -5,6 +5,7 @@ import { AuditCard }       from '@/components/audit/ui/AuditCard'
 import { Tag }             from '@/components/audit/ui/Tag'
 import { SectionHeader }   from '@/components/audit/ui/SectionHeader'
 import type { FinancialImpact as FI } from '@/types/audit'
+import type { NarrativeSection }       from '@/lib/audit/narrative'
 
 const FinancialAreaChart = dynamic(() => import('./FinancialAreaChart'), {
   ssr:     false,
@@ -13,9 +14,9 @@ const FinancialAreaChart = dynamic(() => import('./FinancialAreaChart'), {
 
 import { sans, serif, fmtDollar } from '@/lib/audit/tokens'
 
-interface FinancialImpactProps { data: FI }
+interface FinancialImpactProps { data: FI; narrative?: NarrativeSection[] }
 
-export function FinancialImpact({ data }: FinancialImpactProps) {
+export function FinancialImpact({ data, narrative }: FinancialImpactProps) {
   const metrics = [
     { label: 'Est. labor cost recovered', value: fmtDollar(data.automationRecovery),   sub: `${data.annualHoursLost} hours/yr at $75/hr avg`, color: '#2D6A4F', soft: '#D8F3DC' },
     { label: 'Est. revenue unlocked',     value: fmtDollar(data.revenueUnlock),         sub: 'New capacity × conversion rate',                  color: '#4A3728', soft: '#F5F0EB' },
@@ -41,6 +42,17 @@ export function FinancialImpact({ data }: FinancialImpactProps) {
           </div>
         ))}
       </div>
+
+      {narrative && narrative.length > 0 && (
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', marginBottom: '20px' }}>
+          {narrative.map(({ heading, body }) => (
+            <div key={heading} style={{ padding: '16px 18px', background: '#FAFAF9', border: '1px solid #E8E5E0', borderRadius: '8px' }}>
+              <div style={{ fontSize: '13px', fontWeight: 600, color: '#1A1A1A', fontFamily: sans, marginBottom: '6px' }}>{heading}</div>
+              <p style={{ fontSize: '13px', color: '#6B6860', lineHeight: 1.7, fontFamily: sans, fontWeight: 400, margin: 0 }}>{body}</p>
+            </div>
+          ))}
+        </div>
+      )}
 
       <AuditCard>
         <div style={{ padding: '14px 16px', borderBottom: '1px solid #E8E5E0' }}>
