@@ -33,7 +33,7 @@ function ResearchSection() {
           The case for moving now
         </div>
         <p style={{ fontSize: '14px', color: '#6B6860', lineHeight: 1.65, fontFamily: sans, fontWeight: 300, margin: 0 }}>
-          The gap between businesses that act on AI and those that wait is widening every quarter. Here's what the research says.
+          {"The gap between businesses that act on AI and those that wait is widening every quarter. Here's what the research says."}
         </p>
       </div>
       <div style={{ display: 'flex', flexDirection: 'column', gap: '1px', border: '1px solid #E8E5E0', borderRadius: '10px', overflow: 'hidden' }}>
