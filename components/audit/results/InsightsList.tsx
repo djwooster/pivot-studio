@@ -3,8 +3,7 @@
 import { DIMENSION_LABELS } from '@/lib/audit/questions'
 import { SectionHeader }    from '@/components/audit/ui/SectionHeader'
 
-const sans  = 'var(--font-geist-sans), system-ui, sans-serif'
-const serif = 'var(--font-instrument-serif), Georgia, serif'
+const sans = 'var(--font-geist-sans), system-ui, sans-serif'
 
 const INSIGHT_COPY: Record<string, string[]> = {
   biggest_bottleneck: [

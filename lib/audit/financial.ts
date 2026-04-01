@@ -16,9 +16,9 @@ export function calcFinancialImpact(
   track: Track
 ): FinancialImpact {
   const { laborRecoveryRate, revenueMultipliers } = TRACK_MULTIPLIERS[track]
-  const investIdx = Math.max(0, Math.min(3, (answers[5] ?? 1) - 1))
+  const investIdx = Math.max(0, Math.min(3, (answers[8] ?? 1) - 1))
 
-  const hoursWasted      = answers[1] ?? 10
+  const hoursWasted      = answers[2] ?? 10
   const annualHoursLost  = hoursWasted * 52
   const laborCostLost    = Math.round(annualHoursLost * 75)
   const automationRecovery = Math.round(laborCostLost * laborRecoveryRate)

@@ -10,8 +10,7 @@ const BenchmarkChartInner = dynamic(() => import('./BenchmarkChartInner'), {
   loading: () => <div style={{ height: 220 }} />,
 })
 
-const sans  = 'var(--font-geist-sans), system-ui, sans-serif'
-const serif = 'var(--font-instrument-serif), Georgia, serif'
+const sans = 'var(--font-geist-sans), system-ui, sans-serif'
 
 // Fixed industry benchmarks per dimension
 const INDUSTRY_AVG: Record<string, number> = {

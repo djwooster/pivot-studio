@@ -2,8 +2,7 @@
 
 import { ProgressDots } from '@/components/audit/ui/ProgressDots'
 
-const sans  = 'var(--font-geist-sans), system-ui, sans-serif'
-const serif = 'var(--font-instrument-serif), Georgia, serif'
+const sans = 'var(--font-geist-sans), system-ui, sans-serif'
 
 interface MidHookProps {
   onContinue: () => void

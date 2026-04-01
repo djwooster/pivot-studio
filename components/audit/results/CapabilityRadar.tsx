@@ -10,8 +10,6 @@ const RadarChartInner = dynamic(() => import('./RadarChartInner'), {
   loading: () => <div style={{ height: 300 }} />,
 })
 
-const sans  = 'var(--font-geist-sans), system-ui, sans-serif'
-const serif = 'var(--font-instrument-serif), Georgia, serif'
 
 interface CapabilityRadarProps { cats: Record<string, number> }
 

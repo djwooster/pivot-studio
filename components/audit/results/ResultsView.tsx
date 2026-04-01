@@ -38,7 +38,7 @@ export function ResultsView({ submission }: ResultsViewProps) {
   const tier     = { min: 0, max: 100, name: tierName, ...tierMeta }
 
   const budgetLabel = (() => {
-    const inv = submission.answers?.[5] ?? 1
+    const inv = submission.answers?.[8] ?? 1
     return ['Under $5K', '$5K–$20K', '$20K–$50K', '$50K+'][Math.max(0, inv - 1)]
   })()
 

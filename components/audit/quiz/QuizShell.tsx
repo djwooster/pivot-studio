@@ -3,7 +3,7 @@
 import { useRouter } from 'next/navigation'
 import { useAuditStore } from '@/lib/audit/store'
 import { getQuestionsForTrack } from '@/lib/audit/questions'
-import { TrackSelector } from './TrackSelector'
+// import { TrackSelector } from './TrackSelector'
 import { QuestionCard }  from './QuestionCard'
 import { MidHook }       from './MidHook'
 import { LeadCapture }   from './LeadCapture'
@@ -20,15 +20,15 @@ function Landing({ onStart }: { onStart: () => void }) {
         <span style={{ display: 'inline-block', fontSize: '11px', fontWeight: 500, letterSpacing: '0.08em', textTransform: 'uppercase', color: '#6B6860', background: '#F0EDE8', padding: '3px 10px', borderRadius: '4px', marginBottom: '24px', fontFamily: sans }}>
           Free Assessment · 4 minutes
         </span>
-        <h1 style={{ fontFamily: sans, fontSize: 'clamp(24px, 3vw, 80px)', fontWeight: 600, color: '#0a0a0a', lineHeight: 1.15, marginBottom: '20px', letterSpacing: '-0.02em' }}>
-          Most B2B service businesses are losing 15+ hours a week to work a system could handle.
+        <h1 style={{ fontFamily: sans, fontSize: 'clamp(24px, 2.5vw, 80px)', fontWeight: 600, color: '#0a0a0a', lineHeight: 1.15, marginBottom: '20px', letterSpacing: '-0.02em' }}>
+          Most businesses are losing 15+ hours per week to work AI could handle.
 <br />
           {/* <em>One of our clients cut their lead response time from 2 days to 10 minutes. Take the free 4-minute audit and find out exactly where automation could do the same for you.</em> */}
         </h1>
-        <p style={{ fontSize: 'clamp(18px, 1.2vw, 24px)', color: 'rgba(10,10,10,0.5)', lineHeight: 1.7, maxWidth: '520px', marginBottom: '36px', fontFamily: sans, fontWeight: 300 }}>
+        <p style={{ fontSize: 'clamp(18px, 1.2vw, 24px)', color: 'rgba(10,10,10,0.5)', lineHeight: 1.7, maxWidth: '100%', marginBottom: '36px', fontFamily: sans, fontWeight: 300 }}>
           {"One of our clients "}
           <span style={{ textDecoration: 'underline', textDecorationStyle: 'solid', textDecorationColor: 'rgba(74, 158, 107, 0.7)', textDecorationThickness: '1.5px', textUnderlineOffset: '3px' }}>
-            cut their lead response time from 2 days to 10 minutes
+            cut their lead response time from <strong style={{ color: '#1A1A1A', fontWeight: 600 }}>2 days</strong> to <strong style={{ color: '#1A1A1A', fontWeight: 600 }}>10 minutes</strong>
           </span>
           {". Take the free 4-minute audit and find out exactly where automation could do the same for you."}
         </p>
@@ -154,7 +154,7 @@ export function QuizShell() {
     <div style={{ minHeight: '100vh', background: '#FFFFFF', fontFamily: sans }}>
       <TopBar showProgress={showProgress} step={displayStep} totalSteps={10} />
 
-      <div style={{ maxWidth: '620px', margin: '0 auto', padding: 'clamp(28px, 5vw, 52px) 20px 80px' }}>
+      <div style={{ maxWidth: '700px', margin: '0 auto', padding: 'clamp(28px, 5vw, 52px) 20px 80px' }}>
         {stage === 'landing' && (
           <Landing onStart={() => setTrack('automate')} />
         )}
