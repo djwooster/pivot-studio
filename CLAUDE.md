@@ -15,16 +15,6 @@
 - Sticky requires all ancestors to have `overflow: visible` (the default)
 - Always add `self-start` (or `align-self: start`) to a sticky element inside a grid
 
-### CSS (continued)
-- `transform: scale()` creates a new containing block — `position: fixed` children are trapped inside and won't escape to the viewport
-- `position: fixed` with both `inset-y-0` and an explicit `height` (e.g. `h-svh`): top + height win, bottom is ignored. If the height is shorter than the container, a gap appears at the bottom. Fix with `height: 100%` scoped via a CSS override.
-- `min-height` is not a definite height — flex children using `h-full` inside a `min-h-svh` parent will collapse. Use an explicit `height: 100%` on the chain.
-
-### shadcn / Base UI Portals
-- All portal-based components (Sheet, Drawer, DropdownMenu, Select) default to portaling into `document.body` — they will escape any scaled/clipped container
-- Pattern to scope portals: create a React Context that holds the container `Element | null`, provide it at the wrapper div using a callback ref (`useState`, not `useRef` — so the ref is available on first render), then consume it in each `*Content` component and pass as `container` prop to the `Portal`
-- Callback ref: use `const [el, setEl] = useState<HTMLDivElement | null>(null)` + `ref={setEl}` so the element is available synchronously after mount (unlike `useRef` which stays `null` during the first render pass)
-
 ### Framer Motion
 - Elements with active `transform` (x, y, scale, etc.) break `position: sticky` — keep sticky on a plain wrapper div with no motion props
 - Ease cubic bezier arrays must be typed as `[number, number, number, number]` — `number[]` causes a TS error
@@ -39,9 +29,16 @@
 - Never use `sed` to edit files — it can zero out files on macOS (`sed -i ''` with certain patterns)
 - Always use the Edit tool for targeted changes
 
+### Audit Tool
+- Question IDs are coupled across three files — when renumbering questions, always update `QUESTION_MAP` in `lib/audit/scoring.ts` AND all answer index references in `lib/audit/financial.ts` and `app/api/audit/submit/route.ts` together
+- Unused `const` vars (e.g. `serif`, unused imports) are ESLint errors in the Next.js build and will break Vercel deployments — clean them up before pushing
+- `whiteSpace: 'nowrap'` on an inline `<span>` forces the text onto one line and breaks paragraph flow — use CSS `text-decoration` with `textDecorationStyle` for underlines that need to span line breaks
+- Duplicate property keys in inline style objects (e.g. two `height` entries) cause a TypeScript error — use a single property or `borderTop` trick for dashed line visuals
+
 ## Design Tokens
 - Primary bg: `#ffffff`, text: `#0a0a0a`
 - Dark/contrast sections: `#0a0a0a` bg, white text (HowItWorks, ROIMath, CTA)
 - Border radius: `0` everywhere
-- No images — SVG only
+- Hero uses `roi-dashboard.png` (not SVG) — "no images" rule has this exception
 - No gradients (minor exceptions: fade overlays)
+- Audit palette: `#1A1A1A` text, `#E8E5E0` borders, `#FAFAF9` subtle bg, `#6B6860` secondary text, `#AEAAA4` muted text, `#4a9e6b` / `#2D6A4F` green accents

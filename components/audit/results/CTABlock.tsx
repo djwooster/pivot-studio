@@ -4,19 +4,7 @@ import { useState, useEffect } from 'react'
 import { toast } from 'sonner'
 import type { Track } from '@/types/audit'
 import { TRACK_BOOKING_LABELS } from '@/lib/audit/questions'
-
-const sans  = 'var(--font-geist-sans), system-ui, sans-serif'
-const serif = 'var(--font-instrument-serif), Georgia, serif'
-
-function getBookingUrl(track: Track): string {
-  const map: Record<Track, string> = {
-    automate:     process.env.NEXT_PUBLIC_CAL_AUTOMATE_URL    ?? '#',
-    see_clearly:  process.env.NEXT_PUBLIC_CAL_SEE_CLEARLY_URL ?? '#',
-    build_better: process.env.NEXT_PUBLIC_CAL_BUILD_BETTER_URL ?? '#',
-    combined:     process.env.NEXT_PUBLIC_CAL_COMBINED_URL    ?? '#',
-  }
-  return map[track]
-}
+import { sans, serif, getBookingUrl } from '@/lib/audit/tokens'
 
 interface CTABlockProps {
   track:        Track

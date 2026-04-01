@@ -4,23 +4,22 @@ import dynamic from 'next/dynamic'
 import { AuditCard }      from '@/components/audit/ui/AuditCard'
 import { SectionHeader }  from '@/components/audit/ui/SectionHeader'
 import { DIMENSION_LABELS } from '@/lib/audit/questions'
+import { sans }             from '@/lib/audit/tokens'
 
 const BenchmarkChartInner = dynamic(() => import('./BenchmarkChartInner'), {
   ssr:     false,
   loading: () => <div style={{ height: 220 }} />,
 })
 
-const sans = 'var(--font-geist-sans), system-ui, sans-serif'
-
 // Fixed industry benchmarks per dimension
 const INDUSTRY_AVG: Record<string, number> = {
   current_state:        45,
   pain_intensity:       52,
-  growth_trajectory:    58,
-  tech_readiness:       48,
-  decision_speed:       55,
+  biggest_bottleneck:   50,
+  cost_of_delay:        42,
+  growth_potential:     55,
   ai_awareness:         38,
-  revenue_impact:       50,
+  decision_speed:       55,
   investment_readiness: 44,
 }
 

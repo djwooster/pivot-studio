@@ -2,8 +2,7 @@
 
 import { DIMENSION_LABELS } from '@/lib/audit/questions'
 import { SectionHeader }    from '@/components/audit/ui/SectionHeader'
-
-const sans = 'var(--font-geist-sans), system-ui, sans-serif'
+import { sans }             from '@/lib/audit/tokens'
 
 const INSIGHT_COPY: Record<string, string[]> = {
   biggest_bottleneck: [
@@ -36,23 +35,11 @@ const INSIGHT_COPY: Record<string, string[]> = {
     'That\'s over $50K in annual labor on tasks a system could handle. This is one of the fastest ROI opportunities in your business.',
     'This is a six-figure drain. At this volume, you\'re not just losing money — you\'re losing the ability to scale. This is the first thing we\'d address.',
   ],
-  growth_trajectory: [
-    'Automation is your fastest path to control. When systems handle the routine, your team can focus on stabilizing the core.',
-    'The ceiling on steady growth is almost always operational — the same team doing the same tasks can only output so much.',
-    'Operational strain during scale is the #1 reason good businesses plateau. This is exactly the window to build the systems that support your next level.',
-    'At this velocity, every week you delay an automation build costs you compounding opportunity. Speed of execution is your competitive moat.',
-  ],
   ai_awareness: [
     'Starting fresh is an advantage — you won\'t have to undo bad implementations. We can architect your AI stack correctly from day one.',
     'ChatGPT fluency is a solid starting point. The leap from chatbot to embedded AI workflows is where the business value compounds.',
     'You\'re in the top 20% of AI adoption. The difference between testing tools and operationalizing them is a system design question — and that\'s exactly what we build.',
     'You\'re already thinking at the level most businesses won\'t reach for 3 more years. The opportunity now is custom solutions that give you a durable competitive edge.',
-  ],
-  revenue_impact: [
-    'Even incremental wins here compound. A small process improvement that saves 2 hours/week returns 100+ hours annually.',
-    'Operational efficiency gains translate directly to sales velocity. Faster follow-up, fewer errors, and more consistent delivery all lift revenue.',
-    'A 10–25% capacity unlock means real growth without adding headcount — the most capital-efficient way to scale a service business.',
-    'When a single bottleneck is capping your revenue, removing it creates an outsized return. This is where we\'d focus everything.',
   ],
 }
 

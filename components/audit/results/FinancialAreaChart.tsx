@@ -4,11 +4,10 @@ import {
   AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer,
 } from 'recharts'
 
-const sans       = 'var(--font-geist-sans), system-ui, sans-serif'
+import { sans, fmtDollar } from '@/lib/audit/tokens'
+
 const COLOR_AI   = '#2D6A4F'
 const COLOR_SQUO = '#dc2626'
-const fmtDollar = (n: number) =>
-  '$' + (n >= 1_000_000 ? (n/1_000_000).toFixed(1) + 'M' : n >= 1_000 ? Math.round(n/1_000) + 'K' : n.toLocaleString())
 
 interface DataPoint { year: string; withAI: number; withoutAI: number }
 

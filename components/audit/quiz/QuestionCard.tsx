@@ -4,9 +4,7 @@ import { useState, useEffect } from 'react'
 import { ProgressDots } from '@/components/audit/ui/ProgressDots'
 import { Tag } from '@/components/audit/ui/Tag'
 import type { Question } from '@/types/audit'
-
-const sans  = 'var(--font-geist-sans), system-ui, sans-serif'
-const serif = 'var(--font-instrument-serif), Georgia, serif'
+import { sans, serif } from '@/lib/audit/tokens'
 
 interface QuestionCardProps {
   q:        Question

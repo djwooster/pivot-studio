@@ -8,9 +8,8 @@ import { QuestionCard }  from './QuestionCard'
 import { MidHook }       from './MidHook'
 import { LeadCapture }   from './LeadCapture'
 import type { AuditLead } from '@/types/audit'
-
-const sans  = 'var(--font-geist-sans), system-ui, sans-serif'
-const serif = 'var(--font-instrument-serif), Georgia, serif'
+import { sans, serif }   from '@/lib/audit/tokens'
+import { AuditTopBar }   from '@/components/audit/ui/AuditTopBar'
 
 // ── Landing screen ────────────────────────────────────────────────────────────
 function Landing({ onStart }: { onStart: () => void }) {
@@ -74,39 +73,6 @@ function Landing({ onStart }: { onStart: () => void }) {
   )
 }
 
-// ── Top bar ───────────────────────────────────────────────────────────────────
-function TopBar({ showProgress, step, totalSteps }: { showProgress: boolean; step: number; totalSteps: number }) {
-  return (
-    <div style={{
-      background:    '#FFFFFF',
-      borderBottom:  '1px solid #E8E5E0',
-      padding:       '0 24px',
-      height:        '52px',
-      display:       'flex',
-      alignItems:    'center',
-      justifyContent:'space-between',
-      position:      'sticky',
-      top:           0,
-      zIndex:        100,
-    }}>
-      <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-        <div style={{ width: '24px', height: '24px', background: '#1A1A1A', borderRadius: '6px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-          <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-            <path d="M2 6h8M6 2l4 4-4 4" stroke="#fff" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-          </svg>
-        </div>
-        <span style={{ fontSize: '14px', fontWeight: 500, color: '#1A1A1A', letterSpacing: '-0.01em', fontFamily: sans }}>
-          AI Readiness Audit
-        </span>
-      </div>
-      {showProgress && (
-        <span style={{ fontSize: '12px', color: '#AEAAA4', fontFamily: sans }}>
-          {step} / {totalSteps}
-        </span>
-      )}
-    </div>
-  )
-}
 
 // ── Shell ─────────────────────────────────────────────────────────────────────
 export function QuizShell() {
@@ -138,9 +104,7 @@ export function QuizShell() {
         answers,
         lead,
         track: track ?? 'combined',
-        utmSource:   new URLSearchParams(window.location.search).get('utm_source'),
-        utmMedium:   new URLSearchParams(window.location.search).get('utm_medium'),
-        utmCampaign: new URLSearchParams(window.location.search).get('utm_campaign'),
+        ...(() => { const p = new URLSearchParams(window.location.search); return { utmSource: p.get('utm_source'), utmMedium: p.get('utm_medium'), utmCampaign: p.get('utm_campaign') } })(),
       }),
     })
     if (!res.ok) throw new Error('Submission failed')
@@ -152,7 +116,7 @@ export function QuizShell() {
 
   return (
     <div style={{ minHeight: '100vh', background: '#FFFFFF', fontFamily: sans }}>
-      <TopBar showProgress={showProgress} step={displayStep} totalSteps={10} />
+      <AuditTopBar right={showProgress ? `${displayStep} / 10` : undefined} />
 
       <div style={{ maxWidth: '700px', margin: '0 auto', padding: 'clamp(28px, 5vw, 52px) 20px 80px' }}>
         {stage === 'landing' && (

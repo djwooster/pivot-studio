@@ -1,8 +1,7 @@
 'use client'
 
 import { ProgressDots } from '@/components/audit/ui/ProgressDots'
-
-const sans = 'var(--font-geist-sans), system-ui, sans-serif'
+import { sans } from '@/lib/audit/tokens'
 
 interface MidHookProps {
   onContinue: () => void

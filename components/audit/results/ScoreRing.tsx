@@ -2,9 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import type { Tier } from '@/types/audit'
-
-const sans  = 'var(--font-geist-sans), system-ui, sans-serif'
-const serif = 'var(--font-instrument-serif), Georgia, serif'
+import { sans, serif } from '@/lib/audit/tokens'
 
 interface ScoreRingProps {
   score: number

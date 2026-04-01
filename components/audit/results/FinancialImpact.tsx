@@ -11,11 +11,7 @@ const FinancialAreaChart = dynamic(() => import('./FinancialAreaChart'), {
   loading: () => <div style={{ height: 200 }} />,
 })
 
-const sans  = 'var(--font-geist-sans), system-ui, sans-serif'
-const serif = 'var(--font-instrument-serif), Georgia, serif'
-
-const fmtDollar = (n: number) =>
-  '$' + (n >= 1_000_000 ? (n/1_000_000).toFixed(1) + 'M' : n >= 1_000 ? Math.round(n/1_000) + 'K' : n.toLocaleString())
+import { sans, serif, fmtDollar } from '@/lib/audit/tokens'
 
 interface FinancialImpactProps { data: FI }
 

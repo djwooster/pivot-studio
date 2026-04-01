@@ -1,5 +1,4 @@
-const sans  = 'var(--font-geist-sans), system-ui, sans-serif'
-const serif = 'var(--font-instrument-serif), Georgia, serif'
+import { sans, serif } from '@/lib/audit/tokens'
 
 interface SectionHeaderProps {
   title:     string

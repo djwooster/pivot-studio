@@ -93,7 +93,7 @@ export async function POST(req: NextRequest) {
         score:               total,
         tier,
         topGap,
-        investmentReadiness: answers[5] ?? 1,
+        investmentReadiness: answers[8] ?? 1,
         financialImpact:     fin.totalFirstYearValue,
         resultsUrl:          finalResults,
       }),

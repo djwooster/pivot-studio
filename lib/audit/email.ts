@@ -1,30 +1,14 @@
 import { Resend } from 'resend'
 import type { Track, Tier, FinancialImpact } from '@/types/audit'
 import { TRACK_LABELS, TRACK_BOOKING_LABELS } from './questions'
+import { fmtDollar, getBookingUrl }           from './tokens'
 
 // Lazy — only instantiated when an email function is actually called (not at build time)
 function getResend() {
   return new Resend(process.env.RESEND_API_KEY)
 }
 
-const fmtDollar = (n: number) =>
-  '$' + (n >= 1_000_000
-    ? (n / 1_000_000).toFixed(1) + 'M'
-    : n >= 1_000
-    ? Math.round(n / 1_000) + 'K'
-    : n.toLocaleString())
-
 const baseStyle = `font-family: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #ffffff; color: #1A1A1A;`
-
-function getBookingUrl(track: Track): string {
-  const map: Record<Track, string> = {
-    automate:     process.env.NEXT_PUBLIC_CAL_AUTOMATE_URL    ?? '#',
-    see_clearly:  process.env.NEXT_PUBLIC_CAL_SEE_CLEARLY_URL ?? '#',
-    build_better: process.env.NEXT_PUBLIC_CAL_BUILD_BETTER_URL ?? '#',
-    combined:     process.env.NEXT_PUBLIC_CAL_COMBINED_URL    ?? '#',
-  }
-  return map[track]
-}
 
 export async function sendLeadConfirmation({
   name,

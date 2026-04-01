@@ -1,5 +1,3 @@
-'use client'
-
 import { ScoreRing }       from './ScoreRing'
 import { FinancialImpact } from './FinancialImpact'
 import { CapabilityRadar } from './CapabilityRadar'
@@ -10,9 +8,7 @@ import { AuditCard }       from '@/components/audit/ui/AuditCard'
 import { PropertyRow }     from '@/components/audit/ui/PropertyRow'
 import { TRACK_LABELS }    from '@/lib/audit/questions'
 import type { AuditSubmission } from '@/types/audit'
-
-const sans  = 'var(--font-geist-sans), system-ui, sans-serif'
-const serif = 'var(--font-instrument-serif), Georgia, serif'
+import { sans, serif }         from '@/lib/audit/tokens'
 
 interface ResultsViewProps { submission: AuditSubmission }
 

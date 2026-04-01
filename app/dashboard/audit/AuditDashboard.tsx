@@ -54,7 +54,7 @@ export function AuditDashboard({ submissions }: AuditDashboardProps) {
     const rows = submissions.map(s => [
       s.name, s.email, s.company, s.role,
       TRACK_LABELS[s.track], s.score, s.tier, s.top_gap ?? '',
-      budgetLabels[Math.max(0, (s.answers?.[5] ?? 1) - 1)],
+      budgetLabels[Math.max(0, (s.answers?.[8] ?? 1) - 1)],
       s.cta_clicked ?? '',
       new Date(s.created_at).toLocaleDateString(),
     ])
@@ -175,7 +175,7 @@ export function AuditDashboard({ submissions }: AuditDashboardProps) {
                     <td colSpan={9} style={{ padding: '40px 16px', textAlign: 'center', color: '#AEAAA4' }}>No submissions yet</td>
                   </tr>
                 ) : filtered.map(s => {
-                  const budgetLabel = ['<$5K','$5–20K','$20–50K','$50K+'][Math.max(0, (s.answers?.[5] ?? 1) - 1)]
+                  const budgetLabel = ['<$5K','$5–20K','$20–50K','$50K+'][Math.max(0, (s.answers?.[8] ?? 1) - 1)]
                   return (
                     <tr key={s.id} style={{ borderBottom: '1px solid #E8E5E0' }}>
                       <td style={{ padding: '12px 16px', whiteSpace: 'nowrap' }}>

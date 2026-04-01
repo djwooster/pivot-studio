@@ -1,4 +1,4 @@
-const sans = 'var(--font-geist-sans), system-ui, sans-serif'
+import { sans } from '@/lib/audit/tokens'
 
 interface ProgressDotsProps {
   current: number  // 1-based step number (current step)

@@ -7,8 +7,7 @@ import { Tag } from '@/components/audit/ui/Tag'
 import { ProgressDots } from '@/components/audit/ui/ProgressDots'
 import type { AuditLead } from '@/types/audit'
 
-const sans = 'var(--font-geist-sans), system-ui, sans-serif'
-const serif = 'var(--font-instrument-serif), Georgia, serif'
+import { sans, serif } from '@/lib/audit/tokens'
 
 const FIELDS: { id: keyof AuditLead; label: string; type: string; placeholder: string }[] = [
   { id: 'name',    label: 'Full name',    type: 'text',  placeholder: 'Jordan Smith' },
