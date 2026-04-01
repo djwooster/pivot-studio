@@ -2,14 +2,14 @@ import type { Tier } from '@/types/audit'
 import { DIMENSION_LABELS } from './questions'
 
 const QUESTION_MAP: Record<number, { category: string; type: 'slider' | 'single' }> = {
-  1: { category: 'pain_intensity',       type: 'slider' },
-  2: { category: 'growth_trajectory',    type: 'single' },
-  3: { category: 'tech_readiness',       type: 'single' },
-  4: { category: 'decision_speed',       type: 'single' },
-  5: { category: 'investment_readiness', type: 'single' },
-  6: { category: 'current_state',        type: 'single' },
-  7: { category: 'ai_awareness',         type: 'single' },
-  8: { category: 'revenue_impact',       type: 'single' },
+  1: { category: 'current_state',        type: 'single' },
+  2: { category: 'pain_intensity',       type: 'slider' },
+  3: { category: 'biggest_bottleneck',   type: 'single' },
+  4: { category: 'cost_of_delay',        type: 'single' },
+  5: { category: 'growth_potential',     type: 'single' },
+  6: { category: 'ai_awareness',         type: 'single' },
+  7: { category: 'decision_speed',       type: 'single' },
+  8: { category: 'investment_readiness', type: 'single' },
 }
 
 const WEIGHTS: Record<string, number> = {

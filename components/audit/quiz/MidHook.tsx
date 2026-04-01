@@ -18,15 +18,15 @@ export function MidHook({ onContinue, onBack }: MidHookProps) {
       </div>
 
       <div style={{ borderLeft: '3px solid #1A1A1A', paddingLeft: '20px', marginBottom: '32px' }}>
-        <div style={{ fontSize: '11px', fontWeight: 500, letterSpacing: '0.08em', textTransform: 'uppercase', color: '#AEAAA4', marginBottom: '10px', fontFamily: sans }}>Early signal</div>
-        <p style={{ fontFamily: serif, fontSize: 'clamp(1.3rem, 3vw, 1.75rem)', color: '#1A1A1A', lineHeight: 1.3, fontWeight: 400 }}>
+        <div style={{ fontSize: '12px', fontWeight: 500, letterSpacing: '0.08em', textTransform: 'uppercase', color: '#AEAAA4', marginBottom: '10px', fontFamily: sans }}>Early signal</div>
+        <p style={{ fontFamily: sans, fontSize: 'clamp(1.4rem, 3.5vw, 2rem)', color: '#1A1A1A', lineHeight: 1.25, fontWeight: 600, letterSpacing: '-0.015em' }}>
           {"Based on your first four answers, you're already ahead of "}
-          <em style={{ fontStyle: 'italic' }}>67% of businesses</em>
+          <em style={{ fontStyle: 'italic', color: '#118840' }}>67% of businesses</em>
           {" we've assessed."}
         </p>
       </div>
 
-      <p style={{ fontSize: '14px', color: '#6B6860', lineHeight: 1.7, fontFamily: sans, fontWeight: 300, marginBottom: '32px' }}>
+      <p style={{ fontSize: 'clamp(15px, 1.2vw, 18px)', color: '#848484', lineHeight: 1.7, fontFamily: sans, fontWeight: 400, marginBottom: '32px' }}>
         The next four questions will unlock your financial impact model — a personalized estimate of what AI and automation could recover in your specific business, in dollars. Continue to see the full picture.
       </p>
 
@@ -54,7 +54,7 @@ export function MidHook({ onContinue, onBack }: MidHookProps) {
 
       <button
         onClick={onBack}
-        style={{ marginTop: '16px', background: 'none', border: 'none', color: '#AEAAA4', fontSize: '13px', cursor: 'pointer', fontFamily: sans, display: 'flex', alignItems: 'center', gap: '4px' }}
+        style={{ marginTop: '16px', background: 'none', border: 'none', color: '#AEAAA4', fontSize: 'clamp(15px, 1.2vw, 18px)', cursor: 'pointer', fontFamily: sans, display: 'flex', alignItems: 'center', gap: '4px' }}
       >
         ← Back
       </button>

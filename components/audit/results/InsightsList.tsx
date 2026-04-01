@@ -6,6 +6,24 @@ const sans  = 'var(--font-geist-sans), system-ui, sans-serif'
 const serif = 'var(--font-instrument-serif), Georgia, serif'
 
 const INSIGHT_COPY: Record<string, string[]> = {
+  biggest_bottleneck: [
+    'Pinpointing your primary operational drain is half the battle. Even a small focused automation effort in your highest-friction area typically delivers the fastest initial ROI.',
+    'Lead follow-up is one of the highest-ROI automation targets in any service business. An automated intake and nurture sequence converts significantly more of the leads you\'re already generating — without adding headcount.',
+    'Client onboarding is a high-leverage automation target. Standardizing this workflow reduces delivery time, improves client experience, and frees senior time for revenue-generating work.',
+    'Reporting, admin, and coordination automation removes the most common source of human error and wasted effort. Once these workflows run automatically, decisions and delivery both run faster.',
+  ],
+  cost_of_delay: [
+    'Inconsistent lead response is quietly costing you business every week. Businesses that respond within 5 minutes are 21x more likely to convert — an automated response system changes this overnight.',
+    'Inconsistent lead response is a silent revenue leak. An automated first-response system can capture interest before it cools and convert significantly more of your inbound pipeline.',
+    'Same-day response is better than average — but relying on someone to remember introduces gaps. Automation makes your best response time your consistent response time.',
+    'Your lead responsiveness is a genuine competitive advantage. The next step is maintaining this speed at higher volume — systems ensure you never lose that edge as your pipeline grows.',
+  ],
+  growth_potential: [
+    'Regaining operational control is itself a growth strategy. When the manual work is automated, strategic clarity and bandwidth return naturally — and fast.',
+    'Getting out from under the day-to-day is the first unlock. Once automation handles the repetitive work, the high-leverage activities that actually move the needle become possible again.',
+    'Building for scale and sellability requires systems that don\'t depend on any one person. Automation is the architectural layer that makes a business genuinely transferable and durable.',
+    'Taking on more without burning out is the highest-leverage growth model for a service business. Automation is what makes that math work — more revenue, same team, same hours.',
+  ],
   current_state: [
     'Your business is in the pre-automation phase. The highest-ROI first step is identifying the top 3 processes consuming the most human hours and building lightweight systems around them.',
     'You\'ve started building a foundation, but disconnected tools are creating data silos. The opportunity is in connecting what you have before adding more complexity.',
@@ -47,7 +65,7 @@ const STATUS_CONFIG = {
 interface InsightsListProps { cats: Record<string, number> }
 
 export function InsightsList({ cats }: InsightsListProps) {
-  const INSIGHT_CATS = ['current_state', 'pain_intensity', 'growth_trajectory', 'ai_awareness']
+  const INSIGHT_CATS = ['current_state', 'pain_intensity', 'biggest_bottleneck', 'cost_of_delay', 'growth_potential', 'ai_awareness']
 
   const insights = INSIGHT_CATS.map(cat => {
     const score = cats[cat] ?? 50

@@ -32,10 +32,10 @@ export function QuestionCard({ q, value, onChange, onNext, onBack, step, total }
         <Tag>{q.label}</Tag>
       </div>
 
-      <h2 style={{ fontFamily: serif, fontSize: 'clamp(1.4rem, 3.5vw, 2rem)', fontWeight: 400, color: '#1A1A1A', lineHeight: 1.25, marginBottom: '8px', letterSpacing: '-0.015em' }}>
+      <h2 style={{ fontFamily: sans, fontSize: 'clamp(1.4rem, 3.5vw, 2rem)', fontWeight: 600, color: '#1A1A1A', lineHeight: 1.25, marginBottom: '8px', letterSpacing: '-0.015em' }}>
         {q.question}
       </h2>
-      <p style={{ fontSize: '13px', color: '#AEAAA4', fontFamily: sans, fontWeight: 300, marginBottom: '32px', lineHeight: 1.5 }}>
+      <p style={{ fontSize: 'clamp(15px, 1.2vw, 18px)', color: '#848484', fontFamily: sans, fontWeight: 400, marginBottom: '32px', lineHeight: 1.5 }}>
         {q.subtext}
       </p>
 
@@ -78,8 +78,8 @@ export function QuestionCard({ q, value, onChange, onNext, onBack, step, total }
                   {sel && <div style={{ width: '7px', height: '7px', borderRadius: '50%', background: '#fff' }} />}
                 </div>
                 <div style={{ flex: 1 }}>
-                  <div style={{ fontSize: '14px', fontWeight: 500, color: '#1A1A1A', marginBottom: '2px' }}>{opt.label}</div>
-                  <div style={{ fontSize: '12px', color: '#6B6860', fontWeight: 300 }}>{opt.sub}</div>
+                  <div style={{ fontSize: '15px', fontWeight: 600, color: '#1A1A1A', marginBottom: '2px' }}>{opt.label}</div>
+                  <div style={{ fontSize: '14px', color: '#6B6860', fontWeight: 400 }}>{opt.sub}</div>
                 </div>
               </button>
             )
@@ -97,7 +97,7 @@ export function QuestionCard({ q, value, onChange, onNext, onBack, step, total }
               <span style={{ fontSize: '16px', color: '#6B6860', fontFamily: sans, fontWeight: 300 }}>{q.unit}</span>
             </div>
             {band && (
-              <div style={{ fontSize: '12px', color: '#6B6860', fontFamily: sans, marginBottom: '16px', fontStyle: 'italic' }}>
+              <div style={{ fontSize: '14px', color: '#6B6860', fontFamily: sans, marginBottom: '16px', fontStyle: 'italic' }}>
                 {`"${band.label}"`}
               </div>
             )}
@@ -126,7 +126,7 @@ export function QuestionCard({ q, value, onChange, onNext, onBack, step, total }
 
       <button
         onClick={onBack}
-        style={{ marginTop: '20px', background: 'none', border: 'none', color: '#AEAAA4', fontSize: '13px', cursor: 'pointer', fontFamily: sans, display: 'flex', alignItems: 'center', gap: '4px' }}
+        style={{ marginTop: '20px', background: 'none', border: 'none', color: '#AEAAA4', fontSize: 'clamp(15px, 1.2vw, 18px)', cursor: 'pointer', fontFamily: sans, display: 'flex', alignItems: 'center', gap: '4px' }}
       >
         ← Back
       </button>
