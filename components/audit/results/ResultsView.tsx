@@ -46,7 +46,7 @@ export function ResultsView({ submission }: ResultsViewProps) {
     <div className="audit-fade-in">
       {/* Score Header */}
       <div style={{ paddingBottom: '32px', borderBottom: '1px solid #E8E5E0', marginBottom: '32px' }}>
-        <div style={{ fontSize: '12px', color: '#AEAAA4', fontFamily: sans, marginBottom: '16px' }}>
+        <div style={{ fontSize: '14px', color: '#AEAAA4', fontFamily: sans, marginBottom: '16px' }}>
           AI Readiness Report &nbsp;·&nbsp; {company} &nbsp;·&nbsp; {new Date(submission.created_at).toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}
         </div>
         <div style={{ display: 'flex', gap: '24px', alignItems: 'center', flexWrap: 'wrap' }}>
@@ -58,7 +58,7 @@ export function ResultsView({ submission }: ResultsViewProps) {
             <h2 style={{ fontFamily: serif, fontSize: 'clamp(1.5rem, 3.5vw, 2.1rem)', fontWeight: 400, color: '#1A1A1A', lineHeight: 1.2, marginBottom: '10px', letterSpacing: '-0.015em' }}>
               {"Hi "}{firstName}{", here's your full picture."}
             </h2>
-            <p style={{ fontSize: '13px', color: '#6B6860', lineHeight: 1.6, fontFamily: sans, fontWeight: 300, margin: 0 }}>
+            <p style={{ fontSize: '15px', color: '#6B6860', lineHeight: 1.6, fontFamily: sans, fontWeight: 300, margin: 0 }}>
               {TIER_BLURBS[tierName]}
             </p>
           </div>

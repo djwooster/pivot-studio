@@ -1,6 +1,7 @@
 'use client'
 
 import { DIMENSION_LABELS } from '@/lib/audit/questions'
+import { SectionHeader }    from '@/components/audit/ui/SectionHeader'
 
 const sans  = 'var(--font-geist-sans), system-ui, sans-serif'
 const serif = 'var(--font-instrument-serif), Georgia, serif'
@@ -77,8 +78,7 @@ export function InsightsList({ cats }: InsightsListProps) {
 
   return (
     <div style={{ marginBottom: '32px' }}>
-      <h3 style={{ fontFamily: serif, fontSize: '1.35rem', fontWeight: 400, color: '#1A1A1A', marginBottom: '6px', letterSpacing: '-0.01em' }}>Key Insights</h3>
-      <p style={{ fontSize: '13px', color: '#AEAAA4', fontFamily: sans, fontWeight: 300, marginBottom: '16px' }}>Personalized findings based on your assessment</p>
+      <SectionHeader title="Key Insights" sub="Personalized findings based on your assessment" />
 
       <div style={{ display: 'flex', flexDirection: 'column', gap: '1px', border: '1px solid #E8E5E0', borderRadius: '10px', overflow: 'hidden' }}>
         {insights.map(({ cat, score, text, dim, status }, i) => {
@@ -86,13 +86,13 @@ export function InsightsList({ cats }: InsightsListProps) {
           return (
             <div key={cat} style={{ padding: '16px 18px', background: '#FFFFFF', borderBottom: i < insights.length - 1 ? '1px solid #E8E5E0' : 'none' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '8px' }}>
-                <span style={{ fontSize: '11px', fontWeight: 500, color: '#AEAAA4', letterSpacing: '0.06em', textTransform: 'uppercase', fontFamily: sans }}>{dim}</span>
+                <span style={{ fontSize: '15px', fontWeight: 600, color: '#1A1A1A', fontFamily: sans }}>{dim}</span>
                 <span style={{ fontSize: '10px', fontWeight: 500, color: cfg.color, background: cfg.bg, padding: '2px 8px', borderRadius: '3px', letterSpacing: '0.06em', textTransform: 'uppercase', fontFamily: sans }}>
                   {cfg.label}
                 </span>
                 <span style={{ marginLeft: 'auto', fontSize: '13px', fontWeight: 500, color: '#1A1A1A', fontFamily: sans }}>{score}%</span>
               </div>
-              <p style={{ fontSize: '13px', color: '#6B6860', lineHeight: 1.65, fontFamily: sans, fontWeight: 300, margin: 0 }}>{text}</p>
+              <p style={{ fontSize: '14px', color: '#6B6860', lineHeight: 1.65, fontFamily: sans, fontWeight: 400, margin: 0 }}>{text}</p>
             </div>
           )
         })}

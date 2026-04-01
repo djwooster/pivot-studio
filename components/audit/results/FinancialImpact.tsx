@@ -1,8 +1,9 @@
 'use client'
 
 import dynamic from 'next/dynamic'
-import { AuditCard } from '@/components/audit/ui/AuditCard'
-import { Tag } from '@/components/audit/ui/Tag'
+import { AuditCard }       from '@/components/audit/ui/AuditCard'
+import { Tag }             from '@/components/audit/ui/Tag'
+import { SectionHeader }   from '@/components/audit/ui/SectionHeader'
 import type { FinancialImpact as FI } from '@/types/audit'
 
 const FinancialAreaChart = dynamic(() => import('./FinancialAreaChart'), {
@@ -28,20 +29,19 @@ export function FinancialImpact({ data }: FinancialImpactProps) {
 
   return (
     <div style={{ marginBottom: '32px' }}>
-      <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '14px' }}>
-        <h3 style={{ fontFamily: serif, fontSize: '1.35rem', fontWeight: 400, color: '#1A1A1A', letterSpacing: '-0.01em', margin: 0 }}>Financial Impact Model</h3>
-        <Tag color="#2D6A4F" bg="#D8F3DC">Personalized</Tag>
-      </div>
-      <p style={{ fontSize: '13px', color: '#6B6860', fontFamily: sans, fontWeight: 300, lineHeight: 1.6, marginBottom: '20px' }}>
-        {"Based on your inputs — "}{data.hoursWasted}{" hours/week of manual work — here's what AI and automation could realistically deliver in year one."}
-      </p>
+      <SectionHeader
+        title="Financial Impact Model"
+        sub={<>{"Based on your inputs — "}{data.hoursWasted}{" hours/week of manual work — here's what AI and automation could realistically deliver in year one."}</>}
+        tag={<Tag color="#2D6A4F" bg="#D8F3DC">Personalized</Tag>}
+        subColor="#6B6860"
+      />
 
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '10px', marginBottom: '20px' }}>
         {metrics.map(({ label, value, sub, color, soft }) => (
           <div key={label} style={{ padding: '16px', background: soft, border: '1px solid #E8E5E0', borderRadius: '8px' }}>
-            <div style={{ fontSize: '11px', color: '#6B6860', fontFamily: sans, fontWeight: 400, marginBottom: '6px', textTransform: 'uppercase', letterSpacing: '0.06em' }}>{label}</div>
-            <div style={{ fontSize: '26px', fontFamily: serif, fontWeight: 400, color, lineHeight: 1 }}>{value}</div>
-            <div style={{ fontSize: '11px', color: '#AEAAA4', fontFamily: sans, marginTop: '4px', fontWeight: 300 }}>{sub}</div>
+            <div style={{ fontSize: '12px', color: '#959087', fontFamily: sans, fontWeight: 400, marginBottom: '6px', textTransform: 'uppercase', letterSpacing: '0.06em' }}>{label}</div>
+            <div style={{ fontSize: '44px', fontFamily: serif, fontWeight: 400, color, lineHeight: 1 }}>{value}</div>
+            <div style={{ fontSize: '12px', color: '#817c74', fontFamily: sans, marginTop: '4px', fontWeight: 400 }}>{sub}</div>
           </div>
         ))}
       </div>
@@ -54,10 +54,10 @@ export function FinancialImpact({ data }: FinancialImpactProps) {
         <div style={{ padding: '16px' }}>
           <div style={{ display: 'flex', gap: '20px', fontSize: '12px', marginBottom: '12px' }}>
             <span style={{ display: 'flex', alignItems: 'center', gap: '6px', fontFamily: sans, color: '#6B6860' }}>
-              <span style={{ width: '24px', height: '2px', background: '#1A1A1A', display: 'inline-block', borderRadius: '1px' }} /> With AI
+              <span style={{ width: '24px', height: '2px', background: '#2D6A4F', display: 'inline-block', borderRadius: '1px' }} /> With AI
             </span>
             <span style={{ display: 'flex', alignItems: 'center', gap: '6px', fontFamily: sans, color: '#AEAAA4' }}>
-              <span style={{ width: '24px', height: '2px', background: '#D4D0C8', display: 'inline-block', borderRadius: '1px' }} /> Status quo
+              <span style={{ width: '24px', height: '0', borderTop: '2px dashed #dc2626', display: 'inline-block' }} /> Status quo
             </span>
           </div>
           <FinancialAreaChart data={data.projectionData} />

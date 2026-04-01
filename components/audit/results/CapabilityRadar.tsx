@@ -1,7 +1,8 @@
 'use client'
 
 import dynamic from 'next/dynamic'
-import { AuditCard } from '@/components/audit/ui/AuditCard'
+import { AuditCard }      from '@/components/audit/ui/AuditCard'
+import { SectionHeader }  from '@/components/audit/ui/SectionHeader'
 import { DIMENSION_LABELS } from '@/lib/audit/questions'
 
 const RadarChartInner = dynamic(() => import('./RadarChartInner'), {
@@ -22,8 +23,7 @@ export function CapabilityRadar({ cats }: CapabilityRadarProps) {
 
   return (
     <div style={{ marginBottom: '32px' }}>
-      <h3 style={{ fontFamily: serif, fontSize: '1.35rem', fontWeight: 400, color: '#1A1A1A', marginBottom: '6px', letterSpacing: '-0.01em' }}>Capability Radar</h3>
-      <p style={{ fontSize: '13px', color: '#AEAAA4', fontFamily: sans, fontWeight: 300, marginBottom: '16px' }}>Your performance across 8 business dimensions</p>
+      <SectionHeader title="Capability Radar" sub="Your performance across 8 business dimensions" />
       <AuditCard>
         <div style={{ padding: '8px 16px 0' }}>
           <RadarChartInner data={data} />

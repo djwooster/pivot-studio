@@ -4,7 +4,9 @@ import {
   AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer,
 } from 'recharts'
 
-const sans = 'var(--font-geist-sans), system-ui, sans-serif'
+const sans       = 'var(--font-geist-sans), system-ui, sans-serif'
+const COLOR_AI   = '#2D6A4F'
+const COLOR_SQUO = '#dc2626'
 const fmtDollar = (n: number) =>
   '$' + (n >= 1_000_000 ? (n/1_000_000).toFixed(1) + 'M' : n >= 1_000 ? Math.round(n/1_000) + 'K' : n.toLocaleString())
 
@@ -22,8 +24,8 @@ export default function FinancialAreaChart({ data }: { data: DataPoint[] }) {
           contentStyle={{ borderRadius: '8px', border: '1px solid #E8E5E0', fontSize: '12px', fontFamily: sans, background: '#fff' }}
           labelStyle={{ color: '#1A1A1A', fontWeight: 500 }}
         />
-        <Area type="monotone" dataKey="withoutAI" stroke="#D4D0C8" strokeWidth={1.5} fill="#FAFAF9" strokeDasharray="4 3" name="Status quo" />
-        <Area type="monotone" dataKey="withAI"    stroke="#1A1A1A" strokeWidth={2}   fill="#F0EDE8" name="With AI" fillOpacity={0.5} />
+        <Area type="monotone" dataKey="withoutAI" stroke={COLOR_SQUO} strokeWidth={1.5} fill="#fef2f2" strokeDasharray="4 3" name="Status quo" fillOpacity={0.3} />
+        <Area type="monotone" dataKey="withAI"    stroke={COLOR_AI}   strokeWidth={2}   fill="#d8f3dc" name="With AI"    fillOpacity={0.4} />
       </AreaChart>
     </ResponsiveContainer>
   )

@@ -1,7 +1,8 @@
 'use client'
 
 import dynamic from 'next/dynamic'
-import { AuditCard } from '@/components/audit/ui/AuditCard'
+import { AuditCard }      from '@/components/audit/ui/AuditCard'
+import { SectionHeader }  from '@/components/audit/ui/SectionHeader'
 import { DIMENSION_LABELS } from '@/lib/audit/questions'
 
 const BenchmarkChartInner = dynamic(() => import('./BenchmarkChartInner'), {
@@ -35,8 +36,7 @@ export function BenchmarkChart({ cats }: BenchmarkChartProps) {
 
   return (
     <div style={{ marginBottom: '32px' }}>
-      <h3 style={{ fontFamily: serif, fontSize: '1.35rem', fontWeight: 400, color: '#1A1A1A', marginBottom: '6px', letterSpacing: '-0.01em' }}>Industry Benchmark</h3>
-      <p style={{ fontSize: '13px', color: '#AEAAA4', fontFamily: sans, fontWeight: 300, marginBottom: '16px' }}>Your scores vs. businesses at a similar stage</p>
+      <SectionHeader title="Industry Benchmark" sub="Your scores vs. businesses at a similar stage" />
       <AuditCard>
         <div style={{ padding: '16px' }}>
           <div style={{ display: 'flex', gap: '20px', fontSize: '12px', marginBottom: '16px' }}>
