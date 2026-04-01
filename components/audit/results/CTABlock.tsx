@@ -86,7 +86,7 @@ export function NextStepCTA({ track, submissionId, company }: CTAProps) {
   )
 }
 
-export function CTABlock(_: CTAProps) {
+export function CTABlock() {
   const handleShare = () => {
     navigator.clipboard.writeText(window.location.href)
     toast.success('Link copied to clipboard')

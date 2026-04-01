@@ -141,7 +141,7 @@ export function ResultsView({ submission, financialNarrative }: ResultsViewProps
       <ResearchSection />
 
       {/* Share + Social proof */}
-      <CTABlock track={track} submissionId={id} company={company} />
+      <CTABlock />
     </div>
   )
 }
