@@ -21,7 +21,7 @@ export function FinancialImpact({ data, narrative }: FinancialImpactProps) {
     { label: 'Est. labor cost recovered', value: fmtDollar(data.automationRecovery),   sub: `${data.annualHoursLost} hours/yr at $75/hr avg`, color: '#2D6A4F', soft: '#D8F3DC' },
     { label: 'Est. revenue unlocked',     value: fmtDollar(data.revenueUnlock),         sub: 'New capacity × conversion rate',                  color: '#4A3728', soft: '#F5F0EB' },
     { label: 'Total first-year value',    value: fmtDollar(data.totalFirstYearValue),   sub: 'Conservative estimate',                           color: '#1A1A1A', soft: '#F0EDE8' },
-    { label: 'Monthly impact',            value: fmtDollar(data.monthlyImpact),          sub: 'Run-rate after implementation',                   color: '#2D6A8F', soft: '#EBF5FB' },
+    { label: 'Monthly impact',            value: fmtDollar(data.monthlyImpact),          sub: 'Run-rate after implementation',                   color: '#1A1A1A', soft: '#F0EDE8' },
   ]
 
   return (
@@ -47,8 +47,8 @@ export function FinancialImpact({ data, narrative }: FinancialImpactProps) {
         <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', marginBottom: '20px' }}>
           {narrative.map(({ heading, body }) => (
             <div key={heading} style={{ padding: '16px 18px', background: '#FAFAF9', border: '1px solid #E8E5E0', borderRadius: '8px' }}>
-              <div style={{ fontSize: '13px', fontWeight: 600, color: '#1A1A1A', fontFamily: sans, marginBottom: '6px' }}>{heading}</div>
-              <p style={{ fontSize: '13px', color: '#6B6860', lineHeight: 1.7, fontFamily: sans, fontWeight: 400, margin: 0 }}>{body}</p>
+              <div style={{ fontSize: '15px', fontWeight: 600, color: '#1A1A1A', fontFamily: sans, marginBottom: '6px' }}>{heading}</div>
+              <p style={{ fontSize: '14px', color: '#6B6860', lineHeight: 1.65, fontFamily: sans, fontWeight: 400, margin: 0 }}>{body}</p>
             </div>
           ))}
         </div>

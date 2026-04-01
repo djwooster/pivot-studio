@@ -25,7 +25,7 @@ export async function POST(req: NextRequest) {
     } = body
 
     // Score
-    const { total, cats } = computeScore(answers)
+    const { total, cats } = computeScore(answers, track)
     const tier            = getTier(total)
     const topGap          = getTopGap(cats)
 

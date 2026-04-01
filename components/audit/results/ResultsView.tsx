@@ -1,13 +1,54 @@
 import { ScoreRing }       from './ScoreRing'
 import { FinancialImpact } from './FinancialImpact'
-import { CapabilityRadar } from './CapabilityRadar'
-import { BenchmarkChart }  from './BenchmarkChart'
 import { InsightsList }    from './InsightsList'
 import { CTABlock }               from './CTABlock'
 import type { NarrativeSection }  from '@/lib/audit/narrative'
 import { TRACK_LABELS }           from '@/lib/audit/questions'
 import type { AuditSubmission }   from '@/types/audit'
 import { sans, serif }            from '@/lib/audit/tokens'
+
+const CITATIONS = [
+  {
+    stat:   '"Businesses that deploy AI at scale report an average of 20–30% reduction in operational costs within the first year."',
+    source: 'McKinsey & Company',
+    detail: 'The State of AI in 2023',
+  },
+  {
+    stat:   '"AI tools increased worker productivity by 14% on average — with the largest gains for those handling the highest volume of repetitive tasks."',
+    source: 'MIT & Stanford',
+    detail: 'Brynjolfsson, Li & Raymond, 2023',
+  },
+  {
+    stat:   '"Companies that adopt AI faster are 1.5x more likely to achieve revenue growth of 10% or more compared to slower-moving competitors."',
+    source: 'McKinsey Global Institute',
+    detail: 'AI Adoption & Impact Report, 2022',
+  },
+]
+
+function ResearchSection() {
+  return (
+    <div style={{ marginBottom: '32px' }}>
+      <div style={{ marginBottom: '16px' }}>
+        <div style={{ fontSize: '12px', fontWeight: 500, color: '#AEAAA4', letterSpacing: '0.06em', textTransform: 'uppercase', fontFamily: sans, marginBottom: '6px' }}>
+          The case for moving now
+        </div>
+        <p style={{ fontSize: '14px', color: '#6B6860', lineHeight: 1.65, fontFamily: sans, fontWeight: 300, margin: 0 }}>
+          The gap between businesses that act on AI and those that wait is widening every quarter. Here's what the research says.
+        </p>
+      </div>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '1px', border: '1px solid #E8E5E0', borderRadius: '10px', overflow: 'hidden' }}>
+        {CITATIONS.map(({ stat, source, detail }, i) => (
+          <div key={i} style={{ padding: '16px 18px', background: '#FFFFFF', borderBottom: i < CITATIONS.length - 1 ? '1px solid #E8E5E0' : 'none' }}>
+            <p style={{ fontSize: '14px', color: '#1A1A1A', lineHeight: 1.65, fontFamily: sans, fontWeight: 400, margin: '0 0 8px', maxWidth: '85%' }}>{stat}</p>
+            <div style={{ fontSize: '12px', color: '#AEAAA4', fontFamily: sans, fontWeight: 500 }}>
+              {source} <span style={{ fontWeight: 400 }}>· {detail}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  )
+}
 
 interface ResultsViewProps { submission: AuditSubmission; financialNarrative?: NarrativeSection[] }
 
@@ -96,11 +137,8 @@ export function ResultsView({ submission, financialNarrative }: ResultsViewProps
       {/* Financial Impact */}
       {fin && <FinancialImpact data={fin} narrative={financialNarrative} />}
 
-      {/* Capability Radar */}
-      <CapabilityRadar cats={cats} />
-
-      {/* Industry Benchmark */}
-      <BenchmarkChart cats={cats} />
+      {/* Research Citations */}
+      <ResearchSection />
 
       {/* Share + Social proof */}
       <CTABlock track={track} submissionId={id} company={company} />

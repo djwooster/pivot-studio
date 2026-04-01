@@ -1,15 +1,43 @@
 import type { Tier } from '@/types/audit'
 import { DIMENSION_LABELS } from './questions'
 
-const QUESTION_MAP: Record<number, { category: string; type: 'slider' | 'single' }> = {
+type QuestionMeta = {
+  category: string
+  type:     'slider' | 'single'
+  inverted?: boolean  // higher answer = worse situation = lower score
+  cap?:      number   // max score this dimension can reach (0–100)
+}
+
+// Base question map — used for automate + combined tracks
+const BASE_QUESTION_MAP: Record<number, QuestionMeta> = {
   1: { category: 'current_state',        type: 'single' },
-  2: { category: 'pain_intensity',       type: 'slider' },
-  3: { category: 'biggest_bottleneck',   type: 'single' },
+  2: { category: 'pain_intensity',       type: 'slider', inverted: true },
+  3: { category: 'biggest_bottleneck',   type: 'single', cap: 50 },
   4: { category: 'cost_of_delay',        type: 'single' },
   5: { category: 'growth_potential',     type: 'single' },
   6: { category: 'ai_awareness',         type: 'single' },
   7: { category: 'decision_speed',       type: 'single' },
   8: { category: 'investment_readiness', type: 'single' },
+}
+
+// Track-specific overrides for Q6–Q8
+const TRACK_QUESTION_OVERRIDES: Record<string, Record<number, QuestionMeta>> = {
+  see_clearly: {
+    6: { category: 'current_state',    type: 'single' },
+    7: { category: 'ai_awareness',     type: 'single', inverted: true, cap: 50 },
+    8: { category: 'revenue_impact',   type: 'single', inverted: true },
+  },
+  build_better: {
+    6: { category: 'current_state',    type: 'single' },
+    7: { category: 'ai_awareness',     type: 'single' },
+    8: { category: 'revenue_impact',   type: 'single' },
+  },
+}
+
+function getQuestionMap(track?: string): Record<number, QuestionMeta> {
+  const overrides = track ? TRACK_QUESTION_OVERRIDES[track] : undefined
+  if (!overrides) return BASE_QUESTION_MAP
+  return { ...BASE_QUESTION_MAP, ...overrides }
 }
 
 const WEIGHTS: Record<string, number> = {
@@ -18,20 +46,32 @@ const WEIGHTS: Record<string, number> = {
 }
 
 export function computeScore(
-  answers: Record<number, number>
+  answers: Record<number, number>,
+  track?: string
 ): { total: number; cats: Record<string, number> } {
+  const questionMap = getQuestionMap(track)
   const cats: Record<string, number> = {}
 
   for (const [idStr, val] of Object.entries(answers)) {
-    const id = Number(idStr)
-    const qInfo = QUESTION_MAP[id]
+    const id    = Number(idStr)
+    const qInfo = questionMap[id]
     if (!qInfo || val == null) continue
 
+    let score: number
+
     if (qInfo.type === 'slider') {
-      cats[qInfo.category] = Math.min(100, Math.round((val / 50) * 100))
+      const raw = Math.min(100, Math.round((val / 50) * 100))
+      score = qInfo.inverted ? 100 - raw : raw
     } else {
-      cats[qInfo.category] = Math.round((val / 4) * 100)
+      const raw = Math.round((val / 4) * 100)
+      score = qInfo.inverted ? 100 - raw : raw
     }
+
+    if (qInfo.cap !== undefined) {
+      score = Math.min(score, qInfo.cap)
+    }
+
+    cats[qInfo.category] = score
   }
 
   let weightedSum = 0

@@ -93,26 +93,13 @@ export function CTABlock({ track, submissionId, company }: CTAProps) {
   }
 
   return (
-    <>
-      {/* Share button */}
-      <div style={{ textAlign: 'center', marginBottom: '24px' }}>
-        <button
-          onClick={handleShare}
-          style={{ background: 'none', border: '1px solid #E8E5E0', color: '#6B6860', fontSize: '13px', cursor: 'pointer', fontFamily: sans, padding: '9px 20px', borderRadius: '8px', transition: 'all 0.18s' }}
-        >
-          Share my results
-        </button>
-      </div>
-
-      {/* Social proof */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '10px', marginBottom: '16px' }}>
-        {[['500+', 'Businesses audited'], ['4.9 / 5', 'Average rating'], ['$2.4M+', 'ROI documented']].map(([v, l]) => (
-          <div key={v} style={{ textAlign: 'center', padding: '14px 8px', background: '#FAFAF9', border: '1px solid #E8E5E0', borderRadius: '8px' }}>
-            <div style={{ fontSize: '18px', fontWeight: 400, color: '#1A1A1A', fontFamily: serif }}>{v}</div>
-            <div style={{ fontSize: '11px', color: '#AEAAA4', fontFamily: sans, marginTop: '3px', fontWeight: 300 }}>{l}</div>
-          </div>
-        ))}
-      </div>
-    </>
+    <div style={{ textAlign: 'center', marginBottom: '24px' }}>
+      <button
+        onClick={handleShare}
+        style={{ background: 'none', border: '1px solid #E8E5E0', color: '#6B6860', fontSize: '13px', cursor: 'pointer', fontFamily: sans, padding: '9px 20px', borderRadius: '8px', transition: 'all 0.18s' }}
+      >
+        Share my results
+      </button>
+    </div>
   )
 }
