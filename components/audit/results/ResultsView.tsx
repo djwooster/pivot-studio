@@ -60,7 +60,7 @@ const TIER_BLURBS: Record<string, string> = {
 }
 
 export function ResultsView({ submission, financialNarrative }: ResultsViewProps) {
-  const { score, tier: tierName, cats, financial_impact: fin, track, name, company, role, top_gap, id } = submission
+  const { score, tier: tierName, cats, financial_impact: fin, track, name, company, role, top_gap } = submission
   const firstName = name.split(' ')[0]
 
   // Reconstruct tier object from stored tier name
