@@ -1,16 +1,16 @@
 import { NextRequest, NextResponse } from 'next/server';
 import Stripe from 'stripe';
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
-
-const PRICE_MAP: Record<string, string | undefined> = {
-  notion_template: process.env.STRIPE_PRICE_NOTION_TEMPLATE,
-  ui_kit: process.env.STRIPE_PRICE_UI_KIT,
-  custom_site: process.env.STRIPE_PRICE_CUSTOM_SITE,
-};
-
 export async function POST(req: NextRequest) {
   try {
+    const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
+
+    const PRICE_MAP: Record<string, string | undefined> = {
+      notion_template: process.env.STRIPE_PRICE_NOTION_TEMPLATE,
+      ui_kit: process.env.STRIPE_PRICE_UI_KIT,
+      custom_site: process.env.STRIPE_PRICE_CUSTOM_SITE,
+    };
+
     const { productId } = await req.json();
     const priceId = PRICE_MAP[productId];
 
