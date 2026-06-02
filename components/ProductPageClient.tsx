@@ -17,232 +17,232 @@ const slideUp: Variants = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: EASE } },
 };
 
-// ── Product visuals ───────────────────────────────────────────────────────────
+// ── Hero illustrations ────────────────────────────────────────────────────────
 
-function NotionVisual() {
+function NotionHeroVisual() {
   return (
-    <svg width="320" height="260" viewBox="0 0 320 260" fill="none" aria-hidden="true">
-      {/* Outer window */}
-      <rect x="20" y="20" width="280" height="220" stroke="white" strokeOpacity="0.1" strokeWidth="1"/>
-      {/* Title bar */}
-      <rect x="20" y="20" width="280" height="36" fill="white" fillOpacity="0.05"/>
-      <circle cx="38" cy="38" r="5" fill="white" fillOpacity="0.18"/>
-      <circle cx="54" cy="38" r="5" fill="white" fillOpacity="0.1"/>
-      <circle cx="70" cy="38" r="5" fill="white" fillOpacity="0.07"/>
-      <rect x="100" y="33" width="120" height="10" rx="0" fill="white" fillOpacity="0.07"/>
-      {/* Column headers */}
-      <rect x="20" y="56" width="280" height="1" fill="white" fillOpacity="0.08"/>
-      <rect x="32" y="66" width="60" height="6" fill="white" fillOpacity="0.2"/>
-      <rect x="140" y="66" width="50" height="6" fill="white" fillOpacity="0.12"/>
-      <rect x="230" y="66" width="40" height="6" fill="white" fillOpacity="0.12"/>
-      {/* Row 1 */}
-      <rect x="20" y="80" width="280" height="1" fill="white" fillOpacity="0.05"/>
-      <rect x="32" y="91" width="80" height="5" fill="white" fillOpacity="0.12"/>
-      <rect x="140" y="88" width="46" height="12" fill="white" fillOpacity="0.12"/>
-      <rect x="230" y="91" width="50" height="5" fill="white" fillOpacity="0.08"/>
-      {/* Row 2 */}
-      <rect x="20" y="108" width="280" height="1" fill="white" fillOpacity="0.05"/>
-      <rect x="32" y="119" width="65" height="5" fill="white" fillOpacity="0.12"/>
-      <rect x="140" y="116" width="38" height="12" fill="white" fillOpacity="0.07"/>
-      <rect x="230" y="119" width="44" height="5" fill="white" fillOpacity="0.08"/>
-      {/* Row 3 */}
-      <rect x="20" y="136" width="280" height="1" fill="white" fillOpacity="0.05"/>
-      <rect x="32" y="147" width="90" height="5" fill="white" fillOpacity="0.12"/>
-      <rect x="140" y="144" width="52" height="12" fill="white" fillOpacity="0.15"/>
-      <rect x="230" y="147" width="36" height="5" fill="white" fillOpacity="0.08"/>
-      {/* Row 4 */}
-      <rect x="20" y="164" width="280" height="1" fill="white" fillOpacity="0.05"/>
-      <rect x="32" y="175" width="72" height="5" fill="white" fillOpacity="0.12"/>
-      <rect x="140" y="172" width="44" height="12" fill="white" fillOpacity="0.1"/>
-      <rect x="230" y="175" width="55" height="5" fill="white" fillOpacity="0.08"/>
-      {/* + New row */}
-      <rect x="20" y="192" width="280" height="1" fill="white" fillOpacity="0.05"/>
-      <rect x="32" y="203" width="8" height="8" fill="white" fillOpacity="0.15"/>
-      <rect x="46" y="205" width="28" height="4" fill="white" fillOpacity="0.1"/>
+    <svg width="460" height="360" viewBox="0 0 460 360" fill="none" aria-hidden="true">
+      <rect x="20" y="20" width="420" height="320" stroke="white" strokeOpacity="0.08" strokeWidth="1"/>
+      <rect x="20" y="20" width="420" height="44" fill="white" fillOpacity="0.05"/>
+      <circle cx="42" cy="42" r="6" fill="white" fillOpacity="0.18"/>
+      <circle cx="60" cy="42" r="6" fill="white" fillOpacity="0.1"/>
+      <circle cx="78" cy="42" r="6" fill="white" fillOpacity="0.07"/>
+      <rect x="110" y="34" width="160" height="16" fill="white" fillOpacity="0.06"/>
+      <rect x="20" y="64" width="420" height="1" fill="white" fillOpacity="0.07"/>
+      <rect x="40" y="80" width="72" height="7" fill="white" fillOpacity="0.22"/>
+      <rect x="180" y="80" width="60" height="7" fill="white" fillOpacity="0.14"/>
+      <rect x="300" y="80" width="50" height="7" fill="white" fillOpacity="0.14"/>
+      <rect x="400" y="80" width="28" height="7" fill="white" fillOpacity="0.14"/>
+      {[96, 120, 144, 168, 192, 216, 240, 264].map((y, i) => (
+        <g key={y}>
+          <rect x="20" y={y} width="420" height="1" fill="white" fillOpacity="0.04"/>
+          <rect x="40" y={y + 9} width={[90, 70, 82, 96, 68, 88, 74, 80][i]} height="5" fill="white" fillOpacity="0.12"/>
+          <rect x="180" y={y + 7} width="50" height="11" fill="white" fillOpacity={[0.14, 0.08, 0.18, 0.1, 0.12, 0.08, 0.16, 0.1][i]}/>
+          <rect x="300" y={y + 9} width="60" height="5" fill="white" fillOpacity="0.08"/>
+          <rect x="400" y={y + 9} width="28" height="5" fill="white" fillOpacity="0.08"/>
+        </g>
+      ))}
+      <rect x="40" y="298" width="10" height="10" fill="white" fillOpacity="0.18"/>
+      <rect x="58" y="300" width="36" height="5" fill="white" fillOpacity="0.12"/>
     </svg>
   );
 }
 
-function UIKitVisual() {
+function UIKitHeroVisual() {
   return (
-    <svg width="320" height="280" viewBox="0 0 320 280" fill="none" aria-hidden="true">
+    <svg width="460" height="380" viewBox="0 0 460 380" fill="none" aria-hidden="true">
       {/* Window chrome */}
-      <rect x="20" y="16" width="280" height="248" stroke="white" strokeOpacity="0.1" strokeWidth="1"/>
-      <rect x="20" y="16" width="280" height="36" fill="white" fillOpacity="0.05"/>
-      <circle cx="38" cy="34" r="5" fill="white" fillOpacity="0.18"/>
-      <circle cx="54" cy="34" r="5" fill="white" fillOpacity="0.1"/>
-      <circle cx="70" cy="34" r="5" fill="white" fillOpacity="0.07"/>
-      {/* Tabs */}
-      <rect x="100" y="24" width="52" height="20" fill="white" fillOpacity="0.1"/>
-      <rect x="158" y="24" width="44" height="20" fill="white" fillOpacity="0.04"/>
-      <rect x="208" y="24" width="36" height="20" fill="white" fillOpacity="0.04"/>
-      {/* Button components */}
-      <rect x="36" y="68" width="76" height="24" fill="white" fillOpacity="0.18"/>
-      <rect x="36" y="98" width="76" height="24" fill="none" stroke="white" strokeOpacity="0.25" strokeWidth="1"/>
-      <rect x="36" y="128" width="76" height="24" fill="white" fillOpacity="0.06"/>
-      <rect x="40" y="76" width="40" height="4" fill="white" fillOpacity="0.35" rx="1"/>
-      <rect x="40" y="106" width="36" height="4" fill="white" fillOpacity="0.25" rx="1"/>
-      <rect x="40" y="136" width="32" height="4" fill="white" fillOpacity="0.2" rx="1"/>
+      <rect x="20" y="16" width="420" height="348" stroke="white" strokeOpacity="0.08" strokeWidth="1"/>
+      <rect x="20" y="16" width="420" height="44" fill="white" fillOpacity="0.05"/>
+      <circle cx="42" cy="38" r="6" fill="white" fillOpacity="0.18"/>
+      <circle cx="60" cy="38" r="6" fill="white" fillOpacity="0.1"/>
+      <circle cx="78" cy="38" r="6" fill="white" fillOpacity="0.07"/>
+      <rect x="110" y="28" width="70" height="20" fill="white" fillOpacity="0.1"/>
+      <rect x="186" y="28" width="58" height="20" fill="white" fillOpacity="0.05"/>
+      <rect x="250" y="28" width="50" height="20" fill="white" fillOpacity="0.05"/>
+      {/* Sidebar */}
+      <rect x="20" y="60" width="100" height="304" fill="white" fillOpacity="0.03"/>
+      <rect x="20" y="60" width="100" height="1" fill="white" fillOpacity="0.07"/>
+      <rect x="120" y="60" width="1" height="304" fill="white" fillOpacity="0.07"/>
+      <rect x="34" y="78" width="10" height="10" fill="white" fillOpacity="0.12"/>
+      <rect x="50" y="80" width="52" height="6" fill="white" fillOpacity="0.15"/>
+      <rect x="34" y="100" width="10" height="10" fill="white" fillOpacity="0.08"/>
+      <rect x="50" y="102" width="40" height="6" fill="white" fillOpacity="0.1"/>
+      <rect x="34" y="122" width="10" height="10" fill="white" fillOpacity="0.08"/>
+      <rect x="50" y="124" width="48" height="6" fill="white" fillOpacity="0.1"/>
+      <rect x="34" y="144" width="10" height="10" fill="white" fillOpacity="0.08"/>
+      <rect x="50" y="146" width="44" height="6" fill="white" fillOpacity="0.1"/>
+      {/* Main content */}
+      <rect x="144" y="76" width="120" height="8" fill="white" fillOpacity="0.2"/>
+      <rect x="144" y="96" width="86" height="6" fill="white" fillOpacity="0.1"/>
+      {/* Button group */}
+      <rect x="144" y="120" width="72" height="28" fill="white" fillOpacity="0.2"/>
+      <rect x="224" y="120" width="72" height="28" fill="none" stroke="white" strokeOpacity="0.2" strokeWidth="1"/>
+      <rect x="304" y="120" width="72" height="28" fill="white" fillOpacity="0.06"/>
+      <rect x="156" y="130" width="48" height="6" fill="white" fillOpacity="0.4" rx="1"/>
+      <rect x="236" y="130" width="48" height="6" fill="white" fillOpacity="0.2" rx="1"/>
+      <rect x="316" y="130" width="48" height="6" fill="white" fillOpacity="0.15" rx="1"/>
       {/* Card component */}
-      <rect x="136" y="68" width="148" height="100" stroke="white" strokeOpacity="0.12" strokeWidth="1"/>
-      <rect x="148" y="82" width="56" height="6" fill="white" fillOpacity="0.2" rx="1"/>
-      <rect x="148" y="96" width="112" height="4" fill="white" fillOpacity="0.1" rx="1"/>
-      <rect x="148" y="106" width="90" height="4" fill="white" fillOpacity="0.07" rx="1"/>
-      <rect x="148" y="116" width="100" height="4" fill="white" fillOpacity="0.07" rx="1"/>
-      <rect x="148" y="138" width="44" height="18" fill="white" fillOpacity="0.15"/>
-      {/* Input field */}
-      <rect x="36" y="172" width="248" height="28" stroke="white" strokeOpacity="0.15" strokeWidth="1"/>
-      <rect x="52" y="182" width="90" height="4" fill="white" fillOpacity="0.1" rx="1"/>
-      {/* Code lines */}
-      <rect x="36" y="220" width="12" height="4" fill="white" fillOpacity="0.25" rx="1"/>
-      <rect x="56" y="220" width="60" height="4" fill="white" fillOpacity="0.1" rx="1"/>
-      <rect x="36" y="232" width="12" height="4" fill="white" fillOpacity="0.15" rx="1"/>
-      <rect x="56" y="232" width="100" height="4" fill="white" fillOpacity="0.08" rx="1"/>
-      <rect x="36" y="244" width="12" height="4" fill="white" fillOpacity="0.1" rx="1"/>
-      <rect x="56" y="244" width="80" height="4" fill="white" fillOpacity="0.06" rx="1"/>
+      <rect x="144" y="168" width="172" height="110" stroke="white" strokeOpacity="0.12" strokeWidth="1"/>
+      <rect x="144" y="168" width="172" height="28" fill="white" fillOpacity="0.05"/>
+      <rect x="158" y="178" width="60" height="6" fill="white" fillOpacity="0.18" rx="1"/>
+      <rect x="158" y="210" width="144" height="5" fill="white" fillOpacity="0.1" rx="1"/>
+      <rect x="158" y="222" width="120" height="5" fill="white" fillOpacity="0.07" rx="1"/>
+      <rect x="158" y="234" width="130" height="5" fill="white" fillOpacity="0.07" rx="1"/>
+      <rect x="158" y="254" width="56" height="18" fill="white" fillOpacity="0.15"/>
+      <rect x="222" y="254" width="56" height="18" fill="none" stroke="white" strokeOpacity="0.18" strokeWidth="1"/>
+      {/* Input */}
+      <rect x="326" y="168" width="132" height="32" stroke="white" strokeOpacity="0.12" strokeWidth="1"/>
+      <rect x="340" y="180" width="72" height="5" fill="white" fillOpacity="0.1" rx="1"/>
+      <rect x="326" y="212" width="132" height="32" stroke="white" strokeOpacity="0.08" strokeWidth="1"/>
+      <rect x="340" y="224" width="56" height="5" fill="white" fillOpacity="0.07" rx="1"/>
+      {/* Code section */}
+      <rect x="144" y="296" width="316" height="52" fill="white" fillOpacity="0.03" stroke="white" strokeOpacity="0.06" strokeWidth="1"/>
+      <rect x="158" y="308" width="16" height="5" fill="white" fillOpacity="0.25" rx="1"/>
+      <rect x="182" y="308" width="80" height="5" fill="white" fillOpacity="0.12" rx="1"/>
+      <rect x="158" y="320" width="16" height="5" fill="white" fillOpacity="0.18" rx="1"/>
+      <rect x="182" y="320" width="110" height="5" fill="white" fillOpacity="0.1" rx="1"/>
+      <rect x="158" y="332" width="16" height="5" fill="white" fillOpacity="0.12" rx="1"/>
+      <rect x="182" y="332" width="64" height="5" fill="white" fillOpacity="0.08" rx="1"/>
     </svg>
   );
 }
 
-function SiteVisual() {
+function SiteHeroVisual() {
   return (
-    <svg width="320" height="260" viewBox="0 0 320 260" fill="none" aria-hidden="true">
-      {/* Browser frame */}
-      <rect x="20" y="20" width="280" height="220" stroke="white" strokeOpacity="0.1" strokeWidth="1"/>
-      {/* Browser chrome */}
-      <rect x="20" y="20" width="280" height="32" fill="white" fillOpacity="0.05"/>
-      <circle cx="36" cy="36" r="4" fill="white" fillOpacity="0.2"/>
-      <circle cx="50" cy="36" r="4" fill="white" fillOpacity="0.12"/>
-      <circle cx="64" cy="36" r="4" fill="white" fillOpacity="0.08"/>
-      <rect x="80" y="28" width="160" height="16" fill="white" fillOpacity="0.07"/>
-      <rect x="90" y="33" width="80" height="4" fill="white" fillOpacity="0.12" rx="1"/>
-      {/* Nav */}
-      <rect x="20" y="52" width="280" height="28" fill="white" fillOpacity="0.04"/>
-      <rect x="32" y="62" width="6" height="8" fill="white" fillOpacity="0.25"/>
-      <rect x="44" y="63" width="40" height="5" fill="white" fillOpacity="0.18" rx="1"/>
-      <rect x="200" y="62" width="32" height="8" fill="white" fillOpacity="0.1" rx="0"/>
-      <rect x="240" y="62" width="32" height="8" fill="white" fillOpacity="0.07" rx="0"/>
-      {/* Hero area */}
-      <rect x="32" y="96" width="130" height="10" fill="white" fillOpacity="0.18" rx="1"/>
-      <rect x="32" y="112" width="100" height="10" fill="white" fillOpacity="0.15" rx="1"/>
-      <rect x="32" y="130" width="156" height="6" fill="white" fillOpacity="0.08" rx="1"/>
-      <rect x="32" y="140" width="130" height="6" fill="white" fillOpacity="0.06" rx="1"/>
-      <rect x="32" y="156" width="80" height="18" fill="white" fillOpacity="0.18"/>
-      {/* Right side image block */}
-      <rect x="180" y="90" width="108" height="100" fill="white" fillOpacity="0.06"/>
-      <rect x="190" y="100" width="88" height="80" fill="white" fillOpacity="0.04"/>
-      {/* Bottom section */}
-      <rect x="20" y="200" width="280" height="1" fill="white" fillOpacity="0.08"/>
-      <rect x="32" y="212" width="50" height="4" fill="white" fillOpacity="0.1" rx="1"/>
-      <rect x="104" y="212" width="50" height="4" fill="white" fillOpacity="0.08" rx="1"/>
-      <rect x="176" y="212" width="50" height="4" fill="white" fillOpacity="0.08" rx="1"/>
-      <rect x="248" y="212" width="40" height="4" fill="white" fillOpacity="0.08" rx="1"/>
+    <svg width="460" height="360" viewBox="0 0 460 360" fill="none" aria-hidden="true">
+      <rect x="20" y="20" width="420" height="320" stroke="white" strokeOpacity="0.08" strokeWidth="1"/>
+      <rect x="20" y="20" width="420" height="40" fill="white" fillOpacity="0.05"/>
+      <circle cx="38" cy="40" r="5" fill="white" fillOpacity="0.2"/>
+      <circle cx="54" cy="40" r="5" fill="white" fillOpacity="0.12"/>
+      <circle cx="70" cy="40" r="5" fill="white" fillOpacity="0.08"/>
+      <rect x="90" y="32" width="200" height="16" fill="white" fillOpacity="0.07"/>
+      <rect x="100" y="37" width="90" height="5" fill="white" fillOpacity="0.12" rx="1"/>
+      <rect x="20" y="60" width="420" height="1" fill="white" fillOpacity="0.07"/>
+      <rect x="38" y="72" width="8" height="8" fill="white" fillOpacity="0.25"/>
+      <rect x="52" y="73" width="52" height="5" fill="white" fillOpacity="0.18" rx="1"/>
+      <rect x="200" y="73" width="40" height="5" fill="white" fillOpacity="0.1" rx="1"/>
+      <rect x="260" y="73" width="40" height="5" fill="white" fillOpacity="0.1" rx="1"/>
+      <rect x="320" y="73" width="40" height="5" fill="white" fillOpacity="0.1" rx="1"/>
+      <rect x="394" y="70" width="36" height="14" fill="white" fillOpacity="0.15"/>
+      <rect x="38" y="108" width="170" height="12" fill="white" fillOpacity="0.22" rx="1"/>
+      <rect x="38" y="126" width="140" height="12" fill="white" fillOpacity="0.18" rx="1"/>
+      <rect x="38" y="152" width="220" height="6" fill="white" fillOpacity="0.09" rx="1"/>
+      <rect x="38" y="164" width="190" height="6" fill="white" fillOpacity="0.07" rx="1"/>
+      <rect x="38" y="176" width="170" height="6" fill="white" fillOpacity="0.07" rx="1"/>
+      <rect x="38" y="200" width="96" height="22" fill="white" fillOpacity="0.2"/>
+      <rect x="144" y="200" width="80" height="22" fill="none" stroke="white" strokeOpacity="0.2" strokeWidth="1"/>
+      <rect x="48" y="208" width="76" height="5" fill="white" fillOpacity="0.4" rx="1"/>
+      <rect x="154" y="208" width="60" height="5" fill="white" fillOpacity="0.2" rx="1"/>
+      <rect x="270" y="90" width="160" height="220" fill="white" fillOpacity="0.04" stroke="white" strokeOpacity="0.08" strokeWidth="1"/>
+      <rect x="290" y="110" width="120" height="80" fill="white" fillOpacity="0.06"/>
+      <rect x="290" y="206" width="80" height="6" fill="white" fillOpacity="0.12" rx="1"/>
+      <rect x="290" y="218" width="110" height="4" fill="white" fillOpacity="0.08" rx="1"/>
+      <rect x="290" y="228" width="95" height="4" fill="white" fillOpacity="0.06" rx="1"/>
+      <rect x="290" y="248" width="60" height="18" fill="white" fillOpacity="0.15"/>
+      <rect x="20" y="270" width="420" height="1" fill="white" fillOpacity="0.06"/>
+      <rect x="38" y="284" width="60" height="5" fill="white" fillOpacity="0.1" rx="1"/>
+      <rect x="160" y="284" width="60" height="5" fill="white" fillOpacity="0.08" rx="1"/>
+      <rect x="282" y="284" width="60" height="5" fill="white" fillOpacity="0.08" rx="1"/>
+      <rect x="404" y="284" width="24" height="5" fill="white" fillOpacity="0.08" rx="1"/>
+      <rect x="38" y="298" width="44" height="5" fill="white" fillOpacity="0.06" rx="1"/>
+      <rect x="160" y="298" width="50" height="5" fill="white" fillOpacity="0.06" rx="1"/>
+      <rect x="282" y="298" width="40" height="5" fill="white" fillOpacity="0.06" rx="1"/>
     </svg>
   );
 }
 
-const visuals: Record<string, React.FC> = {
-  notion_template: NotionVisual,
-  ui_kit: UIKitVisual,
-  custom_site: SiteVisual,
+const heroVisuals: Record<string, React.FC> = {
+  notion_template: NotionHeroVisual,
+  ui_kit: UIKitHeroVisual,
+  custom_site: SiteHeroVisual,
 };
 
-// ── Split hero (Teenage Engineering layout) ──────────────────────────────────
+// ── Hero ──────────────────────────────────────────────────────────────────────
 
 function ProductHero({ product }: { product: ShopProduct }) {
-  const Visual = visuals[product.id] ?? UIKitVisual;
+  const Visual = heroVisuals[product.id] ?? UIKitHeroVisual;
 
   return (
-    <section className="flex flex-col md:flex-row" style={{ minHeight: "calc(100vh - 64px)", marginTop: "64px" }}>
+    <section className="bg-white pt-32 pb-20 px-6">
+      <div className="max-w-[90rem] mx-auto grid md:grid-cols-2 gap-16 items-center">
 
-      {/* LEFT — dark product visual */}
-      <div className="md:w-1/2 bg-[#0a0a0a] noise flex items-center justify-center min-h-[55vw] md:min-h-0">
+        {/* Left: text */}
+        <div>
+          <motion.p
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.35, ease: EASE }}
+            className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#0a0a0a]/35 mb-5"
+          >
+            {product.tierLabel}
+          </motion.p>
+
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, ease: EASE, delay: 0.07 }}
+            className="section-headline text-[#0a0a0a] mb-4"
+          >
+            {product.name}
+          </motion.h1>
+
+          <motion.p
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.45, ease: EASE, delay: 0.14 }}
+            className="text-[clamp(32px,3.5vw,52px)] font-extrabold text-[#0a0a0a] mb-6"
+            style={{ letterSpacing: "-0.04em", lineHeight: 1 }}
+          >
+            {product.price}
+          </motion.p>
+
+          <motion.p
+            initial={{ opacity: 0, y: 14 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.45, ease: EASE, delay: 0.2 }}
+            className="text-lg text-[#0a0a0a]/50 leading-relaxed max-w-md mb-10"
+          >
+            {product.tagline}
+          </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 14 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.45, ease: EASE, delay: 0.27 }}
+            className="flex flex-col sm:flex-row gap-3 mb-5"
+          >
+            <div className="sm:w-56">
+              <CheckoutButton productId={product.id} variant="dark" label={product.buttonLabel} />
+            </div>
+            <a
+              href="#details"
+              className="inline-flex items-center justify-center h-12 px-6 text-sm font-bold border border-black/15 text-[#0a0a0a]/70 hover:border-black/30 hover:text-[#0a0a0a] transition-colors duration-200"
+            >
+              What&apos;s included ↓
+            </a>
+          </motion.div>
+
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.4, ease: EASE, delay: 0.35 }}
+            className="text-[11px] text-[#0a0a0a]/25 font-medium"
+          >
+            {product.deliverable} · One-time payment · Secured by Stripe
+          </motion.p>
+        </div>
+
+        {/* Right: illustration */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.97 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.7, ease: EASE, delay: 0.1 }}
+          initial={{ opacity: 0, x: 24 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.65, ease: EASE, delay: 0.15 }}
+          className="bg-[#0a0a0a] flex items-center justify-center p-10 noise"
         >
           <Visual />
         </motion.div>
-      </div>
 
-      {/* RIGHT — warm gray info panel */}
-      <div className="md:w-1/2 bg-[#EDEAE4] flex flex-col justify-center px-10 md:px-16 py-16">
-
-        {/* Eyebrow */}
-        <motion.p
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4, ease: EASE, delay: 0.2 }}
-          className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#0a0a0a]/40 mb-6"
-        >
-          {product.tierLabel}
-        </motion.p>
-
-        {/* Name + price — same scale, reads as one unit */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, ease: EASE, delay: 0.28 }}
-          className="mb-10"
-        >
-          <h1
-            className="font-extrabold text-[#0a0a0a] leading-[1.05]"
-            style={{ fontSize: "clamp(28px, 3.2vw, 48px)", letterSpacing: "-0.03em" }}
-          >
-            {product.name}
-            <br />
-            {product.price}
-          </h1>
-        </motion.div>
-
-        {/* CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.45, ease: EASE, delay: 0.38 }}
-          className="mb-3"
-        >
-          <CheckoutButton productId={product.id} variant="dark" label={product.buttonLabel} />
-        </motion.div>
-
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.4, ease: EASE, delay: 0.46 }}
-          className="text-[11px] text-[#0a0a0a]/30 font-medium mb-10"
-        >
-          {product.deliverable} · One-time payment · Secured by Stripe
-        </motion.p>
-
-        {/* Divider */}
-        <motion.div
-          initial={{ scaleX: 0, originX: 0 }}
-          animate={{ scaleX: 1 }}
-          transition={{ duration: 0.5, ease: EASE, delay: 0.5 }}
-          className="w-full h-px bg-[#0a0a0a]/12 mb-10"
-        />
-
-        {/* Description */}
-        <motion.p
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.45, ease: EASE, delay: 0.55 }}
-          className="text-base text-[#0a0a0a]/55 leading-relaxed mb-6"
-        >
-          {product.heroSubtext}
-        </motion.p>
-
-        {/* Explore link */}
-        <motion.a
-          href="#details"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.4, ease: EASE, delay: 0.62 }}
-          className="text-sm font-semibold text-[#0a0a0a]/45 hover:text-[#0a0a0a]/70 transition-colors duration-200 underline underline-offset-4"
-        >
-          What&apos;s included ↓
-        </motion.a>
       </div>
     </section>
   );
@@ -286,13 +286,16 @@ function ProductDetails({ product }: { product: ShopProduct }) {
             <motion.div
               key={feature.title}
               variants={slideUp}
-              className="bg-white border border-black/8 p-8 flex flex-col gap-4"
+              className="bg-white border border-black/8 p-8 flex flex-col gap-4 hover:border-black/20 transition-colors duration-200"
             >
               <h3 className="text-lg font-bold text-[#0a0a0a] leading-snug">
                 {feature.title}
               </h3>
-              <p className="text-base text-[#0a0a0a]/50 leading-relaxed">
+              <p className="text-base text-[#0a0a0a]/50 leading-relaxed flex-1">
                 {feature.description}
+              </p>
+              <p className="text-sm font-semibold text-[#0a0a0a]/35">
+                Included →
               </p>
             </motion.div>
           ))}
@@ -428,11 +431,7 @@ function ProductFinalCTA({ product }: { product: ShopProduct }) {
           </div>
 
           <div className="md:min-w-[280px]">
-            <CheckoutButton
-              productId={product.id}
-              variant="dark"
-              label={product.buttonLabel}
-            />
+            <CheckoutButton productId={product.id} variant="dark" label={product.buttonLabel} />
           </div>
         </motion.div>
       </div>

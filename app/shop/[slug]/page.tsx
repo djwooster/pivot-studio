@@ -34,7 +34,7 @@ export default async function ProductPage({
 
   return (
     <main className="bg-white text-[#0a0a0a]" style={{ overflowX: "clip" }}>
-      <Nav lightText />
+      <Nav />
       <div className="pt-0">
         <ProductPageClient product={product} />
       </div>
