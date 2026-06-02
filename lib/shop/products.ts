@@ -95,7 +95,7 @@ const allProducts: ShopProduct[] = [
     id: "ui_kit",
     slug: "ui-kit",
     tierLabel: "Most Popular",
-    name: "[Claude Code UI Kit Name]",
+    name: "Builder Kit",
     price: "$249",
     tagline: "Build better interfaces with AI, faster than you thought possible.",
     heroSubtext:
