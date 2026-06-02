@@ -24,7 +24,10 @@ export interface ShopProduct {
   faq: ProductFAQItem[];
 }
 
-export const products: ShopProduct[] = [
+// To add a product to the shop, add its id here
+const ACTIVE_PRODUCTS = ["ui_kit"];
+
+const allProducts: ShopProduct[] = [
   {
     id: "notion_template",
     slug: "notion-template",
@@ -225,3 +228,5 @@ export const products: ShopProduct[] = [
     ],
   },
 ];
+
+export const products = allProducts.filter((p) => ACTIVE_PRODUCTS.includes(p.id));
