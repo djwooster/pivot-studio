@@ -8,24 +8,25 @@ import ArrowButton from "@/components/ArrowButton";
 const navLinks = [
   { label: "AI + Automation", href: "/" },
   { label: "Web Design", href: "/web-design" },
+  { label: "Shop", href: "/shop" },
 ];
 
-function HamburgerIcon({ open }: { open: boolean }) {
+function HamburgerIcon({ open, color }: { open: boolean; color: string }) {
   return (
     <div className="w-6 h-5 flex flex-col justify-between cursor-pointer" aria-hidden={true}>
       <motion.span
-        className="block h-[2px] bg-[#0a0a0a] origin-center"
-        animate={open ? { rotate: 45, y: 9, backgroundColor: "#0a0a0a" } : { rotate: 0, y: 0, backgroundColor: "#0a0a0a" }}
+        className="block h-[2px] origin-center"
+        animate={open ? { rotate: 45, y: 9, backgroundColor: color } : { rotate: 0, y: 0, backgroundColor: color }}
         transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] as [number, number, number, number] }}
       />
       <motion.span
-        className="block h-[2px] bg-[#0a0a0a]"
-        animate={open ? { opacity: 0, scaleX: 0, backgroundColor: "#0a0a0a" } : { opacity: 1, scaleX: 1, backgroundColor: "#0a0a0a" }}
+        className="block h-[2px]"
+        animate={open ? { opacity: 0, scaleX: 0, backgroundColor: color } : { opacity: 1, scaleX: 1, backgroundColor: color }}
         transition={{ duration: 0.2, ease: [0.4, 0, 0.2, 1] as [number, number, number, number] }}
       />
       <motion.span
-        className="block h-[2px] bg-[#0a0a0a] origin-center"
-        animate={open ? { rotate: -45, y: -9, backgroundColor: "#0a0a0a" } : { rotate: 0, y: 0, backgroundColor: "#0a0a0a" }}
+        className="block h-[2px] origin-center"
+        animate={open ? { rotate: -45, y: -9, backgroundColor: color } : { rotate: 0, y: 0, backgroundColor: color }}
         transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] as [number, number, number, number] }}
       />
     </div>
@@ -48,9 +49,7 @@ const overlayVariants = {
 
 const listVariants = {
   hidden: {},
-  visible: {
-    transition: { staggerChildren: 0.07, delayChildren: 0.15 },
-  },
+  visible: { transition: { staggerChildren: 0.07, delayChildren: 0.15 } },
 };
 
 const itemVariants = {
@@ -62,9 +61,12 @@ const itemVariants = {
   },
 };
 
-export default function Nav() {
+export default function Nav({ lightText = false }: { lightText?: boolean }) {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+
+  // Use white text only when lightText is requested AND the nav hasn't scrolled into its white-bg state
+  const useLight = lightText && !scrolled && !menuOpen;
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -92,12 +94,13 @@ export default function Nav() {
             className="flex items-center gap-2.5 hover:opacity-70 transition-opacity z-10"
             onClick={() => setMenuOpen(false)}
           >
-            {/* Mark: filled square with bold chevron */}
             <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
-              <rect width="28" height="28" fill="#0a0a0a" />
-              <polyline points="9,7 19,14 9,21" stroke="white" strokeWidth="3.5" strokeLinecap="square" strokeLinejoin="miter" />
+              <rect width="28" height="28" fill={useLight ? "white" : "#0a0a0a"} />
+              <polyline points="9,7 19,14 9,21" stroke={useLight ? "#0a0a0a" : "white"} strokeWidth="3.5" strokeLinecap="square" strokeLinejoin="miter" />
             </svg>
-            <span className="text-xl font-bold text-[#0a0a0a] tracking-tight">Pivot Studio</span>
+            <span className={`text-xl font-bold tracking-tight transition-colors duration-300 ${useLight ? "text-white" : "text-[#0a0a0a]"}`}>
+              Pivot Studio
+            </span>
           </Link>
 
           {/* Desktop nav */}
@@ -106,12 +109,22 @@ export default function Nav() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-sm text-[#0a0a0a]/55 hover:text-[#0a0a0a] transition-colors duration-200 font-medium"
+                className={`text-sm font-medium transition-colors duration-200 ${
+                  useLight
+                    ? "text-white/70 hover:text-white"
+                    : "text-[#0a0a0a]/55 hover:text-[#0a0a0a]"
+                }`}
               >
                 {link.label}
               </Link>
             ))}
-            <ArrowButton href="https://cal.com/djwooster/intro-call" external className="h-9 px-5 text-sm" arrowLeft="20px">
+            <ArrowButton
+              href="https://cal.com/djwooster/intro-call"
+              external
+              variant={useLight ? "light" : "dark"}
+              className="h-9 px-5 text-sm"
+              arrowLeft="20px"
+            >
               See if we&apos;re a fit
             </ArrowButton>
           </nav>
@@ -122,7 +135,7 @@ export default function Nav() {
             onClick={() => setMenuOpen((prev) => !prev)}
             aria-label={menuOpen ? "Close menu" : "Open menu"}
           >
-            <HamburgerIcon open={menuOpen} />
+            <HamburgerIcon open={menuOpen} color={useLight ? "#ffffff" : "#0a0a0a"} />
           </button>
         </div>
       </header>
@@ -146,28 +159,25 @@ export default function Nav() {
                 animate="visible"
               >
                 {navLinks.map((link) => (
-                  <motion.div
-                    key={link.href}
-                    variants={itemVariants}
-                  >
-                  <Link
-                    href={link.href}
-                    onClick={() => setMenuOpen(false)}
-                    className="group flex items-center justify-between py-5 border-b border-white/10 text-white"
-                  >
-                    <span className="text-4xl font-bold tracking-tight leading-none">
-                      {link.label}
-                    </span>
-                    <motion.span
-                      className="text-white/30 group-hover:text-white transition-colors duration-200"
-                      animate={{ x: 0, opacity: 0.3 }}
-                      transition={{ duration: 0.2 }}
+                  <motion.div key={link.href} variants={itemVariants}>
+                    <Link
+                      href={link.href}
+                      onClick={() => setMenuOpen(false)}
+                      className="group flex items-center justify-between py-5 border-b border-white/10 text-white"
                     >
-                      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                        <path d="M5 12h14M12 5l7 7-7 7" />
-                      </svg>
-                    </motion.span>
-                  </Link>
+                      <span className="text-4xl font-bold tracking-tight leading-none">
+                        {link.label}
+                      </span>
+                      <motion.span
+                        className="text-white/30 group-hover:text-white transition-colors duration-200"
+                        animate={{ x: 0, opacity: 0.3 }}
+                        transition={{ duration: 0.2 }}
+                      >
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                          <path d="M5 12h14M12 5l7 7-7 7" />
+                        </svg>
+                      </motion.span>
+                    </Link>
                   </motion.div>
                 ))}
 
