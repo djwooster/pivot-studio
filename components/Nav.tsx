@@ -3,10 +3,11 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import ArrowButton from "@/components/ArrowButton";
 
 const navLinks = [
-  { label: "AI + Automation", href: "/" },
+  { label: "Apps + Dashboards", href: "/" },
   { label: "Web Design", href: "/web-design" },
   { label: "Shop", href: "/shop" },
 ];
@@ -62,6 +63,7 @@ const itemVariants = {
 };
 
 export default function Nav({ lightText = false }: { lightText?: boolean }) {
+  const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -105,19 +107,24 @@ export default function Nav({ lightText = false }: { lightText?: boolean }) {
 
           {/* Desktop nav */}
           <nav className="hidden md:flex items-center gap-8">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className={`text-sm font-medium transition-colors duration-200 ${
-                  useLight
-                    ? "text-white/70 hover:text-white"
-                    : "text-[#0a0a0a]/55 hover:text-[#0a0a0a]"
-                }`}
-              >
-                {link.label}
-              </Link>
-            ))}
+            {navLinks.map((link) => {
+              const isActive = pathname === link.href;
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={`text-sm font-medium underline-offset-[6px] decoration-[1.5px] transition-colors duration-200 ${
+                    isActive ? "underline" : ""
+                  } ${
+                    useLight
+                      ? isActive ? "text-white" : "text-white/70 hover:text-white"
+                      : isActive ? "text-[#0a0a0a]" : "text-[#0a0a0a]/55 hover:text-[#0a0a0a]"
+                  }`}
+                >
+                  {link.label}
+                </Link>
+              );
+            })}
             <ArrowButton
               href="https://cal.com/djwooster/intro-call"
               external
@@ -158,28 +165,35 @@ export default function Nav({ lightText = false }: { lightText?: boolean }) {
                 initial="hidden"
                 animate="visible"
               >
-                {navLinks.map((link) => (
-                  <motion.div key={link.href} variants={itemVariants}>
-                    <Link
-                      href={link.href}
-                      onClick={() => setMenuOpen(false)}
-                      className="group flex items-center justify-between py-5 border-b border-white/10 text-white"
-                    >
-                      <span className="text-4xl font-bold tracking-tight leading-none">
-                        {link.label}
-                      </span>
-                      <motion.span
-                        className="text-white/30 group-hover:text-white transition-colors duration-200"
-                        animate={{ x: 0, opacity: 0.3 }}
-                        transition={{ duration: 0.2 }}
+                {navLinks.map((link) => {
+                  const isActive = pathname === link.href;
+                  return (
+                    <motion.div key={link.href} variants={itemVariants}>
+                      <Link
+                        href={link.href}
+                        onClick={() => setMenuOpen(false)}
+                        className="group flex items-center justify-between py-5 border-b border-white/10 text-white"
                       >
-                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                          <path d="M5 12h14M12 5l7 7-7 7" />
-                        </svg>
-                      </motion.span>
-                    </Link>
-                  </motion.div>
-                ))}
+                        <span
+                          className={`text-4xl font-bold tracking-tight leading-none underline-offset-[10px] decoration-2 decoration-white/40 ${
+                            isActive ? "underline" : ""
+                          }`}
+                        >
+                          {link.label}
+                        </span>
+                        <motion.span
+                          className="text-white/30 group-hover:text-white transition-colors duration-200"
+                          animate={{ x: 0, opacity: 0.3 }}
+                          transition={{ duration: 0.2 }}
+                        >
+                          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                            <path d="M5 12h14M12 5l7 7-7 7" />
+                          </svg>
+                        </motion.span>
+                      </Link>
+                    </motion.div>
+                  );
+                })}
 
                 <motion.div variants={itemVariants} className="pt-8">
                   <ArrowButton href="https://cal.com/djwooster/intro-call" external variant="light" className="w-full h-14 text-base" arrowLeft="20px">
