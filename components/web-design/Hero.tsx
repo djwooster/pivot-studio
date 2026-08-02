@@ -13,56 +13,32 @@ function fadeUp(delay: number) {
   };
 }
 
-function Accent({ children }: { children: React.ReactNode }) {
-  return <span style={{ color: "#b07a28" }}>{children}</span>;
-}
-
 export default function WebDesignHero() {
   return (
-    <section className="relative bg-white pt-6 overflow-hidden" id="home">
-      <div className="max-w-[90rem] mx-auto px-6 pt-24 pb-28 md:pt-32 md:pb-36">
+    <section className="relative bg-white overflow-hidden" id="home">
+      <div className="max-w-[90rem] mx-auto px-6 pt-40 pb-16">
+
+        <motion.h1
+          {...fadeUp(0)}
+          className="font-semibold text-[#0a0a0a] leading-[1.15] tracking-[-0.02em] max-w-2xl"
+          style={{ fontSize: "clamp(24px, 3vw, 80px)" }}
+        >
+          We deliver web design that moves your business forward.
+        </motion.h1>
 
         <motion.p
-          {...fadeUp(0)}
-          className="text-sm font-semibold uppercase tracking-[0.15em] text-[#0a0a0a]/40 mb-6"
+          {...fadeUp(0.12)}
+          className="text-[#0a0a0a]/50 leading-relaxed max-w-3xl mt-6"
+          style={{ fontSize: "clamp(18px, 1.2vw, 24px)" }}
         >
-          Web Design
+          No templates. No page builders. Custom-designed sites built to make the right first impression and turn visitors into clients.
         </motion.p>
 
-        <h1
-          className="font-extrabold text-[#0a0a0a] leading-[1.35] tracking-[-0.02em] mb-6"
-          style={{ fontSize: "clamp(24px, 4vw, 80px)" }}
-          aria-label="Your website should work as hard as you do. We design beautiful, fast sites that make the right first impression — and turn visitors into clients."
-        >
-          <motion.span {...fadeUp(0.1)} className="block">
-            Your website should work
-          </motion.span>
-          <motion.span {...fadeUp(0.22)} className="block">
-            as hard as you do.
-          </motion.span>
-          <motion.span {...fadeUp(0.34)} className="block">
-            We design <Accent>beautiful</Accent>, <Accent>fast</Accent> sites that
-          </motion.span>
-          <motion.span {...fadeUp(0.46)} className="block">
-            turn visitors into clients.
-          </motion.span>
-        </h1>
-
-        <div className="flex flex-col gap-10">
-          <motion.p
-            {...fadeUp(0.6)}
-            className="text-[#0a0a0a]/50 leading-relaxed max-w-3xl"
-            style={{ fontSize: "clamp(18px, 1.8vw, 24px)" }}
-          >
-            No templates. No page builders. Custom-designed sites built on a modern stack — fast to load, easy to update, and built to convert.
-          </motion.p>
-
-          <motion.div {...fadeUp(0.68)} className="flex flex-col gap-3 w-full sm:w-64">
-            <ArrowButton href="https://cal.com/djwooster/intro-call" external className="h-12 px-7 text-sm">
-              Start a project
-            </ArrowButton>
-          </motion.div>
-        </div>
+        <motion.div {...fadeUp(0.2)} className="mt-6">
+          <ArrowButton href="https://cal.com/djwooster/intro-call" external variant="dark" className="h-12 px-7 text-sm">
+            Start a project
+          </ArrowButton>
+        </motion.div>
 
       </div>
     </section>
