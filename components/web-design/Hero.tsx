@@ -28,13 +28,13 @@ export default function WebDesignHero() {
 
         <motion.p
           {...fadeUp(0.12)}
-          className="text-[#0a0a0a]/50 leading-relaxed max-w-3xl mt-6"
+          className="text-[#0a0a0a]/50 leading-relaxed max-w-3xl mt-6 md:mt-5"
           style={{ fontSize: "clamp(18px, 1.2vw, 24px)" }}
         >
           No templates. No page builders. Custom-designed sites built to make the right first impression and turn visitors into clients.
         </motion.p>
 
-        <motion.div {...fadeUp(0.2)} className="mt-6">
+        <motion.div {...fadeUp(0.2)} className="mt-6 md:mt-10">
           <ArrowButton href="https://cal.com/djwooster/intro-call" external variant="dark" className="h-12 px-7 text-sm">
             Start a project
           </ArrowButton>
