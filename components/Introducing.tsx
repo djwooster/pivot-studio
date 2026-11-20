@@ -75,10 +75,10 @@ export default function Introducing() {
             style={{ aspectRatio: "3 / 4", maxHeight: "560px" }}
           >
             <Image
-              src="/dj-image-2.png"
+              src="/dj-headshot.jpg"
               alt="DJ — founder of Pivot Studio"
               fill
-              className="object-cover object-top"
+              className="object-cover object-center"
               sizes="(max-width: 768px) 100vw, 50vw"
             />
           </motion.div>
